@@ -37,7 +37,7 @@
             <a class="nav-link" href="https://clothcalc.github.io/ClothCalc#features-section">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://clothcalc.github.io/ClothCalc/index.html#digital-marketing-section">Blog</a>  
+            <a class="nav-link" href="https://clothcalc.github.io/ClothCalc#digital-marketing-section">Blog</a>  
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://clothcalc.github.io/ClothCalc#feedback-section">Testimonials</a>
@@ -50,80 +50,123 @@
     </div> 
     </nav>
     	<style>
-	    @media screen and (max-width: 600px) {
-  label {
-    font-size: 1.2em;
-  }
-  input {
-    width: 70px;
-    font-size: 1.2em;
-    margin-right: 10px;
-  }
-  button {
-    background-color: darkgreen;
-    color: white;
-    font-size: 1.2em;
-    padding: 8px 20px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  label {
-    font-size: 1em;
-  }
-  input {
-    width: 100%;
-    font-size: 1em;
-    margin-bottom: 10px;
-  }
-  button {
-    background-color: darkgreen;
-    color: white;
-    font-size: 1em;
-    padding: 8px 15px;
-  }
-}
-
-.input-section {
+ .containertwo {
   display: flex;
   justify-content: space-between;
+  background-color: #d8d8d8;
+  padding: 20px;
+}
+
+.containerthree {
+  display: flex;
+  justify-content: space-between;
+  background-color: #cfcfdc;
+  padding: 20px;
+}
+
+.containerfour {
+  display: flex;
+  justify-content: space-between;
+  background-color: #a9a9c0;
+  padding: 20px;
+}
+
+.containerfive {
+  justify-content: space-between;
+  background-color: #e5e5e5;
+  padding: 20px;
+  text-align: center;
+}
+
+.calculation {
+  flex: 1;
+}
+
+.calculation h4 {
+  margin-top: 10px;
+  text-align:center;
+}
+
+.calculation p {
+  margin-bottom: 5px;
+  text-align:center;
+}
+
+.calculation form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
-.input-section label {
-  font-size: 1.5em;
+.input-group {
+  display: flex;
+  flex-direction: column;
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 
-.input-section input {
-  width: 150px;
-  font-size: 1.5em;
+.input-group label {
+  margin-bottom: 5px;
+  margin: 0 auto;
+}
+
+.input-group input {
+  max-width: 30%;
+  min-width: 40px;
   padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  margin: 0 auto;
 }
 
-.input-section input:focus {
-  outline: none;
-  border: 1px solid #005ce6;
+button {
+  display: block;
+  margin: 10px auto;
+  background-color: darkgreen;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.description {
-  font-size: 1.5em;
-  line-height: 1.5;
-  text-align: justify;
+@media screen and (min-width: 400px) {
+  .input-group:last-child {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #fabric-length-yards1 {
+    font-weight: bold;
+    color: #ff0000;
+  }
+  
+  #fabric-length-yards2 {
+    font-weight: bold;
+    color: #ff0000;
+	}
+  
+  #price-per-yds {
+    display: block;
+    text-align: center;
+	font-weight: bold;
+	color: #ff0000;
 }
 
-@media screen and (max-width: 768px) {
-  .input-section {
-    flex-direction: column;
-    align-items: flex-start;
+  button {
+    display: block;
+    margin: 20px auto;
   }
 }
-	  </style>
+
+
+
+</style>
 	  
-	<title>Fabric Calculators</title>
+
 	
 
 	<script>
@@ -166,60 +209,93 @@
 		}
 	</script>
 </head>
-	<h1>Fabric Calculators</h1>
-	<div>
-		<h4>kg to yards, fabric width in centimeters</h4>
-		<text>Formula:
-<br>
-Yards = (Weight in kg * 1000) / (GSM * Fabric Width in meters * 1.09361)</text>
-		<form>
-			<label for="weight1">Weight (Kg):</label>
-			<input type="number" id="weight1"><br><br>
-
-			<label for="gsm1">GSM:</label>
-			<input type="number" id="gsm1"><br><br>
-
-			<label for="width1">Width (cm):</label>
-			<input type="number" id="width1"><br><br>
-
-			<button type="button" onclick="calculateFabric1()">Calculate</button>
-
-			<label for="fabric-length-yards1">Fabric Length (Yards):</label>
-			<span id="fabric-length-yards1"></span>
-		</form>
-		
+	<div class="containerfive">
+	<h1>Fabric Converter & Price Calculators</h1>
 	</div>
+<div class="containertwo">
+  <div class="calculation">
+    <h4>kg to yards, fabric width in centimeters</h4>
+    <p>Formula:</p>
+    <p>Yards = (Weight in kg * 1000) / (GSM * Fabric Width in meters * 1.09361)</p>
+    <form>
+      <div class="input-group">
+        <label for="weight1">Weight (Kg):</label>
+        <input type="number" id="weight1" required>
+      </div>
+
+      <div class="input-group">
+        <label for="gsm1">GSM:</label>
+        <input type="number" id="gsm1" required>
+      </div>
+
+      <div class="input-group">
+        <label for="width1">Width (cm):</label>
+        <input type="number" id="width1" required>
+      </div>
+
+      <button type="button" onclick="calculateFabric1()">Calculate</button>
+
+      <div class="input-group">
+        <label for="fabric-length-yards1">Fabric Length (Yards):</label>
+        <span id="fabric-length-yards1"></span>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+
+
+
+<div class="containerthree">
+  <div class="calculation">
 
 	<div>
 		<h4>kg to yards, fabric width in inch</h4>
-		<text>Formula:
-<br>Kg to Yards = (Fabric weight * 1000)/(Fabric GSM *Fabric Width in inch * 0.0254)*1.09361
-(when fabric width is given in inches)</text>
+		<p>Formula:</p>
+<p>Kg to Yards = (Fabric weight * 1000)/(Fabric GSM *Fabric Width in inch * 0.0254)*1.09361
+(when fabric width is given in inches)</p>
 		<form>
+		<div class="input-group">
 			<label for="weight2">Weight (Kg):</label>
 			<input type="number" id="weight2"><br><br>
-
+		</div>
+		<div class="input-group">
 			<label for="gsm2">GSM:</label>
 			<input type="number" id="gsm2"><br><br>
-
+		</div>
+		<div class="input-group">
 			<label for="width2">Width (inch):</label>
 			<input type="number" id="width2"><br><br>
-
+		</div>
 			<button type="button" onclick="calculateFabric2()">Calculate</button>
 
-
+		 <div class="input-group">
 			<label for="fabric-length-yards2">Fabric Length (Yards):</label>
 		    			<span id="fabric-length-yards2"></span>
+		</div>
 		</form>
 	</div>
+	</div>
+</div>
 
-	<h2>Price Calculator for KG to Yards</h2>
+<div class="containerfour">
+  <div class="calculation">
+	<h4>Price Calculator for KG to Yards</h4>
+	<div class="input-group">
 	<label for="price-per-kg">Price per Kg:</label>
 	<input type="number" id="price-per-kg" name="price-per-kg"><br><br>
+	</div>
+	<div class="input-group">
 	<label for="fabrics-yds">Fabrics Yds converted from kg:</label>
 	<input type="number" id="fabrics-yds" name="fabrics-yds"><br><br>
+	</div>
 	<button id="calculate-price-button">Calculate Price</button>
+	<div class="input-group">
+	<label for="price-per-yds">Price per Yds:</label>
 	<span id="price-per-yds"></span>
+	</div>
+
 	<script>
 		var pricePerKgInput = document.getElementById("price-per-kg");
 		var fabricsYdsInput = document.getElementById("fabrics-yds");
@@ -233,12 +309,14 @@ Yards = (Weight in kg * 1000) / (GSM * Fabric Width in meters * 1.09361)</text>
 			var fabricsYds = parseFloat(fabricsYdsInput.value);
 			var pricePerYds = pricePerKg / fabricsYds;
 			if (!isNaN(pricePerYds)) {
-				pricePerYdsSpan.textContent = "Price per Yds: " + pricePerYds.toFixed(2);
+				pricePerYdsSpan.textContent = "" + pricePerYds.toFixed(2);
 			} else {
 				pricePerYdsSpan.textContent = "";
 			}
 		}
 	</script>
+</div>
+</div>
   <script src="vendors/jquery/jquery.min.js"></script>
   <script src="vendors/bootstrap/bootstrap.min.js"></script>
   <script src="vendors/owl-carousel/js/owl.carousel.min.js"></script>
