@@ -49,7 +49,199 @@
         </ul>
       </div>
     </div> 
-    </nav>   
+    </nav>
+    
+    <head>
+	<title>Fabric Calculators</title>
+	<style>
+		@media screen and (max-width: 600px) {
+    label {
+        font-size: 16px;
+    }
+    input {
+        width: 70px;
+    }
+    button {
+  background-color: darkgreen;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    label {
+    font-size: 10em;
+    }
+input {
+    width: 50%;
+    }
+button {
+  background-color: darkgreen;
+  color: white;
+  font-size: 16px;
+  padding: 8px 15px;
+}
+}
+
+	</style>
+	<script>
+		function calculateFabric1() {
+			// Get input values
+			var weight = parseFloat(document.getElementById("weight1").value);
+			var gsm = parseFloat(document.getElementById("gsm1").value);
+			var width = parseFloat(document.getElementById("width1").value);
+
+			// Convert width to meters
+			var widthMeters = width / 100;
+
+			// Calculate fabric length in meters
+			var fabricLengthMeters = (weight * 1000) / (gsm * widthMeters);
+
+			// Convert fabric length from meters to yards
+			var fabricLengthYards = fabricLengthMeters * 1.09361;
+
+			// Display result
+			document.getElementById("fabric-length-yards1").innerHTML = fabricLengthYards.toFixed(2) + " Yards";
+		}
+
+		function calculateFabric2() {
+			// Get input values
+			var weight = parseFloat(document.getElementById("weight2").value);
+			var gsm = parseFloat(document.getElementById("gsm2").value);
+			var width = parseFloat(document.getElementById("width2").value);
+
+			// Convert width to meters
+			var widthMeters2 = width * 0.0254;
+
+			// Calculate fabric length in meters
+			var fabricLengthMeters = (weight * 1000) / (gsm * widthMeters2);
+
+			// Convert fabric length from meters to yards
+			var fabricLengthYards = fabricLengthMeters * 1.09361;
+
+			// Display result
+			document.getElementById("fabric-length-yards2").innerHTML = fabricLengthYards.toFixed(2) + " Yards";
+		}
+	</script>
+</head>
+<body>
+	<h1>Fabric Calculators</h1>
+
+	<div>
+		<h4>kg to yards, fabric width in centimeters</h4>
+		<text>Formula:
+<br>
+Yards = (Weight in kg * 1000) / (GSM * Fabric Width in meters * 1.09361)</text>
+		<form>
+			<label for="weight1">Weight (Kg):</label>
+			<input type="number" id="weight1"><br><br>
+
+			<label for="gsm1">GSM:</label>
+			<input type="number" id="gsm1"><br><br>
+
+			<label for="width1">Width (cm):</label>
+			<input type="number" id="width1"><br><br>
+
+			<button type="button" onclick="calculateFabric1()">Calculate</button>
+
+			<label for="fabric-length-yards1">Fabric Length (Yards):</label>
+			<span id="fabric-length-yards1"></span>
+		</form>
+	</div>
+
+	<div>
+		<h4>kg to yards, fabric width in inch</h4>
+		<text>Formula:
+<br>Kg to Yards = (Fabric weight * 1000)/(Fabric GSM *Fabric Width in inch * 0.0254)*1.09361
+(when fabric width is given in inches)</text>
+		<form>
+			<label for="weight2">Weight (Kg):</label>
+			<input type="number" id="weight2"><br><br>
+
+			<label for="gsm2">GSM:</label>
+			<input type="number" id="gsm2"><br><br>
+
+			<label for="width2">Width (inch):</label>
+			<input type="number" id="width2"><br><br>
+
+			<button type="button" onclick="calculateFabric2()">Calculate</button>
+
+
+			<label for="fabric-length-yards2">Fabric Length (Yards):</label>
+		    			<span id="fabric-length-yards2"></span>
+		</form>
+	</div>
+
+</html>
+
+		</div>
+				</div>
+						</div>
+					</div>
+		</div>
+								</div>
+					</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-5e81a8e elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="5e81a8e" data-element_type="section" data-settings="{&quot;_ha_eqh_enable&quot;:false}">
+						<div class="elementor-container elementor-column-gap-default">
+							<div class="elementor-row">
+					<div class="aux-parallax-section elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-3dfc9ae" data-id="3dfc9ae" data-element_type="column">
+			<div class="elementor-column-wrap elementor-element-populated">
+							<div class="elementor-widget-wrap">
+						<div class="elementor-element elementor-element-df64556 elementor-widget elementor-widget-html" data-id="df64556" data-element_type="widget" data-widget_type="html.default">
+				<div class="elementor-widget-container">
+			<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<style>
+		@media screen and (max-width: 600px) {
+    label {
+        font-size: 14px;
+    }
+    input {
+        width: 70px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    label {
+    font-size: 1em;
+    }
+input {
+    width: 30%;
+    }
+}
+	</style>
+</head>
+
+	<h2>Price Calculator for KG to Yards</h2>
+	<label for="price-per-kg">Price per Kg:</label>
+	<input type="number" id="price-per-kg" name="price-per-kg"><br><br>
+	<label for="fabrics-yds">Fabrics Yds converted from kg:</label>
+	<input type="number" id="fabrics-yds" name="fabrics-yds"><br><br>
+	<button id="calculate-price-button">Calculate Price</button>
+	<span id="price-per-yds"></span>
+	<script>
+		var pricePerKgInput = document.getElementById("price-per-kg");
+		var fabricsYdsInput = document.getElementById("fabrics-yds");
+		var pricePerYdsSpan = document.getElementById("price-per-yds");
+		var calculatePriceButton = document.getElementById("calculate-price-button");
+
+		calculatePriceButton.addEventListener("click", calculatePrice);
+
+		function calculatePrice() {
+			var pricePerKg = parseFloat(pricePerKgInput.value);
+			var fabricsYds = parseFloat(fabricsYdsInput.value);
+			var pricePerYds = pricePerKg / fabricsYds;
+			if (!isNaN(pricePerYds)) {
+				pricePerYdsSpan.textContent = "Price per Yds: " + pricePerYds.toFixed(2);
+			} else {
+				pricePerYdsSpan.textContent = "";
+			}
+		}
+	</script>
   </header>
   <script src="vendors/jquery/jquery.min.js"></script>
   <script src="vendors/bootstrap/bootstrap.min.js"></script>
