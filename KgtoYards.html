@@ -53,44 +53,78 @@
     
     <head>
 	<title>Fabric Calculators</title>
-	<style>
-      body {
-        font-family: Arial, sans-serif;
-      }
-      .calculator {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 50px;
-      }
-      .input-section {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px;
-      }
-      .input-section label,
-      .input-section input {
-        font-size: 18px;
-        margin-right: 10px;
-      }
-      .input-section input {
-        padding: 5px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-      }
-      .input-section input:focus {
-        outline: none;
-        border: 1px solid #005ce6;
-      }
-      .description {
-        width: 80%;
-        margin: 0 auto;
-        text-align: justify;
-        font-size: 16px;
-        line-height: 1.5;
-      }
-    </style>
+	@media screen and (max-width: 600px) {
+  label {
+    font-size: 1.2em;
+  }
+  input {
+    width: 70px;
+    font-size: 1.2em;
+    margin-right: 10px;
+  }
+  button {
+    background-color: darkgreen;
+    color: white;
+    font-size: 1.2em;
+    padding: 8px 20px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  label {
+    font-size: 1em;
+  }
+  input {
+    width: 100%;
+    font-size: 1em;
+    margin-bottom: 10px;
+  }
+  button {
+    background-color: darkgreen;
+    color: white;
+    font-size: 1em;
+    padding: 8px 15px;
+  }
+}
+
+.input-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.input-section label {
+  font-size: 1.5em;
+  margin-right: 10px;
+}
+
+.input-section input {
+  width: 150px;
+  font-size: 1.5em;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.input-section input:focus {
+  outline: none;
+  border: 1px solid #005ce6;
+}
+
+.description {
+  font-size: 1.5em;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+@media screen and (max-width: 768px) {
+  .input-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 	<script>
 		function calculateFabric1() {
 			// Get input values
@@ -135,17 +169,16 @@
 	<h1>Fabric Calculators</h1>
 	<div class="calculator">
       		<div class="input-section">
-			<h4>kg to yards, fabric width in centimeters</h4>
-			
-			<div class="description">
-			Formula:
-        		<p>Yards = (Weight in kg * 1000) / (GSM * Fabric Width in meters * 1.09361)</p>
-      			</div>
+			<div>
+		<h4>kg to yards, fabric width in centimeters</h4>
+		<text>Formula:
+<br>
+Yards = (Weight in kg * 1000) / (GSM * Fabric Width in meters * 1.09361)</text>
 		<form>
-			<label for="input1">Weight (Kg):</label>
+			<label for="weight1">Weight (Kg):</label>
 			<input type="number" id="weight1"><br><br>
 
-			<label for="input1">GSM:</label>
+			<label for="gsm1">GSM:</label>
 			<input type="number" id="gsm1"><br><br>
 
 			<label for="width1">Width (cm):</label>
