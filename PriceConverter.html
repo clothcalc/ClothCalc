@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Simple landing page</title>
+  <title>Fabric Price Converter</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -51,26 +51,41 @@
     </nav>
     	<style>
 
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #f5f5f5;
+	font-family: Arial, sans-serif;
+}
+		
 .containerfive {
   justify-content: space-between;
   background-color: #e5e5e5;
   padding: 20px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
-.calculation form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: repeat(3, 1fr); /* 3 rows */
+  grid-gap: 20px; /* gap between boxes */
+  margin: 0 auto; /* center the container */
+  max-width: 80%; /* set the maximum width of the container */
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+    grid-template-rows: repeat(6, 1fr); /* 6 rows on mobile */
+  }
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .input-group label {
@@ -79,15 +94,23 @@
 }
 
 .input-group input {
-  max-width: 30%;
+  max-width: 40%;
   min-width: 40px;
   padding: 5px;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
+}
+
+.box {
+  margin-top: 10px;
+  background-color: #e5e5e5;
+  border-radius: 10px;
+  padding: 20px;
+  height: 350px;
 }
 
 button {
   display: block;
-  margin: 10px auto;
+  margin: 0 auto;
   background-color: darkgreen;
   color: white;
   font-size: 16px;
@@ -97,26 +120,21 @@ button {
   cursor: pointer;
 }
 
-@media screen and (min-width: 400px) {
-  .input-group:last-child {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  #price-per-yds {
+#price-per-yards1 {
+    
+    text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	margin-bottom: 20px;
+}
+#price-per-yard2 {
     display: block;
     text-align: center;
 	font-weight: bold;
 	color: #ff0000;
+	margin-bottom: 20px;
 }
 
-  button {
-    display: block;
-    margin: 20px auto;
-  }
-}
 
 
 
@@ -129,76 +147,91 @@ button {
 	</div>
 
 
-<div class="containerfour">
-  <div class="calculation">
-	<div class="input-group">
-	<label for="price-per-kg">Price per Kg:</label>
-	<input type="number" id="price-per-kg" name="price-per-kg"><br><br>
-	</div>
-	<div class="input-group">
-	<label for="fabrics-yds">Fabrics Yds converted from kg:</label>
-	<input type="number" id="fabrics-yds" name="fabrics-yds"><br><br>
-	</div>
-	<button id="calculate-price-button">Calculate Price</button>
-	<div class="input-group">
-	<label for="price-per-yds">Price per Yds:</label>
-	<span id="price-per-yds"></span>
-	</div>
-
+<div class="container">
+		<div class="box">
+			<h4>Convert Price from KG to Yards</h4>
+			
+			
+    <b>Formula: Price per Yard= (Price per kg X Width of the fabric in inch X 0.0254 X GSM)/1093.613 </b>
+		
+		</div>
+		<div class="box">
+			<div class="input-group">
+			<label for="price-per-kg2">Price per kg:</label>
+			<input type="number" id="price-per-kg2">
+			<label for="width">Width (in inch):</label>
+			<input type="number" id="width">
+			<label for="gsm">GSM:</label>
+			<input type="number" id="gsm">
+			<button id="calculate-price-button2">Calculate Price per Yard</button>
+			<p id="price-per-yard2"></p>
+			</div>
+		</div>
 	<script>
-		var pricePerKgInput = document.getElementById("price-per-kg");
-		var fabricsYdsInput = document.getElementById("fabrics-yds");
-		var pricePerYdsSpan = document.getElementById("price-per-yds");
-		var calculatePriceButton = document.getElementById("calculate-price-button");
-
-		calculatePriceButton.addEventListener("click", calculatePrice);
-
-		function calculatePrice() {
-			var pricePerKg = parseFloat(pricePerKgInput.value);
-			var fabricsYds = parseFloat(fabricsYdsInput.value);
-			var pricePerYds = pricePerKg / fabricsYds;
-			if (!isNaN(pricePerYds)) {
-				pricePerYdsSpan.textContent = "" + pricePerYds.toFixed(2);
-			} else {
-				pricePerYdsSpan.textContent = "";
-			}
-		}
-	</script>
-
-<h1>Price per Yard Calculator</h1>
-	<label for="price-per-kg">Price per kg:</label>
-	<input type="number" id="price-per-kg">
-	<label for="width">Width (in meters):</label>
-	<input type="number" id="width">
-	<label for="gsm">GSM:</label>
-	<input type="number" id="gsm">
-	<button id="calculate-price-button">Calculate Price per Yard</button>
-	<p id="price-per-yard"></p>
-
-	<script>
-		var pricePerKgInput = document.getElementById("price-per-kg");
+		var pricePerKg2Input = document.getElementById("price-per-kg2");
 		var widthInput = document.getElementById("width");
 		var gsmInput = document.getElementById("gsm");
-		var pricePerYardOutput = document.getElementById("price-per-yard");
-		var calculatePriceButton = document.getElementById("calculate-price-button");
+		var pricePerYard2Output = document.getElementById("price-per-yard2");
+		var calculatePriceButton2 = document.getElementById("calculate-price-button2");
 
-		calculatePriceButton.addEventListener("click", calculatePrice);
+		calculatePriceButton2.addEventListener("click", calculatePrice2);
 
-		function calculatePrice() {
-			var pricePerKg = parseFloat(pricePerKgInput.value);
+		function calculatePrice2() {
+			var pricePerKg2 = parseFloat(pricePerKg2Input.value);
 			var width = parseFloat(widthInput.value);
 			var gsm = parseFloat(gsmInput.value);
-			var pricePerYard = (pricePerKg * width * gsm) / 1094;
-			if (!isNaN(pricePerYard)) {
-				pricePerYardOutput.textContent = "Price per yard: $" + pricePerYard.toFixed(2);
+			var pricePerYard2 = (pricePerKg2 * width * 0.0254 * gsm) / 1093.613;
+			if (!isNaN(pricePerYard2)) {
+				pricePerYard2Output.textContent = "Price per yard: $" + pricePerYard2.toFixed(2);
 			} else {
-				pricePerYardOutput.textContent = "";
+				pricePerYard2Output.textContent = "";
 			}
 		}
 	</script>
-	  
+
+ <div class="box">
+ <h4>Convert Price from KG to Yards</h4>
+  <b>Formula: Price per Yard=(KG price/Converted Fabric Yards)</b>
+  
+  <p>If you convert the fabric from kg to yards via below link then you can input directly kg price & converted fabric yards and get Price Per Yard. </p>
+	
+	<p><a class="btn btn-primary" href="https://clothcalc.github.io/ClothCalc/KgtoYards.html">KG to Yards converter</a></p>
+ </div>
+	<div class="box">
+	
+	<div class="input-group">
+	
+	
+	<label for="price-per-kg1">Price per Kg:</label>
+	<input type="number" id="price-per-kg1" name="price-per-kg1"><br><br>
+	<label for="fabrics-yards1">Fabrics Yards converted from kg:</label>
+	<input type="number" id="fabrics-yards1" name="fabrics-yards1"><br><br>
+	<button id="calculate-price-button1">Calculate Price</button>
+	<span id="price-per-yards1"></span>
+	</div>
+
+	</div>
 </div>
-</div>
+  <script>
+		var pricePerKg1Input = document.getElementById("price-per-kg1");
+		var fabricsYards1Input = document.getElementById("fabrics-yards1");
+		var pricePerYards1Span = document.getElementById("price-per-yards1");
+		var calculatePriceButton1 = document.getElementById("calculate-price-button1");
+
+		calculatePriceButton1.addEventListener("click", calculatePrice1);
+
+		function calculatePrice1() {
+			var pricePerKg1 = parseFloat(pricePerKg1Input.value);
+			var fabricsYards1 = parseFloat(fabricsYards1Input.value);
+			var pricePerYards1 = pricePerKg1 / fabricsYards1;
+			if (!isNaN(pricePerYards1)) {
+				pricePerYards1Span.textContent = "Price per yard: $" + pricePerYards1.toFixed(2);
+			} else {
+				pricePerYards1Span.textContent = "";
+			}
+		}
+  </script>
+	
   <script src="vendors/jquery/jquery.min.js"></script>
   <script src="vendors/bootstrap/bootstrap.min.js"></script>
   <script src="vendors/owl-carousel/js/owl.carousel.min.js"></script>
