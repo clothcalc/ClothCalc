@@ -164,6 +164,39 @@ button {
 			}
 		}
 	</script>
+
+<h1>Price per Yard Calculator</h1>
+	<label for="price-per-kg">Price per kg:</label>
+	<input type="number" id="price-per-kg">
+	<label for="width">Width (in meters):</label>
+	<input type="number" id="width">
+	<label for="gsm">GSM:</label>
+	<input type="number" id="gsm">
+	<button id="calculate-price-button">Calculate Price per Yard</button>
+	<p id="price-per-yard"></p>
+
+	<script>
+		var pricePerKgInput = document.getElementById("price-per-kg");
+		var widthInput = document.getElementById("width");
+		var gsmInput = document.getElementById("gsm");
+		var pricePerYardOutput = document.getElementById("price-per-yard");
+		var calculatePriceButton = document.getElementById("calculate-price-button");
+
+		calculatePriceButton.addEventListener("click", calculatePrice);
+
+		function calculatePrice() {
+			var pricePerKg = parseFloat(pricePerKgInput.value);
+			var width = parseFloat(widthInput.value);
+			var gsm = parseFloat(gsmInput.value);
+			var pricePerYard = (pricePerKg * width * gsm) / 1094;
+			if (!isNaN(pricePerYard)) {
+				pricePerYardOutput.textContent = "Price per yard: $" + pricePerYard.toFixed(2);
+			} else {
+				pricePerYardOutput.textContent = "";
+			}
+		}
+	</script>
+	  
 </div>
 </div>
   <script src="vendors/jquery/jquery.min.js"></script>
