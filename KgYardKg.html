@@ -49,7 +49,7 @@
       </div>
     </div> 
     </nav>
-<style>
+  <style>
 
 		
 .containerfive {
@@ -63,7 +63,7 @@
 .boxcontainer {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  grid-template-rows: repeat(2, 1fr); /* 2 rows */
+  grid-template-rows: repeat(3, 1fr); /* 3 rows */
   grid-gap: 20px; /* gap between boxes */
   margin: 0 auto; /* center the container */
   margin-bottom: 50px;
@@ -114,123 +114,164 @@ button {
   cursor: pointer;
 }
 
-#price-per-yards1 {
-    
-    text-align: center;
-	font-weight: bold;
-	color: #ff0000;
-	margin-bottom: 20px;
-}
-#price-per-yard2 {
+#result {
     display: block;
     text-align: center;
 	font-weight: bold;
 	color: #ff0000;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+#fabric-length-yards1 {
+    display: block;
+	text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+#fabric-length-yards2 {
+    display: block;
+    text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	margin-top: 5px;
 	margin-bottom: 20px;
 }
 
-</style>
-	  
+</style>	  
 
 </head>
 
 <div class="container">
 	<div class="containerfive">
 	<h1>Price Calculators</h1>
-	</div>
-
+</div>
 
 <div class="boxcontainer">
-		<div class="box">
-		<h4>Convert Price from KG to Yards</h4>
-			
-		  <b>Formula: Price per Yard= (Price per kg X Width of the fabric in inch X 0.0254 X GSM)/1093.613 </b>
-		
-		</div>
-		
-		<div class="box">
-			<div class="input-group">
-			<label for="price-per-kg2">Price per kg:</label>
-			<input type="number" id="price-per-kg2">
-			<label for="width">Width (in inch):</label>
-			<input type="number" id="width">
-			<label for="gsm">GSM:</label>
-			<input type="number" id="gsm">
-			<button id="calculate-price-button2">Calculate Price per Yard</button>
-			<p id="price-per-yard2"></p>
-			</div>
-			
-		</div>
-	<script>
-		var pricePerKg2Input = document.getElementById("price-per-kg2");
-		var widthInput = document.getElementById("width");
-		var gsmInput = document.getElementById("gsm");
-		var pricePerYard2Output = document.getElementById("price-per-yard2");
-		var calculatePriceButton2 = document.getElementById("calculate-price-button2");
-
-		calculatePriceButton2.addEventListener("click", calculatePrice2);
-
-		function calculatePrice2() {
-			var pricePerKg2 = parseFloat(pricePerKg2Input.value);
-			var width = parseFloat(widthInput.value);
-			var gsm = parseFloat(gsmInput.value);
-			var pricePerYard2 = (pricePerKg2 * width * 0.0254 * gsm) / 1093.613;
-			if (!isNaN(pricePerYard2)) {
-				pricePerYard2Output.textContent = "Price per yard: $" + pricePerYard2.toFixed(2);
-			} else {
-				pricePerYard2Output.textContent = "";
-			}
-		}
-	</script>
+	<div class="box">
+    <h4>kg to yards, fabric width in centimeters</h4>
+    <p>Formula:</p>
+    <p>Yards = (Weight in kg * 1000) / (GSM * Fabric Width in meters * 1.09361)</p>
+</div>
+	
+    <div class="box">
+      <div class="input-group">
+        <label for="weight1">Weight (Kg):</label>
+        <input type="number" id="weight1" required>
+        <label for="gsm1">GSM:</label>
+        <input type="number" id="gsm1" required>
+        <label for="width1">Width (cm):</label>
+        <input type="number" id="width1" required>
+        <button type="button" onclick="calculateFabric1()">Calculate</button>
+        <span id="fabric-length-yards1"></span>
+      </div>
+	</div>
 
  <div class="box">
- <h4>Convert Price from KG to Yards</h4>
-  <b>Formula: Price per Yard=(KG price/Converted Fabric Yards)</b>
-  
-  <p>If you convert the fabric from kg to yards via below link then you can input directly kg price & converted fabric yards and get Price Per Yard. </p>
-	
-	<p><a class="btn btn-primary" href="https://clothcalc.github.io/ClothCalc/KgtoYards.html">KG to Yards converter</a></p>
- </div>
+
+	<h4>kg to yards, fabric width in inch</h4>
+	<p>Formula:</p>
+	<p>Kg to Yards = (Fabric weight * 1000)/(Fabric GSM *Fabric Width in inch * 0.0254)*1.09361
+	(when fabric width is given in inches)</p>
+
+</div>
+
 	<div class="box">
-	
-	<div class="input-group">
-	<label for="price-per-kg1">Price per Kg:</label>
-	<input type="number" id="price-per-kg1" name="price-per-kg1">
-	<label for="fabrics-yards1">Fabrics Yards converted from kg:</label>
-	<input type="number" id="fabrics-yards1" name="fabrics-yards1">
-	<button id="calculate-price-button1">Calculate Price</button>
-	<span id="price-per-yards1"></span>
+		<div class="input-group">
+			<label for="weight2">Weight (Kg):</label>
+			<input type="number" id="weight2">
+			<label for="gsm2">GSM:</label>
+			<input type="number" id="gsm2">
+			<label for="width2">Width (inch):</label>
+			<input type="number" id="width2">
+			<button type="button" onclick="calculateFabric2()">Calculate</button>
+			<span id="fabric-length-yards2"></span>
+		</div>
+		
 	</div>
 
+	<div class="box">
+		<h4>Convert Fabric from Yards to Kg, If your fabric consumption in yard</h4>	
+			
+		<b>Formula: Garment consumption (in Kg.) = (Length X GSM X width in meter)/1000 </b>
+		<br>
+		<br>
+		<br>NB: Please note that in our calculetor you need to give width in inch, this convert inch to meter in background
+
+	</div>
+<div class="box">
+	<div class="input-group">
+	<label for="yards">Length in yards:</label>
+	<input type="number" id="yards" name="yards">
+	<label for="gsm">GSM:</label>
+	<input type="number" id="gsm" name="gsm">
+	<label for="width">Fabric width in inches:</label>
+	<input type="number" id="width" name="width">
+	<button onclick="calculate()">Calculate</button>
+	<p id="result"></p>
 	</div>
 </div>
-  <script>
-		var pricePerKg1Input = document.getElementById("price-per-kg1");
-		var fabricsYards1Input = document.getElementById("fabrics-yards1");
-		var pricePerYards1Span = document.getElementById("price-per-yards1");
-		var calculatePriceButton1 = document.getElementById("calculate-price-button1");
+</div>
 
-		calculatePriceButton1.addEventListener("click", calculatePrice1);
+<script>
+		function calculateFabric1() {
+			// Get input values
+			var weight = parseFloat(document.getElementById("weight1").value);
+			var gsm = parseFloat(document.getElementById("gsm1").value);
+			var width = parseFloat(document.getElementById("width1").value);
 
-		function calculatePrice1() {
-			var pricePerKg1 = parseFloat(pricePerKg1Input.value);
-			var fabricsYards1 = parseFloat(fabricsYards1Input.value);
-			var pricePerYards1 = pricePerKg1 / fabricsYards1;
-			if (!isNaN(pricePerYards1)) {
-				pricePerYards1Span.textContent = "Price per yard: $" + pricePerYards1.toFixed(2);
-			} else {
-				pricePerYards1Span.textContent = "";
-			}
+			// Convert width to meters
+			var widthMeters = width / 100;
+
+			// Calculate fabric length in meters
+			var fabricLengthMeters = (weight * 1000) / (gsm * widthMeters);
+
+			// Convert fabric length from meters to yards
+			var fabricLengthYards = fabricLengthMeters * 1.09361;
+
+			// Display result
+			document.getElementById("fabric-length-yards1").innerHTML = "Fabric Length: " + fabricLengthYards.toFixed(2) + " Yards";
 		}
-  </script>
-  
-  <section class="contact-details" id="contact-details-section">
+
+		function calculateFabric2() {
+			// Get input values
+			var weight = parseFloat(document.getElementById("weight2").value);
+			var gsm = parseFloat(document.getElementById("gsm2").value);
+			var width = parseFloat(document.getElementById("width2").value);
+
+			// Convert width to meters
+			var widthMeters2 = width * 0.0254;
+
+			// Calculate fabric length in meters
+			var fabricLengthMeters = (weight * 1000) / (gsm * widthMeters2);
+
+			// Convert fabric length from meters to yards
+			var fabricLengthYards = fabricLengthMeters * 1.09361;
+
+			// Display result
+			document.getElementById("fabric-length-yards2").innerHTML = "Fabric Length: " + fabricLengthYards.toFixed(2) + " Yards";
+		}
+	</script>
+	<script>
+		function calculate() {
+			let yards = document.getElementById("yards").value;
+			let gsm = document.getElementById("gsm").value;
+			let width = document.getElementById("width").value;
+			let length_meters = yards * 0.9144;
+			let width_meters = width / 39.37;
+			let consumption_kg = (length_meters * gsm * width_meters) / 1000;
+			document.getElementById("result").innerHTML = "Garment consumption (in Kg.): " + consumption_kg.toFixed(3);
+		}
+	</script>
+	
+	 <section class="contact-details" id="contact-details-section">
         <div class="row text-center text-md-left">
           <div class="col-12 col-md-6 col-lg-3 grid-margin">
             <img src="images/Group2.svg" alt="" class="pb-2">
             <div class="pt-2">
-              <p class="text-muted m-0">ClothCalc@gmail.com</p>
-              <p class="text-muted m-0">+88 01736 899297</p>
+              <p class="text-muted m-0">mikayla_beer@feil.name</p>
+              <p class="text-muted m-0">906-179-8309</p>
             </div>         
           </div>
           <div class="col-12 col-md-6 col-lg-3 grid-margin">
