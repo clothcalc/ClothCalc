@@ -175,47 +175,7 @@ button {
 </script>
 
 
-
- <div class="box">
- <h4>Convert Price from KG to Yards</h4>
-  <b>Formula: Price per Yard=(KG price/Converted Fabric Yards)</b>
-  
-  <p>If you convert the fabric from kg to yards via below link then you can input directly kg price & converted fabric yards and get Price Per Yard. </p>
-	
-	<p><a class="btn btn-primary" href="https://clothcalc.github.io/ClothCalc/KgtoYards.html">KG to Yards converter</a></p>
- </div>
-	<div class="box">
-	
-	<div class="input-group">
-	<label for="price-per-kg1">Price per Kg:</label>
-	<input type="number" id="price-per-kg1" name="price-per-kg1">
-	<label for="fabrics-yards1">Fabrics Yards converted from kg:</label>
-	<input type="number" id="fabrics-yards1" name="fabrics-yards1">
-	<button id="calculate-price-button1">Calculate Price</button>
-	<span id="price-per-yards1"></span>
-	</div>
-
-	</div>
 </div>
-  <script>
-		var pricePerKg1Input = document.getElementById("price-per-kg1");
-		var fabricsYards1Input = document.getElementById("fabrics-yards1");
-		var pricePerYards1Span = document.getElementById("price-per-yards1");
-		var calculatePriceButton1 = document.getElementById("calculate-price-button1");
-
-		calculatePriceButton1.addEventListener("click", calculatePrice1);
-
-		function calculatePrice1() {
-			var pricePerKg1 = parseFloat(pricePerKg1Input.value);
-			var fabricsYards1 = parseFloat(fabricsYards1Input.value);
-			var pricePerYards1 = pricePerKg1 / fabricsYards1;
-			if (!isNaN(pricePerYards1)) {
-				pricePerYards1Span.textContent = "Price per yard: $" + pricePerYards1.toFixed(2);
-			} else {
-				pricePerYards1Span.textContent = "";
-			}
-		}
-  </script>
   
   <section class="contact-details" id="contact-details-section">
         <div class="row text-center text-md-left">
