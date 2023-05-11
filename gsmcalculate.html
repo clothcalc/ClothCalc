@@ -175,7 +175,7 @@ button {
 			let yards = document.getElementById("yards").value;
 			let width = document.getElementById("width").value;
 			let gsm = (kg * 1550000) / (yards * 36 * width);
-			document.getElementById("result").innerHTML = "GSM: " + gsm;
+			document.getElementById("result1").innerHTML = "GSM: " + gsm;
 		}
 </script>
 
@@ -209,7 +209,7 @@ button {
 			let yards = document.getElementById("yards").value;
 			let width = document.getElementById("width").value;
 			let kg = (gsm * yards * 36 * width) / 1550000;
-			document.getElementById("result").innerHTML = "KG: " + kg;
+			document.getElementById("result2").innerHTML = "KG: " + kg;
 		}
 </script>
 
