@@ -178,6 +178,44 @@ button {
 
 
 </div>
+
+
+<div class="boxcontainer">
+	<div class="box">
+	<h4>Convert Fabric from Kg to Yards, If your fabric consumption in Kg</h4>
+			
+			
+    <b>Formula: GSM=(kg*1550000) / (yards * 36 * width) </b>
+	<br>
+	<br>
+	<br>NB: Please note that in our calculator you need to give width in inch.
+
+	</div>
+<div class="box">
+	<div class="input-group">
+	<label for="gsm">GSM:</label>
+	<input type="number" id="gsm">
+	<label for="yards">Length in yards:</label>
+	<input type="number" id="yards">
+	<label for="width">Fabric width in inches:</label>
+	<input type="number" id="width">
+	<button onclick="calculate2()">Calculate KG</button>
+	<p id="result"></p>
+	</div>
+</div>
+
+<script>
+		function calculate2() {
+			let gsm = document.getElementById("gsm").value;
+			let yards = document.getElementById("yards").value;
+			let width = document.getElementById("width").value;
+			let kg = (gsm * yards * 36 * width) / 1550000;
+			document.getElementById("result").innerHTML = "KG: " + kg;
+		}
+</script>
+
+
+</div>
   
   <section class="contact-details" id="contact-details-section">
         <div class="row text-center text-md-left">
