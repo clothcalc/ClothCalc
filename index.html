@@ -10,6 +10,26 @@
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="vendors/aos/css/aos.css">
   <link rel="stylesheet" href="css/style.min.css">
+  
+<style>
+  .boxcontainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: repeat(2, 1fr); /* 2 rows */
+  grid-gap: 20px; /* gap between boxes */
+  margin: 0 auto; /* center the container */
+  margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+  .boxcontainer {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+    grid-template-rows: repeat(6, 1fr); /* 6 rows on mobile */
+  }
+}
+
+</style>
+
 </head>
 <body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
   <header id="header-section">
@@ -103,6 +123,33 @@
             <h2>All of our Calculator</h2>
             <h6 class="section-subtitle text-muted">You can convert/calculate fabric, price, GSM etc.</h6>
           </div>
+		  
+		  
+		  <div class="boxcontainer">
+	<div class="box">
+	<h4>Convert Fabric from Kg to Yards, If your fabric consumption in Kg</h4>
+			
+			
+    <b>Formula: GSM=(kg X 1550000) / (yards X 36 X width) </b>
+	<br>
+	<br>
+	<br>NB: Please note that in our calculator you need to give width in inch.
+
+	</div>
+<div class="box">
+	<div class="input-group">
+	<label for="kg">Kilograms:</label>
+	<input type="number" id="kg">
+	<label for="yards">Length in yards:</label>
+	<input type="number" id="yards">
+	<label for="width">Fabric width in inches:</label>
+	<input type="number" id="width">
+	<button onclick="calculate1()">Calculate GSM</button>
+	<p id="result1"></p>
+	</div>
+</div>
+		  
+		  
           <div class="col-12 col-md-6 col-lg-6 stretch-card mb-3 mb-lg-0" data-aos="zoom-in">
             <div class="card color-cards">
               <div class="card-body p-0">
@@ -129,6 +176,12 @@
               </div>
             </div>
           </div>
+		  
+		  
+		  
+		  
+		  
+		  
           <div class="col-12 col-md-6 col-lg-6 stretch-card mb-3 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
             <div class="card color-cards">
               <div class="card-body p-0">
