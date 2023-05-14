@@ -49,6 +49,15 @@ button {
   cursor: pointer;
   bottom: 20px;
 }
+.btn-anchor {
+  color: #fff;
+}
+
+.btn-anchor:hover {
+  color: #000;
+}
+
+
 
 </style>
 
@@ -140,155 +149,85 @@ button {
       </section>
       
 		  
-		  
-<div class="boxcontainer">
-	<div class="box">
-	<h4>Fabric Converter</h4>
-			
-			
-    <ul>
-	 <li>1. KG to Yard, from CM</li>
-	 <li>2. KG to Yard, from Inch</li>
-	 <li>3. Yard to KG</li>
-	</ul>
-	<button id="calculate-price-button1"><a href="KgYardKg">Click Here for Converter</a></button>
-	</div>
-</div>
-
-
+ <div class="col-12 text-center pb-5">
+            <h2>All of our Calculator</h2>
+            <h6 class="section-subtitle text-muted">You can convert/calculate fabric, price, GSM etc.</h6>
+          </div>
 <div class="container my-3">
   <div class="row">
-    <div class="col-md-6 text-center">
-      <div class="box">
-        <!-- Box content for the first column goes here -->
+
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="d-flex flex-column justify-content-between h-100">
+      <div class="text-center">
+        <h4>Fabric Converter</h4>
+        1. KG to Yard, from CM <br>
+        2. KG to Yard, from Inch <br>
+        3. Yard to KG
       </div>
-      <button type="button" class="btn btn-primary mt-2">Submit</button>
+      <div class="text-center">
+        <button type="button" class="btn btn-primary">
+  <a href="KgYardKg" class="btn-anchor">Click Here for Converter</a></button>
+
+      </div>
     </div>
-    <div class="col-md-6 text-center">
-      <div class="box">
-        <!-- Box content for the second column goes here -->
+  </div>
+</div>
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="d-flex flex-column justify-content-between h-100">
+      <div class="text-center">
+        <h4>Fabric Price Converter</h4>
+        1. Calculate gsm from peice of fabric <br>
+        2. Calculate weight of the fabric from gsm <br>
       </div>
-      <button type="button" class="btn btn-primary mt-2">Submit</button>
+      <div class="text-center">
+        <button type="button" class="btn btn-primary">
+  <a href="PriceConverter" class="btn-anchor">Click Here for Converter</a></button>
+      </div>
     </div>
   </div>
 </div>
 
-
-	<!--<button id="calculate-price-button1"><a href="PriceConverter">Click Here for Converter</a></button>-->
-
-
-<div class="box">
-	<h4>Price Converter</h4>
-    <ul>
-	 <li><p>Calculate gsm from peice of fabric</p></li>
-	 <li><p>Calculate weight of the fabric from gsm</p></li>
-	 
-	</ul>
-	<button id="calculate-price-button1"><a href="gsmcalculate">Click Here for Converter</a></button>
-	
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="d-flex flex-column justify-content-between h-100">
+    <div class="text-center">
+        <h4>Unit Converter</h4>
+        1. GSM to Oz <br>
+        2. Oz to GSM <br>
+        3. Oz to GSM <br>
+		4. KG to LBS <br>
+		5. Meter to Yard to Inch to CM to MM<br>
+		6. MM to CM to Inch to Yard to Meter<br>
+	</div>
+	<div class="text-center">
+		<button type="button" class="btn btn-primary">
+  <a href="unitconverter" class="btn-anchor">Click Here for Converter</a></button>
+     </div>
+	 </div>
+    </div>
 </div>
 
-<div class="box">
-	<h4>Price Converter</h4>
-    <ul>
-	 
-	 <li>GSM to Oz</li>
-	 <li>Oz to GSM</li>
-	 <li>Oz to GSM</li>
-	 <li>KG to LBS</li>
-	 <li>Meter to Yard to Inch to CM to MM</li>
-	 <li>MM to CM to Inch to Yard to Meter</li>
-	 
-	</ul>
-	<button id="calculate-price-button1"><a href="unitconverter">Click Here for Converter</a></button>
-	
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="d-flex flex-column justify-content-between h-100">
+      <div class="text-center">
+        <h4>GSM Converter</h4>
+        1. Calculate gsm from piece of fabric<br>
+		2. Calculate weight of the fabric from gsm
+	  </div>
+	  <div class="text-center">
+		<button type="button" class="btn btn-primary">
+  <a href="gsmcalculate" class="btn-anchor">Click Here for Converter</a></button>
+	  </div>
+    </div>
+  </div>
 </div>
+
 </div>	  
-		  
+</div>	  
 
-      <section class="case-studies" id="case-studies-section">
-        <div class="row grid-margin">
-          <div class="col-12 text-center pb-5">
-            <h2>All of our Calculator</h2>
-            <h6 class="section-subtitle text-muted">You can convert/calculate fabric, price, GSM etc.</h6>
-          </div>         
-	 <div class="col-12 col-md-6 col-lg-6 stretch-card mb-3 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="card color-cards">
-              <div class="card-body p-0">
-                <div class="bg-warning text-center card-contents">
-                  <div class="card-image">
-                      <img src="images/Group108.svg" class="case-studies-card-img" alt="">
-                  </div>  
-                  <div class="card-desc-box d-flex align-items-center justify-content-around">
-                    <div>
-                      <h5 class="text-white pb-2 px-3">Price Converter</h5>
-					  <p>KG price to yard price by gsm & width</p>
-					  <p>KG price to yard price by converted fabric</p>
-                      <button class="btn btn-white"><a href="PriceConverter">Click Here</a></button>
-                    </div>
-                  </div>
-                </div>   
-                <div class="card-details text-center pt-4">
-                    <a href="gsmcalculate"><p>Fabric Price Converter</p></a>
-					<p>2 Calculator</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-6 stretch-card mb-3 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
-            <div class="card color-cards">
-              <div class="card-body p-0">
-                <div class="bg-violet text-center card-contents">
-                  <div class="card-image">
-                      <img src="images/Group126.svg" class="case-studies-card-img" alt="">
-                  </div>  
-                  <div class="card-desc-box d-flex align-items-center justify-content-around">
-                    <div>
-                      <h5 class="text-white pb-2 px-3">GSM Calculation</h>
-					  <p>Calculate gsm from peice of fabric</p>
-					  <p>Calculate weight of the fabric from gsm</p>
-                      <button class="btn btn-white"><a href="gsmcalculate">Click Here</a></button>
-                    </div>
-                  </div>
-                </div>   
-                <div class="card-details text-center pt-4">
-                    <a href="gsmcalculate"><p>GSM Calculation</p></a>
-					<p>2 Converter</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          		  
-		  <div class="col-12 col-md-6 col-lg-6 stretch-card mb-3 mb-lg-0" data-aos="zoom-in">
-            <div class="card color-cards">
-              <div class="card-body p-0">
-                <div class="bg-primary text-center card-contents">
-                  <div class="card-image">
-                    <img src="images/Group95.svg" class="case-studies-card-img" alt="">
-                  </div>  
-                  <div class="card-desc-box d-flex align-items-center justify-content-around">
-                    <div>
-                      <h5 class="text-white pb-2 px-3">Unit Converter</h5>
-					  <p>GSM to Oz</p>
-					  <p>Oz to GSM</p>
-					  <p>Oz to GSM</p>
-					  <p>KG to LBS</p>
-					  <p>Meter to Yard to Inch to CM to MM</p>
-					  <p>MM to CM to Inch to Yard to Meter</p>
-                      <button class="btn btn-white"><a href="unitconverter">Click Here</a></button>
-                    </div>
-                  </div>
-                </div>   
-                <div class="card-details text-center pt-4">
-                    <a href="unitconverter"><p>Unit Converter</p></a>
-                    <p>1 Converter</p>
-                </div>
-              </div>
-            </div>
-          </div>
-		  
-        </div>
-      </section> 
       
       <section class="digital-marketing-service" id="digital-marketing-section">
         <div class="row align-items-center">
