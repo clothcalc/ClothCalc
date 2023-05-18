@@ -129,6 +129,14 @@ button {
 	margin-bottom: 20px;
 }
 
+#price-per-yard3 {
+    display: block;
+    text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	margin-bottom: 20px;
+}
+
 </style>
 	  
 
@@ -142,7 +150,7 @@ button {
 
 <div class="boxcontainer">
 		<div class="box">
-		<h4>Convert Price from KG to Yards</h4>
+		<h4>Convert Fabric Price from KG to Yards</h4>
 		<h5>If you know fabric width and gsm</h5>
 		<br>
 		<b>Formula: 
@@ -184,6 +192,57 @@ button {
 			}
 		}
 	</script>
+	
+	
+	
+	<div class="box">
+		<h4>Convert Fabric Price from KG to Yards</h4>
+		<h5>If you know fabric width and gsm</h5>
+		<br>
+		<b>Formula: 
+		<br>Price per Yard= (Price per kg X Width of the fabric in inch X 0.0254 X GSM)/1093.613 </b>
+		
+		</div>
+		
+		<div class="box">
+			<div class="input-group">
+			<label for="price-per-kg3">Price per kg:</label>
+			<input type="number" id="price-per-kg3">
+			<label for="width3">Width (in cm):</label>
+			<input type="number" id="width3">
+			<label for="gsm3">GSM:</label>
+			<input type="number" id="gsm3">
+			<button id="calculate-price-button3">Calculate Price per Yard</button>
+			<p id="price-per-yard3"></p>
+		</div>
+			
+			
+			
+		</div>
+	<script>
+    var pricePerKg3Input = document.getElementById("price-per-kg3");
+    var width3Input = document.getElementById("width3");
+    var gsm3Input = document.getElementById("gsm3");
+    var pricePerYard3Output = document.getElementById("price-per-yard3");
+    var calculatePrice3Button = document.getElementById("calculate-price-button3");
+
+    calculatePrice3Button.addEventListener("click", calculatePrice3);
+
+    function calculatePrice3() {
+        var pricePerKg3 = parseFloat(pricePerKg3Input.value);
+        var width3 = parseFloat(width3Input.value);
+        var gsm3 = parseFloat(gsm3Input.value);
+        var InchMeter = (width3 / 100); // Fabric inch to meters
+        var pricePerYard3 = (pricePerKg3 * InchMeter * gsm3) / 1093.613;
+
+        if (!isNaN(pricePerYard3)) {
+            pricePerYard3Output.textContent = "Price per yard: $" + pricePerYard3.toFixed(2);
+        } else {
+            pricePerYard3Output.textContent = "";
+        }
+    }
+</script>
+
 
  <div class="box">
  <h4>Convert Price from KG to Yards</h4>
