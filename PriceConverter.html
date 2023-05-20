@@ -76,31 +76,21 @@
   }
 }
 
-.input-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.input-group label {
-  margin-bottom: 5px;
-  margin: 0 auto;
-}
-
-.input-group input {
-  max-width: 40%;
-  min-width: 40px;
-  padding: 5px;
-  margin: 0 auto 20px auto;
-}
 
 .box {
-  margin-top: 10px;
-  background-color: #e5e5e5;
-  border-radius: 10px;
-  padding: 20px;
-  height: 350px;
-}
+    background-color: #e5e5e5; /* Replace with your desired background color */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 100%;
+  }
+  
+  /* Optional: Adjust the height of the box based on the content inside */
+  .box-content {
+    height: calc(100% - 40px);
+    /* Replace 40px with the sum of padding and margin values if you adjust the padding or margin of the box */
+    /* Add any additional styles or customization for the box here */
+  }
 
 button {
   display: block;
@@ -148,8 +138,13 @@ button {
 	</div>
 
 
-<div class="boxcontainer">
-		<div class="box">
+<div class="container my-3">
+  <div class="row">
+    <div class="col-md-6 my-2">
+      <div class="box">
+	   <div class="box-content">
+        <div class="d-flex flex-column justify-content-between h-100">
+          <div class="text-center">
 		<h4>Convert Fabric Price from KG to Yards</h4>
 		<h5>If you know fabric width and gsm</h5>
 		<br>
@@ -159,20 +154,34 @@ button {
 		<br>
 		<br>NB: Please note that in our calculetor you need to give width in inch, this will convert inch to meter in background
 		</div>
+	</div>
+      </div>
+	  </div>
+    </div>
 		
-		<div class="box">
-			<div class="input-group">
+		<div class="col-md-6 my-2">
+      <div class="box">
+	   <div class="box-content">
+        <div class="d-flex flex-column justify-content-between h-100">
+          <div class="text-center">
+			<div class="form-group">
 			<label for="price-per-kg2">Price per kg:</label>
-			<input type="number" id="price-per-kg2">
+			<input type="number" id="price-per-kg2" class="form-control">
+			</div>
 			<label for="width">Width (in inch):</label>
-			<input type="number" id="width">
+			<input type="number" id="width" class="form-control">
+			<div class="form-group">
 			<label for="gsm">GSM:</label>
-			<input type="number" id="gsm">
+			<input type="number" id="gsm" class="form-control">
+			</div>
 			<button id="calculate-price-button2">Calculate Price per Yard</button>
-			<p id="price-per-yard2"></p>
+			<div id="price-per-yard2" class="mt-3"></div>
 			</div>
 			
 		</div>
+      </div>
+	  </div>
+    </div>
 	<script>
 		var pricePerKg2Input = document.getElementById("price-per-kg2");
 		var widthInput = document.getElementById("width");
@@ -195,9 +204,11 @@ button {
 		}
 	</script>
 	
-	
-	
-	<div class="box">
+	<div class="col-md-6 my-2">
+      <div class="box">
+	   <div class="box-content">
+        <div class="d-flex flex-column justify-content-between h-100">
+          <div class="text-center">
 		<h4>Convert Fabric Price from KG to Yards</h4>
 		<h5>If you know fabric width and gsm</h5>
 		<br>
@@ -209,22 +220,39 @@ button {
 		<br>NB: Please note that in our calculetor you need to give width in cm, this will convert inch to meter in background
 		
 		</div>
-		
-		<div class="box">
-			<div class="input-group">
+      </div>
+	  </div>
+    </div>
+</div>
+
+<div class="col-md-6 my-2">
+      <div class="box">
+	   <div class="box-content">
+        <div class="d-flex flex-column justify-content-between h-100">
+          <div class="text-center">
+			<div class="form-group">
 			<label for="price-per-kg3">Price per kg:</label>
-			<input type="number" id="price-per-kg3">
+			<input type="number" id="price-per-kg3" class="form-control">
+			</div>
+			<div class="form-group">
 			<label for="width3">Width (in cm):</label>
-			<input type="number" id="width3">
+			<input type="number" id="width3" class="form-control">
+			</div>
+			<div class="form-group">
 			<label for="gsm3">GSM:</label>
-			<input type="number" id="gsm3">
+			<input type="number" id="gsm3" class="form-control">
+			</div>
 			<button id="calculate-price-button3">Calculate Price per Yard</button>
-			<p id="price-per-yard3"></p>
+			<div id="price-per-yard3" class="mt-3"></div>
 		</div>
 			
+	</div>
+      </div>
+	  </div>
+    </div>		
 			
-			
-		</div>
+
+
 	<script>
     var pricePerKg3Input = document.getElementById("price-per-kg3");
     var width3Input = document.getElementById("width3");
@@ -249,8 +277,11 @@ button {
     }
 </script>
 
-
- <div class="box">
+<div class="col-md-6 my-2">
+      <div class="box">
+	   <div class="box-content">
+        <div class="d-flex flex-column justify-content-between h-100">
+          <div class="text-center">
  <h4>Convert Price from KG to Yards</h4>
  <br>
   <b>Formula: 
@@ -259,20 +290,38 @@ button {
   <p>If you convert the fabric from kg to yards via below link then you can input directly kg price & converted fabric yards and get Price Per Yard. </p>
 	
 	<p><a class="btn btn-primary" href="KgYardKg">KG to Yards converter</a></p>
+
+</div>
+      </div>
+	  </div>
+    </div>
+
  </div>
-	<div class="box">
-	
-	<div class="input-group">
+<div class="col-md-6 my-2">
+      <div class="box">
+	   <div class="box-content">
+        <div class="d-flex flex-column justify-content-between h-100">
+          <div class="text-center">
+		   <div class="form-group">
 	<label for="price-per-kg1">Price per Kg:</label>
-	<input type="number" id="price-per-kg1" name="price-per-kg1">
+	<input type="number" id="price-per-kg1" name="price-per-kg1" class="form-control">
+			</div>
+			<div class="form-group">
 	<label for="fabrics-yards1">Fabrics Yards converted from kg:</label>
-	<input type="number" id="fabrics-yards1" name="fabrics-yards1">
+	<input type="number" id="fabrics-yards1" name="fabrics-yards1" class="form-control">
+			</div>
 	<button id="calculate-price-button1">Calculate Price</button>
-	<span id="price-per-yards1"></span>
-	</div>
+	<div id="price-per-yards1" class="mt-3"></div>
+			</div>
 
 	</div>
 </div>
+</div>
+</div>
+      </div>
+ </div>
+</div>
+
   <script>
 		var pricePerKg1Input = document.getElementById("price-per-kg1");
 		var fabricsYards1Input = document.getElementById("fabrics-yards1");
@@ -331,6 +380,7 @@ button {
           </div>
         </div>  
       </section>
+ 
   </div>
   <script src="vendors/jquery/jquery.min.js"></script>
   <script src="vendors/bootstrap/bootstrap.min.js"></script>
