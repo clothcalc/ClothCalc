@@ -60,15 +60,6 @@
   border-radius: 10px;
 }
 
-.boxcontainer {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  grid-template-rows: repeat(2, 1fr); /* 2 rows */
-  grid-gap: 20px; /* gap between boxes */
-  margin: 0 auto; /* center the container */
-  margin-bottom: 50px;
-}
-
 @media (max-width: 768px) {
   .boxcontainer {
     grid-template-columns: 1fr; /* 1 column on mobile */
@@ -76,24 +67,6 @@
   }
 }
 
-<!--.input-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.input-group label {
-  margin-bottom: 5px;
-  margin: 0 auto;
-}
-
-.input-group input {
-  max-width: 40%;
-  min-width: 40px;
-  padding: 5px;
-  margin: 0 auto 20px auto;
-}
--->
 .box {
   margin-top: 10px;
   background-color: #e5e5e5;
@@ -145,8 +118,13 @@ button {
 
 
 
-<div class="boxcontainer">
-	<div class="box">
+<div class="container my-3">
+<div class="row">
+
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="d-flex flex-column justify-content-between h-100">
+      <div class="text-center">
 	<h4>Find out GSM if you have fabric weight, length and width</h4>
 			
 			
@@ -156,7 +134,13 @@ button {
 	<br>NB: Please note that in our calculator you need to give width in inch.
 
 	</div>
-<div class="box">
+  </div>
+</div>
+</div>
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="d-flex flex-column justify-content-between h-100">
+      <div class="text-center">
 	<div class="form-group">
 	<label for="kg">Kilograms:</label>
 	<input type="number" id="kg" class="form-control">
@@ -168,10 +152,15 @@ button {
 	<div class="form-group">
 	<label for="width">Fabric width in inches:</label>
 	<input type="number" id="width" class="form-control">
+	</div>
 	<button onclick="calculate1()">Calculate GSM</button>
 	<p id="result1"></p>
+	
 	</div>
+  </div>
 </div>
+</div>
+
 
 <script>
 		function calculate1() {
@@ -184,7 +173,10 @@ button {
 </script>
 
 
-	<div class="box">
+	<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="d-flex flex-column justify-content-between h-100">
+      <div class="text-center">
 	<h4>Find out Weight if you have gsm, length and width</h4>
 			
 			
@@ -194,19 +186,32 @@ button {
 	<br>NB: 1 yards = 36 inch
 
 	</div>
-<div class="box">
-	<div class="input-group">
+  </div>
+</div>
+</div>
+
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="d-flex flex-column justify-content-between h-100">
+      <div class="text-center">
+	<div class="form-group">
 	<label for="gsm">GSM:</label>
-	<input type="number" id="gsm">
+	<input type="number" id="gsm" class="form-control">
+	</div>
+	<div class="form-group">
 	<label for="yards">Length in yards:</label>
-	<input type="number" id="yards">
+	<input type="number" id="yards" class="form-control">
+	</div>
+	<div class="form-group">
 	<label for="width">Fabric width in inches:</label>
-	<input type="number" id="width">
+	<input type="number" id="width" class="form-control">
+	</div>
 	<button onclick="calculate2()">Calculate KG</button>
 	<p id="result2"></p>
 	</div>
 </div>
-
+</div>
+</div>
 <script>
 		function calculate2() {
 			let gsm = document.getElementById("gsm").value;

@@ -61,38 +61,13 @@
   border-radius: 10px;
 }
 
-.boxcontainer {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  grid-template-rows: repeat(3, 1fr); /* 3 rows */
-  grid-gap: 20px; /* gap between boxes */
-  margin: 0 auto; /* center the container */
-  margin-bottom: 50px;
-}
+
 
 @media (max-width: 768px) {
   .boxcontainer {
     grid-template-columns: 1fr; /* 1 column on mobile */
     grid-template-rows: repeat(6, 1fr); /* 6 rows on mobile */
   }
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.input-group label {
-  margin-bottom: 5px;
-  margin: 0 auto;
-}
-
-.input-group input {
-  max-width: 40%;
-  min-width: 40px;
-  padding: 5px;
-  margin: 0 auto 20px auto;
 }
 
 .box {
@@ -152,7 +127,7 @@ button {
   <div class="box">
     <div class="d-flex flex-column justify-content-between h-100">
       <div class="text-center">
-	  <h1>Percentage Difference Calculator</h1>
+	  <h1>Percentage Difference</h1>
 	   <div class="form-group">
       <label for="value1">Value 1:</label>
       <input type="number" id="value1" class="form-control">
@@ -170,17 +145,15 @@ button {
   </div>
 </div>	
 	
-  </div>
-  </div>
+
   
-  <div class="container my-3">
-  <div class="row">
+  
     
 <div class="col-md-6 my-2">
   <div class="box">
     <div class="d-flex flex-column justify-content-between h-100">
       <div class="text-center">
-	  <h1>Percentage Difference Calculator</h1>
+	  <h3>Percentage Difference</h3>
 	   <div class="form-group">
       <label for="value1">Value 1:</label>
       <input type="number" id="value1" class="form-control">
@@ -197,9 +170,9 @@ button {
     </div>
   </div>
 </div>	
-	
+	  </div>
   </div>
-  </div>
+
 
 
   <script>
