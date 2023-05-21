@@ -147,7 +147,7 @@
 			let yards = document.getElementById("yards").value;
 			let width = document.getElementById("width").value;
 			let gsm = (kg * 1550000) / (yards * 36 * width);
-			document.getElementById("result1").innerHTML = "GSM: " + gsm;
+			document.getElementById("result1").innerHTML = "GSM: " + gsm.toFixed(2);
 		}
 </script>
 
@@ -178,11 +178,11 @@
       <div class="text-center">
 	<div class="form-group">
 	<label for="gsm">GSM:</label>
-	<input type="number" id="gsm" class="form-control">
+	<input type="number" id="gsm2" class="form-control">
 	<label for="yards">Length in yards:</label>
-	<input type="number" id="yards" class="form-control">
+	<input type="number" id="yards2" class="form-control">
 	<label for="width">Fabric width in inches:</label>
-	<input type="number" id="width" class="form-control">
+	<input type="number" id="width2" class="form-control">
 	</div>
 	<button onclick="calculate2()" class="btn btn-primary">Calculate KG</button>
 	<p id="result2"></p>
@@ -193,11 +193,11 @@
 </div>
 <script>
 		function calculate2() {
-			let gsm = document.getElementById("gsm").value;
-			let yards = document.getElementById("yards").value;
-			let width = document.getElementById("width").value;
+			let gsm = document.getElementById("gsm2").value;
+			let yards = document.getElementById("yards2").value;
+			let width = document.getElementById("width2").value;
 			let kg = (gsm * yards * 36 * width) / 1550000;
-			document.getElementById("result2").innerHTML = "KG: " + kg.toFixed(3) + "kg";
+			document.getElementById("result2").innerHTML = "KG: " + kg.toFixed(3) ;
 		}
 </script>
 
