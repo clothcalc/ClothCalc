@@ -108,10 +108,9 @@
 	<h4>Find out GSM if you have fabric weight, length and width in inch</h4>
 			
 			
-    <b>Formula: GSM=(kg X 1550000) / (yards X 36 X width) </b>
+    <b>Formula: GSM=(kg X 1550000) / (yards X 36 X widthInch) </b>
 	<br>
-	<br>
-	<br>NB: Please note that in our calculator you need to give width in inch.
+	
 
 	</div>
   </div>
@@ -146,7 +145,7 @@
 			let yards = document.getElementById("yards").value;
 			let width = document.getElementById("width").value;
 			let gsm = (kg * 1550000) / (yards * 36 * width);
-			document.getElementById("result1").innerHTML = "GSM: " + gsm.toFixed(2);
+			document.getElementById("result1").innerHTML = "GSM: " + gsm.toFixed(1);
 		}
 </script>
 
@@ -158,10 +157,9 @@
 	<h4>Find out GSM if you have fabric weight, length and width in CM</h4>
 			
 			
-    <b>Formula: GSM=(kg X 1550000) / (yards X 36 X width) </b>
+    <b>Formula: GSM = (kg * 10000) / (yards * 0.9144 * widthCm) </b>
 	<br>
-	<br>
-	<br>NB: Please note that in our calculator you need to give width in inch.
+	
 
 	</div>
   </div>
@@ -174,11 +172,11 @@
     <div class="d-flex flex-column justify-content-between h-100">
     <div class="text-center">
 	<div class="form-group">
-	<label for="kg">Kilograms:</label>
+	<label for="kg">KG:</label>
 	<input type="number" id="kg3" class="form-control">
 	<label for="yards">Length in yards:</label>
 	<input type="number" id="yards3" class="form-control">
-	<label for="width">Fabric width in inches:</label>
+	<label for="width">Fabric width in CM:</label>
 	<input type="number" id="width3" class="form-control">
 	</div>
 	<button onclick="calculate3()" class="btn btn-primary">Calculate GSM</button>
@@ -197,7 +195,7 @@
         let widthCm = document.getElementById("width3").value; // Updated variable name for width in cm
         let widthInch = widthCm / 2.54; // Convert width from cm to inch
         let gsm = (kg * 1550000) / (yards * 36 * widthInch); // Use width in inch for calculation
-        document.getElementById("result3").innerHTML = "GSM: " + gsm.toFixed(2);
+        document.getElementById("result3").innerHTML = "GSM: " + gsm.toFixed(1);
     }
 </script>
 
