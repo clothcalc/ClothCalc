@@ -12,52 +12,26 @@
   <link rel="stylesheet" href="css/style.min.css">
   
 <style>
-  .boxcontainer {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  grid-template-rows: repeat(2, 1fr); /* 2 rows */
-  grid-gap: 20px; /* gap between boxes */
-  margin: 0 auto; /* center the container */
-  margin-bottom: 50px;
-}
 
-@media (max-width: 768px) {
-  .boxcontainer {
-    grid-template-columns: 1fr; /* 1 column on mobile */
-    grid-template-rows: repeat(6, 1fr); /* 6 rows on mobile */
-  }
-}
 
 .box {
-  margin-button: 20px;
-  background-color: #e5e5e5;
-  border-radius: 10px;
-  padding: 20px;
-  height: 350px;
-}
+    background-color: #e5e5e5; /* Replace with your desired background color */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 100%;
+  }
+  
+  /* Optional: Adjust the height of the box based on the content inside */
+  .box-content {
+    height: calc(100% - 40px);
+    /* Replace 40px with the sum of padding and margin values if you adjust the padding or margin of the box */
+    /* Add any additional styles or customization for the box here */
+  }
 
-button {
-  clear: both;
-  width: 200px; /* or width: 100%; */
-  text-align: center;
-  background-color: darkgreen;
-  color: white;
-  font-size: 16px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  bottom: 20px;
-}
-.btn-anchor {
-  color: #fff;
-  display: block;
-}
-
-.btn-anchor:hover {
-  color: #000;
-}
-
+.btn-primary:hover a.text-white {
+    color: black;
+  }
 
 
 </style>
@@ -162,7 +136,7 @@ button {
 
 <div class="col-md-6 my-2">
   <div class="box">
-    <div class="d-flex flex-column justify-content-between h-100">
+    <div class="box-content">
       <div class="text-center">
         <h4>Fabric Converter</h4>
         1. KG to Yard, from CM <br>
@@ -170,8 +144,7 @@ button {
         3. Yard to KG
       </div>
       <div class="text-center">
-        <button type="button" class="btn btn-primary">
-  <a href="KgYardKg" class="btn-anchor">Click Here for Converter</a></button>
+        <button class="btn btn-primary"> <a href="KgYardKg">Click Here for Converter</a></button>
 
       </div>
     </div>
@@ -179,7 +152,7 @@ button {
 </div>
 <div class="col-md-6 my-2">
   <div class="box">
-    <div class="d-flex flex-column justify-content-between h-100">
+    <div class="box-content">
       <div class="text-center">
         <h4>Fabric Price Converter</h4>
         1. Calculate fabric price from KG to Yard from width in inch <br>
@@ -187,8 +160,7 @@ button {
         3. Calculate fabric price from converted fabric If you know the converted yard<br>
       </div>
       <div class="text-center">
-        <button type="button" class="btn btn-primary">
-  <a href="PriceConverter" class="btn-anchor">Click Here for Converter</a></button>
+        <button class="btn btn-primary"> <a href="PriceConverter">Click Here for Converter</a></button>
       </div>
     </div>
   </div>
@@ -196,8 +168,8 @@ button {
 
 <div class="col-md-6 my-2">
   <div class="box">
-    <div class="d-flex flex-column justify-content-between h-100">
-    <div class="text-center">
+    <div class="box-content">
+      <div class="text-center">
         <h4>Unit Converter</h4>
         1. GSM to Oz <br>
         2. Oz to GSM <br>
@@ -207,8 +179,7 @@ button {
 		6. MM to CM to Inch to Yard to Meter<br>
 	</div>
 	<div class="text-center">
-		<button type="button" class="btn btn-primary">
-  <a href="unitconverter" class="btn-anchor">Click Here for Converter</a></button>
+		<button class="btn btn-primary"> <a href="unitconverter" class="text-white">Click Here for Converter</a></button>
      </div>
 	 </div>
     </div>
@@ -216,15 +187,14 @@ button {
 
 <div class="col-md-6 my-2">
   <div class="box">
-    <div class="d-flex flex-column justify-content-between h-100">
+    <div class="box-content">
       <div class="text-center">
         <h4>GSM Converter</h4>
         1. Calculate gsm from piece of fabric<br>
 		2. Calculate weight of the fabric from gsm
 	  </div>
 	  <div class="text-center">
-		<button type="button" class="btn btn-primary">
-  <a href="gsmcalculate" class="btn-anchor">Click Here for Converter</a></button>
+		<button class="btn btn-primary"> <a href="gsmcalculate" class="text-white">Click Here for Converter</a></button>
 	  </div>
     </div>
   </div>
@@ -232,14 +202,13 @@ button {
 
 <div class="col-md-6 my-2">
   <div class="box">
-    <div class="d-flex flex-column justify-content-between h-100">
+    <div class="box-content">
       <div class="text-center">
         <h4>Percentage Difference</h4>
         
 	  </div>
 	  <div class="text-center">
-		<button type="button" class="btn btn-primary">
-  <a href="percentcalculate" class="btn-anchor">Click Here for Converter</a></button>
+		<button class="btn btn-primary"> <a href="percentcalculate" class="text-white">Click Here for Converter</a></button>
 	  </div>
     </div>
   </div>
@@ -247,14 +216,13 @@ button {
 
 <div class="col-md-6 my-2">
   <div class="box">
-    <div class="d-flex flex-column justify-content-between h-100">
+    <div class="box-content">
       <div class="text-center">
         <h4>Carton Calculation</h4>
         
 	  </div>
 	  <div class="text-center">
-		<button type="button" class="btn btn-primary">
-  <a href="cartoncalc" class="btn-anchor">Click Here for Converter</a></button>
+		<button class="btn btn-primary"> <a href="cartoncalc" class="text-white">Click Here for Converter</a></button>
 	  </div>
     </div>
   </div>
