@@ -155,16 +155,90 @@ button {
                   <input type="number" id="widthInches" class="form-control">
                   <label for="heightInches">Height in inches:</label>
                   <input type="number" id="heightInches" class="form-control">
-                </div>
-                <button onclick="calculateCBF()" class="btn btn-primary">Calculate CBF</button>
+				  </div>
+                  <button onclick="calculateCBF()" class="btn btn-primary">Calculate CBF</button>
                 <p id="resultCBF"></p>
+				
               </div>
             </div>
           </div>
         </div>
       </div>
+
+
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        <h4>Carton Consumption</h4>
+        <p class="text-left">Formula: (length + width + 6) * (width + height + 4) * 2 / 10000</p>
+      </div>
     </div>
   </div>
+</div>
+
+
+
+
+<div class="col-md-6 my-2">
+        <div class="box">
+          <div class="box-content">
+            <div class="d-flex flex-column justify-content-between h-100">
+              <div class="text-center">
+    <h3>Carton Consumption & Cost Calculator</h3>
+	 <div class="form-group">
+          <label for="length">Length in CM:</label>
+          <input type="number" class="form-control" id="crtlength" step="0.01" required>
+          <label for="width">Width in CM:</label>
+          <input type="number" class="form-control" id="crtwidth" step="0.01" required>
+          <label for="height">Height in CM:</label>
+          <input type="number" class="form-control" id="crtheight" step="0.01" required>
+          <label for="quantity">Quantity:</label>
+          <input type="number" class="form-control" id="crtqty" step="0.01" required>
+		  <label for="quantity">Price:</label>
+          <input type="number" class="form-control" id="price" step="0.01" required>
+		  </div>
+        <button class="btn btn-primary" onclick="calculateCrtMtr()">Calculate Consumption</button>
+		<button class="btn btn-primary" onclick="calculateCrtCost()">Calculate Carton Price</button>
+      
+    <div id="crtmtr" class="mt-4"></div>
+	<div id="crtcost" class="mt-4"></div>
+	
+  </div>
+</div>
+</div>
+</div>
+</div>
+  <script>
+    function calculateCrtMtr() {
+      var length = parseFloat(document.getElementById("crtlength").value);
+      var width = parseFloat(document.getElementById("crtwidth").value);
+      var height = parseFloat(document.getElementById("crtheight").value);
+      var squremtr = (length + width + 6 ) * (width + height + 4) * 2 / 10000 ;
+
+      document.getElementById("crtmtr").innerHTML = " " + squremtr.toFixed(2) + " Squre Meter Per pc Carton";
+    }
+	
+	function calculateCrtCost() {
+  var length = parseFloat(document.getElementById("crtlength").value);
+  var width = parseFloat(document.getElementById("crtwidth").value);
+  var height = parseFloat(document.getElementById("crtheight").value);
+  var qty = parseFloat(document.getElementById("crtqty").value);
+  var price = parseFloat(document.getElementById("price").value);
+
+  var totalCost = (length + width + 6) * (width + height + 4) * 2 / 10000 * price;
+
+  if (qty === 1) {
+    document.getElementById("crtcost").innerHTML = " " + totalCost.toFixed(2) + " USD for 1 Carton";
+  } else {
+    var costForQty = totalCost * qty;
+    document.getElementById("crtcost").innerHTML = " " + costForQty.toFixed(2) + " USD for " + qty + " Cartons";
+  }
+}
+
+
+  </script>
+
 
   <script>
     function calculateCBM() {
@@ -185,7 +259,8 @@ button {
       document.getElementById("resultCBF").innerHTML = "CBF: " + cbf.toFixed(3);
     }
   </script>
-  
+ </div>
+ </div>
  <section class="contact-details" id="contact-details-section">
         <div class="row text-center text-md-left">
           <div class="col-12 col-md-6 col-lg-3 grid-margin">
@@ -224,7 +299,7 @@ button {
           </div>
         </div>  
       </section>  
-  </div>
+   </div>
   <script src="vendors/jquery/jquery.min.js"></script>
   <script src="vendors/bootstrap/bootstrap.min.js"></script>
   <script src="vendors/owl-carousel/js/owl.carousel.min.js"></script>
