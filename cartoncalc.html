@@ -134,6 +134,8 @@ button {
                   <input type="number" id="width" class="form-control">
                   <label for="height">Height in cm:</label>
                   <input type="number" id="height" class="form-control">
+				  <label for="cartonQty">Carton Quantity:</label>
+				  <input type="number" id="cartonQty" class="form-control">
                 </div>
                 <button onclick="calculateCBM()" class="btn btn-primary">Calculate CBM</button>
                 <p id="resultCBM"></p>
@@ -155,6 +157,8 @@ button {
                   <input type="number" id="widthInches" class="form-control">
                   <label for="heightInches">Height in inches:</label>
                   <input type="number" id="heightInches" class="form-control">
+				  <label for="cartonQty">Carton Quantity:</label>
+				  <input type="number" id="cartonQty" class="form-control">
 				  </div>
                   <button onclick="calculateCBF()" class="btn btn-primary">Calculate CBF</button>
                 <p id="resultCBF"></p>
@@ -240,23 +244,33 @@ button {
   </script>
 
 
-  <script>
+<script>
     function calculateCBM() {
       const length = document.getElementById("length").value;
       const width = document.getElementById("width").value;
       const height = document.getElementById("height").value;
+      const cartonQty = document.getElementById("cartonQty").value;
 
-      const cbm = (length * width * height) / 1000000;
-      document.getElementById("resultCBM").innerHTML = "CBM: " + cbm.toFixed(3);
+      if (length && width && height && cartonQty) {
+        const cbm = (length * width * height * cartonQty) / 1000000;
+        document.getElementById("resultCBM").innerHTML = "CBM: " + cbm.toFixed(3);
+      } else {
+        document.getElementById("resultCBM").innerHTML = "Please enter all dimensions and carton quantity.";
+      }
     }
 
     function calculateCBF() {
       const lengthInches = document.getElementById("lengthInches").value;
       const widthInches = document.getElementById("widthInches").value;
       const heightInches = document.getElementById("heightInches").value;
+      const cartonQty = document.getElementById("cartonQty").value;
 
-      const cbf = (lengthInches * widthInches * heightInches) / 1728;
-      document.getElementById("resultCBF").innerHTML = "CBF: " + cbf.toFixed(3);
+      if (lengthInches && widthInches && heightInches && cartonQty) {
+        const cbf = (lengthInches * widthInches * heightInches * cartonQty) / 1728;
+        document.getElementById("resultCBF").innerHTML = "CBF: " + cbf.toFixed(3);
+      } else {
+        document.getElementById("resultCBF").innerHTML = "Please enter all dimensions and carton quantity.";
+      }
     }
   </script>
  </div>
