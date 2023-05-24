@@ -292,8 +292,101 @@ button {
       }
     }
   </script>
+  
+  
+  <div class="col-md-6 my-2">
+        <div class="box">
+          <div class="box-content">
+            <div class="d-flex flex-column justify-content-between h-100">
+              <div class="text-center">
+                <h3>Dimensional Weight Calculator</h3>
+                <div class="form-group">
+                  <label for="unit">Select Unit:</label>
+                  <select class="form-control" id="dunit" onchange="changeUnit()">
+                    <option value="cm" selected>Centimeters (cm)</option>
+                    <option value="inch">Inches (inch)</option>
+                  </select>
+                  <label for="length">Length:</label>
+                  <input type="number" class="form-control" id="dlength" step="0.01" required>
+                  <label for="width">Width:</label>
+                  <input type="number" class="form-control" id="dwidth" step="0.01" required>
+                  <label for="height">Height:</label>
+                  <input type="number" class="form-control" id="dheight" step="0.01" required>
+                </div>
+                <button class="btn btn-primary" onclick="calculateDimensionalWeight()">Calculate</button>
+                <div id="result" class="mt-4"></div>
+                <div id="fedexResult" class="mt-2"></div>
+                <div id="upsResult" class="mt-2"></div>
+                <div id="dhlResult" class="mt-2"></div>
+				<div id="royaleResult" class="mt-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  <script>
+    function calculateDimensionalWeight() {
+      var length = parseFloat(document.getElementById("dlength").value);
+      var width = parseFloat(document.getElementById("dwidth").value);
+      var height = parseFloat(document.getElementById("dheight").value);
+      var unit = document.getElementById("dunit").value;
+      var dimensionalWeight;
+      var fedexDimensionalWeight;
+      var upsDimensionalWeight;
+      var dhlDimensionalWeight;
+	  var royaleDimensionalWeight;
+
+      if (unit === "cm") {
+        dimensionalWeight = (length * width * height) / 6000;
+        fedexDimensionalWeight = (length * width * height) / 5000;
+        upsDimensionalWeight = (length * width * height) / 5000;
+        dhlDimensionalWeight = (length * width * height) / 6000;
+		royaleDimensionalWeight = (length * width * height) / 5000;
+      } else if (unit === "inch") {
+        dimensionalWeight = (length * width * height) / 366.1424;
+        fedexDimensionalWeight = (length * width * height) / 306.5;
+        upsDimensionalWeight = (length * width * height) / 366.1424;
+        dhlDimensionalWeight = (length * width * height) / 366.1424;
+		royaleDimensionalWeight = (length * width * height) / 366.1424;
+      }
+
+      var resultElement = document.getElementById("result");
+      resultElement.innerHTML = "<strong>Dimensional Weight:</strong> " + dimensionalWeight.toFixed(2) + " kg";
+
+      var fedexResultElement = document.getElementById("fedexResult");
+      fedexResultElement.innerHTML = "<strong>FedEx Dimensional Weight:</strong> " + fedexDimensionalWeight.toFixed(2) + " kg";
+
+      var upsResultElement = document.getElementById("upsResult");
+      upsResultElement.innerHTML = "<strong>UPS Dimensional Weight:</strong> " + upsDimensionalWeight.toFixed(2) + " kg";
+
+      var dhlResultElement = document.getElementById("dhlResult");
+      dhlResultElement.innerHTML = "<strong>DHL Dimensional Weight:</strong> " + dhlDimensionalWeight.toFixed(2) + " kg";
+	  
+	  var royaleResultElement = document.getElementById("royaleResult");
+      royaleResultElement.innerHTML = "<strong>Royale International Dimensional Weight:</strong> " + royaleDimensionalWeight.toFixed(2) + " kg";
+    }
+
+    function changeUnit() {
+      var unit = document.getElementById("unit").value;
+      var lengthElement = document.getElementById("length");
+      var widthElement = document.getElementById("width");
+      var heightElement = document.getElementById("height");
+
+      if (unit === "cm") {
+        lengthElement.placeholder = "Length in CM";
+        widthElement.placeholder = "Width in CM";
+        heightElement.placeholder = "Height in CM";
+      } else if (unit === "inch") {
+        lengthElement.placeholder = "Length in Inch";
+        widthElement.placeholder = "Width in Inch";
+        heightElement.placeholder = "Height in Inch";
+      }
+    }
+  </script>
  </div>
- </div>
+ 
  <section class="contact-details" id="contact-details-section">
         <div class="row text-center text-md-left">
           <div class="col-12 col-md-6 col-lg-3 grid-margin">
@@ -332,6 +425,7 @@ button {
           </div>
         </div>  
       </section>  
+   </div>
    </div>
   <script src="vendors/jquery/jquery.min.js"></script>
   <script src="vendors/bootstrap/bootstrap.min.js"></script>
