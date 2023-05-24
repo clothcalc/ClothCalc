@@ -1,48 +1,131 @@
-<div class="container my-3">
-  <div class="row">
-    <div class="col-md-8 my-2">
-      <div class="box">
-        <div class="d-flex flex-column justify-content-between h-100">
-          <div class="text-center">
-            <h1>Percentage Difference</h1>
-            <div class="form-group">
-              <label for="value1">Value 1:</label>
-              <input type="number" id="value1" class="form-control">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zipper Length Calculator</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .calculator {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 my-2">
+        <div class="box">
+          <div class="box-content">
+            <div class="text-center">
+              <h4>Calculator 1: HPS Measurement</h4>
+              <p class="text-left">Formula: Body length - (Front neck drop + Back neck drop) - (2 to 3%)</p>
             </div>
-            <div class="form-group">
-              <label for="value2">Value 2:</label>
-              <input type="number" id="value2" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="value3">Value 3:</label>
-              <input type="number" id="value3" class="form-control">
-            </div>
-            <button onclick="calculatePercentageDifference()" class="btn btn-primary">Calculate</button>
-            <div id="result" class="mt-3"></div>
+            <form id="zipperForm1" class="calculator">
+              <div class="form-group">
+                <label for="bodyLength1">Body Length (in cm):</label>
+                <input type="number" class="form-control" id="bodyLength1" required>
+              </div>
+              <div class="form-group">
+                <label for="frontNeckDrop1">Front Neck Drop (in cm):</label>
+                <input type="number" class="form-control" id="frontNeckDrop1" required>
+              </div>
+              <div class="form-group">
+                <label for="backNeckDrop1">Back Neck Drop (in cm):</label>
+                <input type="number" class="form-control" id="backNeckDrop1">
+              </div>
+              <div class="form-group">
+                <label for="zipperResult1">Zipper Length:</label>
+                <input type="text" class="form-control" id="zipperResult1" readonly>
+              </div>
+              <button type="submit" class="btn btn-primary">Calculate</button>
+            </form>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-4 my-2">
-      <div class="box">
-        <div class="d-flex flex-column justify-content-between h-100">
-          <div class="text-center">
-            <h3>Percentage Difference</h3>
-            <div class="form-group">
-              <label for="value4">Value 1:</label>
-              <input type="number" id="value4" class="form-control">
+      <div class="col-md-6 my-2">
+        <div class="box">
+          <div class="box-content">
+            <div class="text-center">
+              <h4>Calculator 2: CB Measurement</h4>
+              <p class="text-left">Formula: (Body length - Front neck drop) - (2 to 3%)</p>
             </div>
-            <div class="form-group">
-              <label for="value5">Value 2:</label>
-              <input type="number" id="value5" class="form-control">
+            <form id="zipperForm2" class="calculator">
+              <div class="form-group">
+                <label for="bodyLength2">Body Length (in cm):</label>
+                <input type="number" class="form-control" id="bodyLength2" required>
+              </div>
+              <div class="form-group">
+                <label for="frontNeckDrop2">Front Neck Drop (in cm):</label>
+                <input type="number" class="form-control" id="frontNeckDrop2" required>
+              </div>
+              <div class="form-group">
+                <label for="zipperResult2">Zipper Length:</label>
+                <input type="text" class="form-control" id="zipperResult2" readonly>
+              </div>
+              <button type="submit" class="btn btn-primary">Calculate</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 my-2">
+        <div class="box">
+          <div class="box-content">
+            <div class="text-center">
+              <h4>Calculator 3: High Neck</h4>
+              <p class="text-left">Formula: (Body length - Front neck drop) - (2 to 3%) + Height of high neck</p>
             </div>
-            <button onclick="calculatePercentageDifference()" class="btn btn-primary">Calculate</button>
-            <div id="result2" class="mt-3"></div>
+            <form id="zipperForm3" class="calculator">
+              <div class="form-group">
+                <label for="bodyLength3">Body Length (in cm):</label>
+                <input type="number" class="form-control" id="bodyLength3" required>
+              </div>
+              <div class="form-group">
+                <label for="frontNeckDrop3">Front Neck Drop (in cm):</label>
+                <input type="number" class="form-control" id="frontNeckDrop3" required>
+              </div>
+              <div class="form-group">
+                <label for="highNeckHeight">Height of High Neck (in cm):</label>
+                <input type="number" class="form-control" id="highNeckHeight">
+              </div>
+              <div class="form-group">
+                <label for="zipperResult3">Zipper Length:</label>
+                <input type="text" class="form-control" id="zipperResult3" readonly>
+              </div>
+              <button type="submit" class="btn btn-primary">Calculate</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
-    
   </div>
-</div>
+
+  <script>
+    document.getElementById("zipperForm1").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var bodyLength = parseFloat(document.getElementById("bodyLength1").value);
+      var frontNeckDrop = parseFloat(document.getElementById("frontNeckDrop1").value);
+      var backNeckDrop = parseFloat(document.getElementById("backNeckDrop1").value) || 0;
+      var zipperLength = bodyLength - (frontNeckDrop + backNeckDrop) - (bodyLength * 0.02);
+      document.getElementById("zipperResult1").value = zipperLength.toFixed(2) + " cm";
+    });
+
+    document.getElementById("zipperForm2").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var bodyLength = parseFloat(document.getElementById("bodyLength2").value);
+      var frontNeckDrop = parseFloat(document.getElementById("frontNeckDrop2").value);
+      var zipperLength = (bodyLength - frontNeckDrop) - (bodyLength * 0.02);
+      document.getElementById("zipperResult2").value = zipperLength.toFixed(2) + " cm";
+    });
+
+    document.getElementById("zipperForm3").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var bodyLength = parseFloat(document.getElementById("bodyLength3").value);
+      var frontNeckDrop = parseFloat(document.getElementById("frontNeckDrop3").value);
+      var highNeckHeight = parseFloat(document.getElementById("highNeckHeight").value) || 0;
+      var zipperLength = (bodyLength - frontNeckDrop) - (bodyLength * 0.02) + highNeckHeight;
+      document.getElementById("zipperResult3").value = zipperLength.toFixed(2) + " cm";
+    });
+  </script>
+</body>
+</html>
