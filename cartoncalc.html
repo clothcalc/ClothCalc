@@ -218,7 +218,7 @@ button {
           <input type="number" class="form-control" id="crtheight" step="0.01" required>
           <label for="quantity">Quantity:</label>
           <input type="number" class="form-control" id="crtqty" step="0.01" required>
-		  <label for="quantity">Price:</label>
+		  <label for="quantity">Price Per Square Meter:</label>
           <input type="number" class="form-control" id="price" step="0.01" required>
 		  </div>
         <button class="btn btn-primary" onclick="calculateCrtMtr()">Calculate Consumption</button>
@@ -353,7 +353,7 @@ button {
       }
 
       var resultElement = document.getElementById("result");
-      resultElement.innerHTML = "<strong>Dimensional Weight:</strong> " + dimensionalWeight.toFixed(2) + " kg";
+      resultElement.innerHTML = "<strong>IATA Dimensional Weight:</strong> " + dimensionalWeight.toFixed(2) + " kg";
 
       var fedexResultElement = document.getElementById("fedexResult");
       fedexResultElement.innerHTML = "<strong>FedEx Dimensional Weight:</strong> " + fedexDimensionalWeight.toFixed(2) + " kg";
