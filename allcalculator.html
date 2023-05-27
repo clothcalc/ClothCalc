@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>All Apparel Calculator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="vendors/owl-carousel/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="vendors/owl-carousel/css/owl.theme.default.css">
+  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="vendors/aos/css/aos.css">
+  <link rel="stylesheet" href="css/style.min.css">
+  
+<style>
+
+
+.box {
+    background-color: #e5e5e5; /* Replace with your desired background color */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 100%;
+  }
+  
+  /* Optional: Adjust the height of the box based on the content inside */
+  .box-content {
+    height: calc(100% - 40px);
+    /* Replace 40px with the sum of padding and margin values if you adjust the padding or margin of the box */
+    /* Add any additional styles or customization for the box here */
+  }
+
+.btn-primary:hover a.text-white {
+    color: black;
+  }
+
+
+</style>
+
+</head>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
+  <header id="header-section">
+    <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+    <div class="container">
+      <div class="navbar-brand-wrapper d-flex w-100">
+        <img src="images/Group2.svg" alt="">
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="mdi mdi-menu navbar-toggler-icon"></span>
+        </button> 
+      </div>
+      <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
+        <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
+          <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
+            <div class="navbar-collapse-logo">
+              <img src="images/Group2.svg" alt="">
+            </div>
+            <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#header-section">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#features-section">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#digital-marketing-section">Blog</a>  
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#feedback-section">Testimonials</a>
+          </li>
+          <li class="nav-item btn-contact-us pl-4 pl-lg-0">
+            <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Contact Us</button>
+          </li>
+        </ul>
+      </div>
+    </div> 
+    </nav>   
+  </header>
+
+<div class="content-wrapper">
+    <div class="container">
+ <div class="col-12 text-center pb-5">
+            <h2>All of our Calculator</h2>
+            <h6 class="section-subtitle text-muted">You can convert/calculate fabric, price, GSM etc.</h6>
+          </div>
+<div class="container my-3">
+  <div class="row">
+
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        <h4>Fabric Converter</h4>
+       <p class="text-left"> 1. KG to Yard, from CM <br>
+        2. KG to Yard, from Inch <br>
+        3. Yard to KG
+      </p>
+   
+        <a href="KgYardKg" class="btn btn-primary">Click Here for Converter</a>
+
+    </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        <h4>Fabric Price Converter</h4>
+		<p class="text-left">
+        1. Calculate fabric price from KG to Yard from width in inch <br>
+		2. Calculate fabric price from KG to Yard from width in cm<br>
+        3. Calculate fabric price from converted fabric If you know the converted yard<br>
+      </p>
+      <a href="PriceConverter" class="btn btn-primary">Click Here for Converter</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        <h4>Unit Converter</h4>
+		<p class="text-left">
+        1. GSM to Oz <br>
+        2. Oz to GSM <br>
+		3. KG to LBS <br>
+		4. Meter to Yard to Inch to CM to MM<br>
+		5. MM to CM to Inch to Yard to Meter<br>
+	</p>
+	<a href="unitconverter" class="btn btn-primary">Click Here for Converter</a>
+     </div>
+	 </div>
+    </div>
+</div>
+
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        <h4>GSM Converter</h4>
+		<p class="text-left">
+        1. Calculate gsm from Width in inch<br>
+		2. Calculate gsm from Width in cm<br>
+		3. Calculate weight of the fabric from gsm
+	  </p>
+	 <a href="gsmcalculate" class="btn btn-primary">Click Here for Converter</a>
+	  </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        <h4>Percentage Difference</h4>
+		<p class="text-left">
+        1. Calculate Percentage difference from two value<br>
+		
+	  </p>
+
+		<a href="percentcalculate" class="btn btn-primary">Click Here for Converter</a>
+	  </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        <h4>Carton Calculation</h4>
+        <p class="text-left">
+		1. CBM Calculation from CM<br>
+		2. CBF Calculation from Inch<br>
+		3. Carton Consumption & Cost Calculator<br>
+		4. Dimensional Weight Calculator
+
+		
+		</p>
+	  	<a href="cartoncalc" class="btn btn-primary">Click Here for Converter</a>
+	  </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        <h4>Apparel Zipper Length Calculation</h4>
+        <p class="text-left">
+		1. When the garments body length measure from HPS<br>
+		2. When the garments body length measure from CB<br>
+		3. When the garments have high neck and zipper goes up to high neck drop from bottom
+		
+		</p>
+	  	<a href="zippercalc" class="btn btn-primary">Click Here for Converter</a>
+	  </div>
+    </div>
+  </div>
+</div>
+
+</div>	  
+</div>	  
+
+
+
+      <section class="contact-details" id="contact-details-section">
+        <div class="row text-center text-md-left">
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <img src="images/Group2.svg" alt="" class="pb-2">
+            <div class="pt-2">
+              <p class="text-muted m-0">ClothCalc@gmail.com</p>
+              <p class="text-muted m-0">+88 01736 899297</p>
+            </div>         
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <h5 class="pb-2">Get in Touch</h5>
+            <p class="text-muted">Don’t miss any updates of our new templates and extensions.!</p>
+            <form>
+              <input type="text" class="form-control" id="Email" placeholder="Email id">
+            </form>
+            <div class="pt-3">
+              <button class="btn btn-dark">Subscribe</button>
+            </div>   
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <h5 class="pb-2">Our Guidelines</h5>
+            <a href="#"><p class="m-0 pb-2">Terms</p></a>   
+            <a href="#" ><p class="m-0 pt-1 pb-2">Privacy policy</p></a> 
+            <a href="#"><p class="m-0 pt-1 pb-2">Cookie Policy</p></a> 
+            <a href="#"><p class="m-0 pt-1">Discover</p></a> 
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+              <h5 class="pb-2">Our address</h5>
+              <p class="text-muted">518 Schmeler Neck<br>Bartlett. Illinois</p>
+              <div class="d-flex justify-content-center justify-content-md-start">
+                <a href="#"><span class="mdi mdi-facebook"></span></a>
+                <a href="#"><span class="mdi mdi-twitter"></span></a>
+                <a href="#"><span class="mdi mdi-instagram"></span></a>
+                <a href="#"><span class="mdi mdi-linkedin"></span></a>
+              </div>
+          </div>
+        </div>  
+      </section>
+      <footer class="border-top">
+        <p class="text-center text-muted pt-4">Copyright © 2023<a href="https://www.bootstrapdash.com/" class="px-1">Bootstrapdash.</a>All rights reserved.</p>
+      </footer>
+      <!-- Modal for Contact - us Button -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="exampleModalLabel">Contact Us</h4>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="Name">Name</label>
+                  <input type="text" class="form-control" id="Name" placeholder="Name">
+                </div>
+                <div class="form-group">
+                  <label for="Email">Email</label>
+                  <input type="email" class="form-control" id="Email-1" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <label for="Message">Message</label>
+                  <textarea class="form-control" id="Message" placeholder="Enter your Message"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-success">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+  <script src="vendors/jquery/jquery.min.js"></script>
+  <script src="vendors/bootstrap/bootstrap.min.js"></script>
+  <script src="vendors/owl-carousel/js/owl.carousel.min.js"></script>
+  <script src="vendors/aos/js/aos.js"></script>
+  <script src="js/landingpage.js"></script>
+</body>
+</html>
