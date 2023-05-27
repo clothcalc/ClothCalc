@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T-shirt and Polo Shirt Consumption</title>
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="vendors/owl-carousel/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="vendors/owl-carousel/css/owl.theme.default.css">
+  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="vendors/aos/css/aos.css">
+  <link rel="stylesheet" href="css/style.min.css">
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
+  <header id="header-section">
+    <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+    <div class="container">
+      <div class="navbar-brand-wrapper d-flex w-100">
+        <img src="images/Group2.svg" alt="">
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="mdi mdi-menu navbar-toggler-icon"></span>
+        </button> 
+      </div>
+      <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
+        <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
+          <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
+            <div class="navbar-collapse-logo">
+              <img src="images/Group2.svg" alt="">
+            </div>
+            <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://clothcalc.github.io/ClothCalc#header-section">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://clothcalc.github.io/ClothCalc#features-section">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="calculatorDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              All Calculators
+            </a>
+            <div class="dropdown-menu" aria-labelledby="calculatorDropdown">
+              <a class="dropdown-item" href="KgYardKg">Fabric Converter</a>
+              <a class="dropdown-item" href="PriceConverter">Fabric Price Converter</a>
+              <a class="dropdown-item" href="gsmcalculate">GSM Converter</a>
+              <a class="dropdown-item" href="unitconverter">Unit Converter</a>
+              <a class="dropdown-item" href="cartoncalc">Carton Calculator</a>
+              <a class="dropdown-item" href="zippercalc">Zipper Calculation</a>
+              <!-- Add more dropdown items as needed -->
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div> 
+    </nav>
+  <style>
+
+		
+.containerfive {
+  justify-content: space-between;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+
+
+.box {
+    background-color: #e5e5e5; /* Replace with your desired background color */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 100%;
+  }
+  
+  /* Optional: Adjust the height of the box based on the content inside */
+  .box-content {
+    height: calc(100% - 40px);
+    /* Replace 40px with the sum of padding and margin values if you adjust the padding or margin of the box */
+    /* Add any additional styles or customization for the box here */
+  }
+
+
+
+</style>	
+
+</head>
+<div class ="container">
+
+<div class="text-center">
+	<h1>Carton Calculation</h1>
+	</div>
+
+<div class="container my-3">
+  <div class="row">
+  
+
+
+
+  
+  
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        <h4>T-shirt Consumption Calculator</h4>
+        <div class="box-content">
+          <div>
+            <label for="bodyLength">Body Length (cm):</label>
+            <input type="number" class="form-control" id="bodyLength" step="0.1" required>
+          </div>
+          <div>
+            <label for="sleeveLength">Sleeve Length (cm):</label>
+            <input type="number" class="form-control" id="sleeveLength" step="0.1" required>
+          </div>
+          <div>
+            <label for="halfChest">1/2 Chest (cm):</label>
+            <input type="number" class="form-control" id="halfChest" step="0.1" required>
+          </div>
+          <div>
+            <label for="fabricWeight">Fabric Weight (GSM):</label>
+            <input type="number" class="form-control" id="fabricWeight" required>
+          </div>
+          <div>
+            <label for="neckRibConsumption">Neck Rib Consumption (kg/Doz.):</label>
+            <input type="number" class="form-control" id="neckRibConsumption" step="0.01" required>
+          </div>
+          <div class="form-group">
+            <label for="result">T-shirt Consumption:</label>
+            <input type="text" class="form-control" id="result" readonly>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="calculateConsumption()">Calculate Consumption</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function calculateConsumption() {
+    // Get input values
+    var bodyLength = parseFloat(document.getElementById("bodyLength").value);
+    var sleeveLength = parseFloat(document.getElementById("sleeveLength").value);
+    var halfChest = parseFloat(document.getElementById("halfChest").value);
+    var fabricWeight = parseFloat(document.getElementById("fabricWeight").value);
+    var neckRibConsumption = parseFloat(document.getElementById("neckRibConsumption").value);
+
+    // Calculate fabric consumption
+    var fabricConsumption = ((bodyLength + 5 + sleeveLength + 5) * (halfChest + 4) * 2 * fabricWeight) / 10000000 + (0.08 * 12) + neckRibConsumption;
+
+    // Display the result
+    document.getElementById("result").value = "Fabric Consumption: " + fabricConsumption.toFixed(3) + " kg / Doz.";
+  }
+</script>
+
+
+  </div>
+ 
+ 
+      <section class="contact-details" id="contact-details-section">
+        <div class="row text-center text-md-left">
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <img src="images/Group2.svg" alt="" class="pb-2">
+            <div class="pt-2">
+              <p class="text-muted m-0">ClothCalc@gmail.com</p>
+              <p class="text-muted m-0">+88 01736 899297</p>
+            </div>         
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <h5 class="pb-2">Important Links</h5>
+			  <a href="KgYardKg"><p class="m-0 pt-1 pb-2"> Fabric Converter </p></a>
+              <a href="PriceConverter"><p class="m-0 pt-1 pb-2"> Fabric Price Converter</p></a>
+              <a href="gsmcalculate"><p class="m-0 pt-1 pb-2"> GSM Converter</p></a>
+              <a href="unitconverter"><p class="m-0 pt-1 pb-2">Unit Converter </p></a>
+              <a href="cartoncalc"><p class="m-0 pt-1 pb-2"> Carton Calculator </p></a>
+              <a href="zippercalc"><p class=">m-0 pt-1 pb-2">Zipper Calculation </p></a>
+   
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <h5 class="pb-2">Important Links</h5>
+            <a href="#"><p class="m-0 pb-2">Terms</p></a>   
+            <a href="#"><p class="m-0 pt-1 pb-2">Privacy policy</p></a> 
+            <a href="#"><p class="m-0 pt-1 pb-2">Cookie Policy</p></a> 
+            <a href="#"><p class="m-0 pt-1">Discover</p></a> 
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+              <h5 class="pb-2">Telegram Knowledge Sharing Group</h5>
+              <p class="text-muted">Merchandising Group Study</p>
+          </div>
+        </div>  
+      </section>
+      <footer class="border-top">
+        <p class="text-center text-muted pt-4">Copyright © 2023<a href="https://www.bootstrapdash.com/" class="px-1">Bootstrapdash.</a>All rights reserved.</p>
+      </footer>  
+ </div>
+   </div>
+  <script src="vendors/jquery/jquery.min.js"></script>
+  <script src="vendors/bootstrap/bootstrap.min.js"></script>
+  <script src="vendors/owl-carousel/js/owl.carousel.min.js"></script>
+  <script src="vendors/aos/js/aos.js"></script>
+  <script src="js/landingpage.js"></script>
+
+</body>
+</html>
