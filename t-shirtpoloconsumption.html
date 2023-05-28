@@ -91,7 +91,7 @@
 <div class ="container">
 
 <div class="text-center">
-	<h1>Carton Calculation</h1>
+	<h1>T-shirt and Polo Shirt Consumption</h1>
 	</div>
 
 <div class="container my-3">
@@ -100,7 +100,6 @@
 
 
 
-  
   
 <div class="col-md-6 my-2">
   <div class="box">
@@ -128,6 +127,10 @@
             <label for="neckRibConsumption">Neck Rib Consumption (kg/Doz.):</label>
             <input type="number" class="form-control" id="neckRibConsumption" step="0.01" required>
           </div>
+          <div>
+            <label for="armholeMeasurement">Armhole Measurement (cm):</label>
+            <input type="number" class="form-control" id="armholeMeasurement" step="0.1" required>
+          </div>
           <div class="form-group">
             <label for="result">T-shirt Consumption:</label>
             <input type="text" class="form-control" id="result" readonly>
@@ -147,14 +150,21 @@
     var halfChest = parseFloat(document.getElementById("halfChest").value);
     var fabricWeight = parseFloat(document.getElementById("fabricWeight").value);
     var neckRibConsumption = parseFloat(document.getElementById("neckRibConsumption").value);
+    var armholeMeasurement = parseFloat(document.getElementById("armholeMeasurement").value);
 
-    // Calculate fabric consumption
-    var fabricConsumption = ((bodyLength + 5 + sleeveLength + 5) * (halfChest + 4) * 2 * fabricWeight) / 10000000 + (0.08 * 12) + neckRibConsumption;
+    // Calculate fabric consumption based on the selected formula
+    var fabricConsumption;
+    if (armholeMeasurement) {
+      fabricConsumption = (((halfChest * bodyLength) + (sleeveLength * armholeMeasurement)) * 2 * fabricWeight + (fabricWeight * 0.08)) * 12;
+    } else {
+      fabricConsumption = ((bodyLength + 5 + sleeveLength + 5) * (halfChest + 4) * 2 * fabricWeight) / 10000000 + (0.08 * 12) + neckRibConsumption;
+    }
 
     // Display the result
     document.getElementById("result").value = "Fabric Consumption: " + fabricConsumption.toFixed(3) + " kg / Doz.";
   }
 </script>
+
 
 
   </div>
