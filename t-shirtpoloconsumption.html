@@ -98,34 +98,40 @@
   <div class="row">
   
 
-
 <div class="col-md-6 my-2">
   <div class="box">
     <div class="box-content">
       <div class="text-center">
-        <h4>T-shirt Consumption Calculator</h4>
+        <h4>Fabric Consumption Calculator</h4>
         <div class="box-content">
           <div>
-            <label for="bodyLength">Body Length (cm):</label>
+            <label for="bodyLength">Body Length:</label>
             <input type="number" class="form-control" id="bodyLength" step="0.1" required>
           </div>
           <div>
-            <label for="sleeveLength">Sleeve Length (cm):</label>
+            <label for="sleeveLength">Sleeve Length:</label>
             <input type="number" class="form-control" id="sleeveLength" step="0.1" required>
           </div>
           <div>
-            <label for="halfChest">1/2 Chest (cm):</label>
+            <label for="halfChest">Half Chest:</label>
             <input type="number" class="form-control" id="halfChest" step="0.1" required>
           </div>
           <div>
             <label for="fabricWeight">Fabric Weight (GSM):</label>
             <input type="number" class="form-control" id="fabricWeight" required>
           </div>
+          <div>
+            <label for="unitSelect">Unit of Measurement:</label>
+            <select class="form-control" id="unitSelect">
+              <option value="cm">CM</option>
+              <option value="inch">Inch</option>
+            </select>
+          </div>
           <div class="form-group">
-            <label for="result">T-shirt Consumption:</label>
+            <label for="result">Fabric Consumption:</label>
             <input type="text" class="form-control" id="result" readonly>
           </div>
-          <button type="button" class="btn btn-primary" onclick="calculateConsumption()">Calculate Fabric Consumption</button>
+          <button type="button" class="btn btn-primary" onclick="calculateConsumption()">Calculate Consumption</button>
         </div>
       </div>
     </div>
@@ -139,14 +145,22 @@
     var sleeveLength = parseFloat(document.getElementById("sleeveLength").value);
     var halfChest = parseFloat(document.getElementById("halfChest").value);
     var fabricWeight = parseFloat(document.getElementById("fabricWeight").value);
+    var unit = document.getElementById("unitSelect").value;
    
     // Calculate fabric consumption
-    var fabricConsumption = ((bodyLength + 5 + sleeveLength + 5) * (halfChest + 3) * 2 * fabricWeight) / 10000000 * 12 * ( 1 + 0.08 ) ;
-
+    var fabricConsumption;
+    
+    if (unit === "inch") {
+      fabricConsumption = ((bodyLength + 6 + sleeveLength + 6) * (halfChest + 6) * 2 * fabricWeight) / 1550000 * 12 * (1 + 0.1);
+    } else {
+      fabricConsumption = ((bodyLength + 6 + sleeveLength + 6) * (halfChest + 6) * 2 * fabricWeight) / 10000000 * 12 * (1 + 0.1);
+    }
+    
     // Display the result
     document.getElementById("result").value = "Fabric Consumption: " + fabricConsumption.toFixed(3) + " kg / Doz.";
   }
 </script>
+
 
 
 <div class="col-md-6 my-2">
@@ -156,26 +170,33 @@
         <h4>Rib Consumption Calculator</h4>
         <div class="box-content">
           <div>
-            <label for="neckWidth">Neck Width (cm):</label>
+            <label for="neckWidth">Neck Width:</label>
             <input type="number" class="form-control" id="neckWidth" step="0.1" required>
           </div>
           <div>
-            <label for="frontNeckdrop">Front Neck Drop (cm):</label>
+            <label for="frontNeckdrop">Front Neck Drop:</label>
             <input type="number" class="form-control" id="frontNeckDrop" step="0.1" required>
           </div>
           <div>
-            <label for="backNeckDrop">Back Neck Drop (cm):</label>
+            <label for="backNeckDrop">Back Neck Drop:</label>
             <input type="number" class="form-control" id="backNeckDrop" step="0.1" required>
           </div>
           <div>
             <label for="ribWeight">Rib Weight (GSM):</label>
             <input type="number" class="form-control" id="ribWeight" required>
           </div>
+          <div>
+            <label for="unitSelect">Unit of Measurement:</label>
+            <select class="form-control" id="unitSelect">
+              <option value="cm">CM</option>
+              <option value="inch">Inch</option>
+            </select>
+          </div>
           <div class="form-group">
             <label for="ribresult">Rib Consumption:</label>
             <input type="text" class="form-control" id="ribresult" readonly>
           </div>
-          <button type="button" class="btn btn-primary" onclick="calculateRib()">Calculate Rib Consumption</button>
+          <button type="button" class="btn btn-primary" onclick="calculateRib()">Calculate Consumption</button>
         </div>
       </div>
     </div>
@@ -189,18 +210,26 @@
     var frontNeckDrop = parseFloat(document.getElementById("frontNeckDrop").value);
     var backNeckDrop = parseFloat(document.getElementById("backNeckDrop").value);
     var ribWeight = parseFloat(document.getElementById("ribWeight").value);
+    var unit = document.getElementById("unitSelect").value;
    
-   // Calculate Total Neck Width
-    var totalNeckWidth = ((neckWidth * 2) + frontNeckDrop + backNeckDrop + 2) ;
-	// Calculate Total Neck Height
-    var totalNeckHeight = ((backNeckDrop * 2) + 2) ;
+    // Calculate Total Neck Width
+    var totalNeckWidth = (neckWidth * 2) + frontNeckDrop + backNeckDrop + 2 ;
+    // Calculate Total Neck Height
+    var totalNeckHeight = (backNeckDrop * 2) + 2 ;
     // Calculate fabric consumption
-    var ribConsumption = (totalNeckWidth * totalNeckHeight * 12 * ribWeight / 10000000) * ( 1 + 0.05 ) ;
-
+    var ribConsumption;
+    
+    if (unit === "inch") {
+      ribConsumption = (totalNeckWidth * totalNeckHeight * 12 * ribWeight / 1550000 * (1 + 0.05));
+    } else {
+      ribConsumption = (totalNeckWidth * totalNeckHeight * 12 * ribWeight / 10000000 * (1 + 0.05));
+    }
+    
     // Display the result
     document.getElementById("ribresult").value = "Rib Consumption: " + ribConsumption.toFixed(3) + " kg / Doz.";
   }
 </script>
+
 
 <div class="col-md-6 my-2">
   <div class="box">
@@ -251,7 +280,7 @@
     
 
     // Calculate fabric consumption
-    var fabricConsumption = (((halfChest * bodyLength) + (sleeveLength * ( armhole * 2 ))) * 2 * fabricWeight * (1 + 0.05)) / 10000000 * 12 ;
+    var fabricConsumption = (((sleeveLength + bodyLength + 12) * (halfChest + ( armhole * 2 ) + 9)) * 2 * fabricWeight * (1 + 0.05)) / 10000000 * 12 ;
 
     // Display the result
     document.getElementById("result2").value = "Fabric Consumption: " + fabricConsumption.toFixed(3) + " kg / Doz.";
