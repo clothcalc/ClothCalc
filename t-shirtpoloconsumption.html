@@ -280,7 +280,7 @@
     
 
     // Calculate fabric consumption
-    var fabricConsumption = (((sleeveLength + bodyLength + 12) * (halfChest + ( armhole * 2 ) + 9)) * 2 * fabricWeight * (1 + 0.05)) / 10000000 * 12 ;
+    var fabricConsumption = (((sleeveLength + bodyLength + 12) * (halfChest + ( armhole * 2 ) + 9)) * 2 * fabricWeight * 12 ) / 10000000 * (1 + 0.05) ;
 
     // Display the result
     document.getElementById("result2").value = "Fabric Consumption: " + fabricConsumption.toFixed(3) + " kg / Doz.";
