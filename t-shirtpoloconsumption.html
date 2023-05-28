@@ -99,8 +99,6 @@
   
 
 
-
-  
 <div class="col-md-6 my-2">
   <div class="box">
     <div class="box-content">
@@ -127,10 +125,6 @@
             <label for="neckRibConsumption">Neck Rib Consumption (kg/Doz.):</label>
             <input type="number" class="form-control" id="neckRibConsumption" step="0.01" required>
           </div>
-          <div>
-            <label for="armholeMeasurement">Armhole Measurement (cm):</label>
-            <input type="number" class="form-control" id="armholeMeasurement" step="0.1" required>
-          </div>
           <div class="form-group">
             <label for="result">T-shirt Consumption:</label>
             <input type="text" class="form-control" id="result" readonly>
@@ -150,18 +144,73 @@
     var halfChest = parseFloat(document.getElementById("halfChest").value);
     var fabricWeight = parseFloat(document.getElementById("fabricWeight").value);
     var neckRibConsumption = parseFloat(document.getElementById("neckRibConsumption").value);
-    var armholeMeasurement = parseFloat(document.getElementById("armholeMeasurement").value);
 
-    // Calculate fabric consumption based on the selected formula
-    var fabricConsumption;
-    if (armholeMeasurement) {
-      fabricConsumption = (((halfChest * bodyLength) + (sleeveLength * armholeMeasurement)) * 2 * fabricWeight + (fabricWeight * 0.08)) * 12;
-    } else {
-      fabricConsumption = ((bodyLength + 5 + sleeveLength + 5) * (halfChest + 4) * 2 * fabricWeight) / 10000000 + (0.08 * 12) + neckRibConsumption;
-    }
+    // Calculate fabric consumption
+    var fabricConsumption = ((bodyLength + 5 + sleeveLength + 5) * (halfChest + 3) * 2 * fabricWeight) / 10000000 * 12 * ( 1 + 0.08 )  + neckRibConsumption;
 
     // Display the result
     document.getElementById("result").value = "Fabric Consumption: " + fabricConsumption.toFixed(3) + " kg / Doz.";
+  }
+</script>
+
+
+
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        <h4>T-shirt Consumption Calculator</h4>
+        <div class="box-content">
+          <div>
+            <label for="bodyLength2">Body Length (cm):</label>
+            <input type="number" class="form-control" id="bodyLength2" step="0.1" required>
+          </div>
+          <div>
+            <label for="sleeveLength2">Sleeve Length (cm):</label>
+            <input type="number" class="form-control" id="sleeveLength2" step="0.1" required>
+          </div>
+          <div>
+            <label for="halfChest2">1/2 Chest (cm):</label>
+            <input type="number" class="form-control" id="halfChest2" step="0.1" required>
+          </div>
+          <div>
+            <label for="armhole2">Armhole (cm):</label>
+            <input type="number" class="form-control" id="armhole2" step="0.1" required>
+          </div>
+          <div>
+            <label for="fabricWeight2">Fabric Weight (GSM):</label>
+            <input type="number" class="form-control" id="fabricWeight2" required>
+          </div>
+          <div>
+            <label for="neckRibConsumption2">Neck Rib Consumption (kg/Doz.):</label>
+            <input type="number" class="form-control" id="neckRibConsumption2" step="0.01" required>
+          </div>
+          <div class="form-group">
+            <label for="result2">T-shirt Consumption:</label>
+            <input type="text" class="form-control" id="result2" readonly>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="calculateConsumption2()">Calculate Consumption</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function calculateConsumption2() {
+    // Get input values
+    var bodyLength = parseFloat(document.getElementById("bodyLength2").value);
+    var sleeveLength = parseFloat(document.getElementById("sleeveLength2").value);
+    var halfChest = parseFloat(document.getElementById("halfChest2").value);
+    var armhole = parseFloat(document.getElementById("armhole2").value);
+    var fabricWeight = parseFloat(document.getElementById("fabricWeight2").value);
+    var neckRibConsumption = parseFloat(document.getElementById("neckRibConsumption2").value);
+
+    // Calculate fabric consumption
+    var fabricConsumption = (((halfChest * bodyLength) + (sleeveLength * ( armhole * 2 ))) * 2 * fabricWeight * (1 + 0.05)) / 10000000 * 12 + neckRibConsumption;
+
+    // Display the result
+    document.getElementById("result2").value = "Fabric Consumption: " + fabricConsumption.toFixed(3) + " kg / Doz.";
   }
 </script>
 
