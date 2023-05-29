@@ -261,6 +261,10 @@
           <div class="form-group">
             <label for="result2">T-shirt Consumption:</label>
             <input type="text" class="form-control" id="result2" readonly>
+			<label for="bodyFabric">Body Fabric:</label>
+            <input type="text" class="form-control" id="bodyFabricYard" readonly>
+			<label for="sleeveFabric">Sleeve Fabric:</label>
+            <input type="text" class="form-control" id="sleeveFabricYard" readonly>
           </div>
           <button type="button" class="btn btn-primary" onclick="calculateConsumption2()">Calculate Consumption</button>
         </div>
@@ -280,15 +284,27 @@
 
  // Calculate Body fabric
     var bodyFabric = (bodyLength + 6) * (halfChest + 6) ;
+	
+// Calculate Body fabric in Kg
+    var bodyFabricYard = bodyFabric * 2 * fabricWeight * 12 / 10000000 ;
 
-// Calculate Body fabric
+// Calculate Sleeve fabric
     var sleeveFabric = ((sleeveLength + 6) * ((armhole * 2) + 6)) ;
 
-    // Calculate fabric consumption
+// Calculate Sleeve fabric in Kg
+    var sleeveFabricYard = sleeveFabric * 2 * fabricWeight * 12 / 10000000 ;
+
+// Calculate fabric consumption
     var fabricConsumption2 = (bodyFabric + sleeveFabric) * 2 * fabricWeight * 12  / 10000000 ;
 
-    // Display the result
-    document.getElementById("result2").value = "Fabric Consumption: " + fabricConsumption2.toFixed(3) + " kg / Doz.";
+// Display the result
+    document.getElementById("result2").value = "Total Consumtion: " + fabricConsumption2.toFixed(3) + " kg / Doz.";
+	
+// Display the result
+    document.getElementById("bodyFabricYard").value = "Body Fabric: " + bodyFabricYard.toFixed(3) + " kg / Doz.";
+	
+// Display the result
+    document.getElementById("sleeveFabricYard").value = "Sleeve Fabric: " + sleeveFabricYard.toFixed(3) + " kg / Doz.";
   }
 </script>
 
