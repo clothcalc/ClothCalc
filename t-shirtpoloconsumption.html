@@ -308,6 +308,57 @@
   }
 </script>
 
+ 
+
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        <h4>Armhole Calculation</h4>
+        <div class="box-content">
+          <div>
+            <label for="halfChestArm">Half Chest:</label>
+            <input type="number" class="form-control" id="halfChestArm" step="0.1" required>
+          </div>
+          <div>
+            <label for="unitSelect">Unit of Measurement:</label>
+            <select class="form-control" id="unitSelect">
+              <option value="cm">CM</option>
+              <option value="inch">Inch</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="armHoleresult">Armhole:</label>
+            <input type="text" class="form-control" id="armHoleresult" readonly>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="calculateArmhole()">Calculate Armhole</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function calculateArmhole() {
+    // Get input values
+    var halfChestArm = parseFloat(document.getElementById("halfChestArm").value);
+    var unit = document.getElementById("unitSelect").value;
+
+    // Calculate Armhole
+    var armCalculation;
+
+    if (unit === "inch") {
+      armCalculation = (halfChestArm / 2) - 1.5 * 2.54;
+    } else {
+      armCalculation = (halfChestArm / 2) - 3.81;
+    }
+
+    // Display the result
+    document.getElementById("armHoleresult").value = "Armhole: " + armCalculation.toFixed(3) + " " + unit;
+  }
+</script>
+
+
 
 
   </div>
