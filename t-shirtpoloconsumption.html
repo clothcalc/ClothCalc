@@ -151,9 +151,9 @@
     var fabricConsumption;
     
     if (unit === "inch") {
-      fabricConsumption = ((bodyLength + 6 + sleeveLength + 6) * (halfChest + 6) * 2 * fabricWeight) / 1550000 * 12 * (1 + 0.1);
+      fabricConsumption = ((bodyLength + 6 + sleeveLength + 6) * (halfChest + 6) * 2 * fabricWeight) / 1550000 * 12;
     } else {
-      fabricConsumption = ((bodyLength + 6 + sleeveLength + 6) * (halfChest + 6) * 2 * fabricWeight) / 10000000 * 12 * (1 + 0.1);
+      fabricConsumption = ((bodyLength + 6 + sleeveLength + 6) * (halfChest + 6) * 2 * fabricWeight) / 10000000 * 12;
     }
     
     // Display the result
@@ -277,13 +277,18 @@
     var halfChest = parseFloat(document.getElementById("halfChest2").value);
     var armhole = parseFloat(document.getElementById("armhole2").value);
     var fabricWeight = parseFloat(document.getElementById("fabricWeight2").value);
-    
+
+ // Calculate Body fabric
+    var bodyFabric = (bodyLength + 6) * (halfChest + 6) ;
+
+// Calculate Body fabric
+    var sleeveFabric = ((sleeveLength + 6) * ((armhole * 2) + 6)) ;
 
     // Calculate fabric consumption
-    var fabricConsumption = (((sleeveLength + bodyLength + 12) * (halfChest + ( armhole * 2 ) + 9)) * 2 * fabricWeight * 12 ) / 10000000 * (1 + 0.05) ;
+    var fabricConsumption2 = (bodyFabric + sleeveFabric) * 2 * fabricWeight * 12  / 10000000 ;
 
     // Display the result
-    document.getElementById("result2").value = "Fabric Consumption: " + fabricConsumption.toFixed(3) + " kg / Doz.";
+    document.getElementById("result2").value = "Fabric Consumption: " + fabricConsumption2.toFixed(3) + " kg / Doz.";
   }
 </script>
 
