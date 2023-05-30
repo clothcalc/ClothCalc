@@ -150,9 +150,10 @@
     // Define allowances based on unit
     var bAllowance = unit === "inch" ? 1.968503937 : 5;
     var sAllowance = unit === "inch" ? 1.968503937 : 5;
+	var chAllowance = unit === "inch" ? 1.5748031496 : 4;
 
     // Calculate fabric consumption
-    var fabricConsumption = ((bodyLength + bAllowance + sleeveLength + sAllowance) * (halfChest + bAllowance) * 2 * fabricWeight * 12) / (unit === "inch" ? 1550000 : 10000000);
+    var fabricConsumption = ((bodyLength + bAllowance + sleeveLength + sAllowance) * (halfChest + chAllowance) * 2 * fabricWeight * 12) / (unit === "inch" ? 1550000 : 10000000);
 
     // Display the result
     document.getElementById("result").value = "Fabric Consumption: " + fabricConsumption.toFixed(3) + " kg / Doz.";
@@ -295,11 +296,12 @@
     var fabricWeight = parseFloat(document.getElementById("fabricWeight2").value);
 
     // Define allowances based on unit
-    var bodyAllowance = unit === "in" ? 2.362205 : 6;
-    var sleeveAllowance = unit === "in" ? 2.362205 : 6;
+    var bodyAllowance = unit === "in" ?  2.3622047244 : 6;
+    var sleeveAllowance = unit === "in" ?  2.3622047244 : 6;
+	var chestAllowance = unit === "in" ? 1.5748031496 : 4;
 
     // Calculate Body fabric
-    var bodyFabric = (bodyLength + bodyAllowance) * (halfChest + bodyAllowance);
+    var bodyFabric = (bodyLength + bodyAllowance) * (halfChest + chestAllowance);
 
     // Calculate Body fabric in Kg
     var bodyFabricYard = bodyFabric * 2 * fabricWeight * 12 / (unit === "in" ? 1550000 : 10000000);
