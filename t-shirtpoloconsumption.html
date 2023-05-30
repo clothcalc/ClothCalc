@@ -102,27 +102,27 @@
   <div class="box">
     <div class="box-content">
       <div class="text-center">
-        <h4>Fabric Consumption Calculator</h4>
+        <h4>Consumption Without Armhole</h4>
         <div class="box-content">
           <div>
             <label for="bodyLength">Body Length:</label>
-            <input type="number" class="form-control" id="bodyLength" step="0.1" required>
+            <input type="number" class="form-control" id="bodyLength1" step="0.1" required>
           </div>
           <div>
             <label for="sleeveLength">Sleeve Length:</label>
-            <input type="number" class="form-control" id="sleeveLength" step="0.1" required>
+            <input type="number" class="form-control" id="sleeveLength1" step="0.1" required>
           </div>
           <div>
             <label for="halfChest">Half Chest:</label>
-            <input type="number" class="form-control" id="halfChest" step="0.1" required>
+            <input type="number" class="form-control" id="halfChest1" step="0.1" required>
           </div>
           <div>
             <label for="fabricWeight">Fabric Weight (GSM):</label>
-            <input type="number" class="form-control" id="fabricWeight" required>
+            <input type="number" class="form-control" id="fabricWeight1" required>
           </div>
           <div>
-            <label for="unitSelect">Unit of Measurement:</label>
-            <select class="form-control" id="unitSelect">
+            <label for="unitSelect1">Unit of Measurement:</label>
+            <select class="form-control" id="unitSelect1">
               <option value="cm">CM</option>
               <option value="inch">Inch</option>
             </select>
@@ -141,21 +141,19 @@
 <script>
   function calculateConsumption() {
     // Get input values
-    var bodyLength = parseFloat(document.getElementById("bodyLength").value);
-    var sleeveLength = parseFloat(document.getElementById("sleeveLength").value);
-    var halfChest = parseFloat(document.getElementById("halfChest").value);
-    var fabricWeight = parseFloat(document.getElementById("fabricWeight").value);
-    var unit = document.getElementById("unitSelect").value;
-   
+    var bodyLength = parseFloat(document.getElementById("bodyLength1").value);
+    var sleeveLength = parseFloat(document.getElementById("sleeveLength1").value);
+    var halfChest = parseFloat(document.getElementById("halfChest1").value);
+    var fabricWeight = parseFloat(document.getElementById("fabricWeight1").value);
+    var unit = document.getElementById("unitSelect1").value;
+
+    // Define allowances based on unit
+    var bAllowance = unit === "inch" ? 1.968503937 : 5;
+    var sAllowance = unit === "inch" ? 1.968503937 : 5;
+
     // Calculate fabric consumption
-    var fabricConsumption;
-    
-    if (unit === "inch") {
-      fabricConsumption = ((bodyLength + 6 + sleeveLength + 6) * (halfChest + 6) * 2 * fabricWeight) / 1550000 * 12;
-    } else {
-      fabricConsumption = ((bodyLength + 6 + sleeveLength + 6) * (halfChest + 6) * 2 * fabricWeight) / 10000000 * 12;
-    }
-    
+    var fabricConsumption = ((bodyLength + bAllowance + sleeveLength + sAllowance) * (halfChest + bAllowance) * 2 * fabricWeight * 12) / (unit === "inch" ? 1550000 : 10000000);
+
     // Display the result
     document.getElementById("result").value = "Fabric Consumption: " + fabricConsumption.toFixed(3) + " kg / Doz.";
   }
@@ -170,7 +168,7 @@
         <h4>Rib Consumption Calculator</h4>
         <div class="box-content">
           <div>
-            <label for="neckWidth">Neck Width:</label>
+            <label for="neckWidth">Neck Width / Collar Width:</label>
             <input type="number" class="form-control" id="neckWidth" step="0.1" required>
           </div>
           <div>
@@ -230,40 +228,48 @@
   }
 </script>
 
+ 
+
 
 <div class="col-md-6 my-2">
   <div class="box">
     <div class="box-content">
       <div class="text-center">
-        <h4>T-shirt Consumption Calculator</h4>
+        <h4>Consumption With Armhole</h4>
         <div class="box-content">
           <div>
-            <label for="bodyLength2">Body Length (cm):</label>
+            <label for="bodyLength2">Body Length:</label>
             <input type="number" class="form-control" id="bodyLength2" step="0.1" required>
           </div>
           <div>
-            <label for="sleeveLength2">Sleeve Length (cm):</label>
+            <label for="sleeveLength2">Sleeve Length:</label>
             <input type="number" class="form-control" id="sleeveLength2" step="0.1" required>
           </div>
           <div>
-            <label for="halfChest2">1/2 Chest (cm):</label>
+            <label for="halfChest2">1/2 Chest:</label>
             <input type="number" class="form-control" id="halfChest2" step="0.1" required>
           </div>
           <div>
-            <label for="armhole2">Armhole (cm):</label>
+            <label for="armhole2">Armhole:</label>
             <input type="number" class="form-control" id="armhole2" step="0.1" required>
           </div>
           <div>
             <label for="fabricWeight2">Fabric Weight (GSM):</label>
             <input type="number" class="form-control" id="fabricWeight2" required>
           </div>
-         
+          <div>
+            <label for="unitSelection">Unit:</label>
+            <select id="unitSelection" class="form-control" onchange="updateUnit()">
+              <option value="cm" selected>Centimeters (cm)</option>
+              <option value="in">Inches (in)</option>
+            </select>
+          </div>
           <div class="form-group">
             <label for="result2">T-shirt Consumption:</label>
             <input type="text" class="form-control" id="result2" readonly>
-			<label for="bodyFabric">Body Fabric:</label>
+            <label for="bodyFabric">Body Fabric:</label>
             <input type="text" class="form-control" id="bodyFabricYard" readonly>
-			<label for="sleeveFabric">Sleeve Fabric:</label>
+            <label for="sleeveFabric">Sleeve Fabric:</label>
             <input type="text" class="form-control" id="sleeveFabricYard" readonly>
           </div>
           <button type="button" class="btn btn-primary" onclick="calculateConsumption2()">Calculate Consumption</button>
@@ -274,6 +280,12 @@
 </div>
 
 <script>
+  var unit = "cm"; // Default unit is centimeters (cm)
+
+  function updateUnit() {
+    unit = document.getElementById("unitSelection").value;
+  }
+
   function calculateConsumption2() {
     // Get input values
     var bodyLength = parseFloat(document.getElementById("bodyLength2").value);
@@ -282,33 +294,41 @@
     var armhole = parseFloat(document.getElementById("armhole2").value);
     var fabricWeight = parseFloat(document.getElementById("fabricWeight2").value);
 
- // Calculate Body fabric
-    var bodyFabric = (bodyLength + 6) * (halfChest + 6) ;
-	
-// Calculate Body fabric in Kg
-    var bodyFabricYard = bodyFabric * 2 * fabricWeight * 12 / 10000000 ;
+    // Define allowances based on unit
+    var bodyAllowance = unit === "in" ? 2.362205 : 6;
+    var sleeveAllowance = unit === "in" ? 2.362205 : 6;
 
-// Calculate Sleeve fabric
-    var sleeveFabric = ((sleeveLength + 6) * ((armhole * 2) + 6)) ;
+    // Calculate Body fabric
+    var bodyFabric = (bodyLength + bodyAllowance) * (halfChest + bodyAllowance);
 
-// Calculate Sleeve fabric in Kg
-    var sleeveFabricYard = sleeveFabric * 2 * fabricWeight * 12 / 10000000 ;
+    // Calculate Body fabric in Kg
+    var bodyFabricYard = bodyFabric * 2 * fabricWeight * 12 / (unit === "in" ? 1550000 : 10000000);
 
-// Calculate fabric consumption
-    var fabricConsumption2 = (bodyFabric + sleeveFabric) * 2 * fabricWeight * 12  / 10000000 ;
+    // Calculate Sleeve fabric
+    var sleeveFabric = (sleeveLength + sleeveAllowance) * (armhole * 2);
 
-// Display the result
-    document.getElementById("result2").value = "Total Consumtion: " + fabricConsumption2.toFixed(3) + " kg / Doz.";
-	
-// Display the result
+    // Calculate Sleeve fabric in Kg
+    var sleeveFabricYard = sleeveFabric * 2 * fabricWeight * 12 / (unit === "in" ? 1550000 : 10000000);
+
+    // Calculate fabric consumption
+    var fabricConsumption2 = (bodyFabric + sleeveFabric) * 2 * fabricWeight * 12 / (unit === "in" ? 1550000 : 10000000);
+
+    // Display the result
+    document.getElementById("result2").value = "Total Consumption: " + fabricConsumption2.toFixed(3) + " kg / Doz.";
+
+    // Display the result
     document.getElementById("bodyFabricYard").value = "Body Fabric: " + bodyFabricYard.toFixed(3) + " kg / Doz.";
-	
-// Display the result
+
+    // Display the result
     document.getElementById("sleeveFabricYard").value = "Sleeve Fabric: " + sleeveFabricYard.toFixed(3) + " kg / Doz.";
   }
 </script>
 
- 
+
+
+
+
+
 
 <div class="col-md-6 my-2">
   <div class="box">
@@ -322,7 +342,7 @@
           </div>
           <div>
             <label for="unitSelect">Unit of Measurement:</label>
-            <select class="form-control" id="unitSelect">
+            <select class="form-control" id="unitSelect2">
               <option value="cm">CM</option>
               <option value="inch">Inch</option>
             </select>
@@ -342,21 +362,25 @@
   function calculateArmhole() {
     // Get input values
     var halfChestArm = parseFloat(document.getElementById("halfChestArm").value);
-    var unit = document.getElementById("unitSelect").value;
+    var unit = document.getElementById("unitSelect2").value;
 
     // Calculate Armhole
     var armCalculation;
 
     if (unit === "inch") {
-      armCalculation = (halfChestArm / 2) - 1.5 * 2.54;
+      armCalculation = (halfChestArm / 2) - 1.5;
+      document.getElementById("armHoleresult").value = "Armhole: " + armCalculation.toFixed(3) + " inch";
     } else {
       armCalculation = (halfChestArm / 2) - 3.81;
+      document.getElementById("armHoleresult").value = "Armhole: " + armCalculation.toFixed(3) + " cm";
     }
-
-    // Display the result
-    document.getElementById("armHoleresult").value = "Armhole: " + armCalculation.toFixed(3) + " " + unit;
   }
 </script>
+
+
+
+
+
 
 
 
