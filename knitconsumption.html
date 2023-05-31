@@ -424,13 +424,20 @@
           <label for="bottomRibHeight">Bottom Rib Height:</label>
           <input type="number" class="form-control" id="bottomRibHeight" step="0.01">
 
-          <label for="gsm">GSM (Grams per Square Meter):</label>
-          <input type="number" class="form-control" id="gsm" step="0.01">
+          <label for="bottongsm">GSM (Grams per Square Meter):</label>
+          <input type="number" class="form-control" id="bottomgsm" step="0.01">
+		  
+		  
+		  <label for="unitSelect4">Unit of Measurement:</label>
+          <select class="form-control" id="unitSelect4">
+            <option value="bottomcm">Centimeters</option>
+            <option value="bottominch">Inches</option>
+          </select>
 
           <label for="result4">Fabric Consumption per Piece:</label>
           <input type="text"  class="form-control" id="result4" readonly>
 		  </div>
-		  <button type="button" class="btn btn-primary" onclick="calculateFabricConsumption()">Calculate</button>
+		  <button type="button" class="btn btn-primary" onclick="calculateBottomFabricConsumption()">Calculate</button>
 		  
         </div>
       </div>
@@ -438,14 +445,18 @@
   </div>
 
   <script>
-    function calculateFabricConsumption() {
+    function calculateBottomFabricConsumption() {
       var bottomLength = parseFloat(document.getElementById("bottomLength").value);
       var bottomRibHeight = parseFloat(document.getElementById("bottomRibHeight").value);
-      var gsm = parseFloat(document.getElementById("gsm").value);
+      var bottomgsm = parseFloat(document.getElementById("bottomgsm").value);
+	  
+	  var unit = document.getElementById("unitSelect4").value;
+	  var bottomAdjustment = unit === "bottominch" ? 1.5748031496 : 4;
 
-      var fabricConsumption = ((bottomLength + 4 ) * (bottomRibHeight + 4)) * 2 * gsm / 100000000;
+
+      var bottomFabricConsumption = ((bottomLength + bottomAdjustment ) * (bottomRibHeight + bottomAdjustment)) * 2 * bottomgsm  / (unit === "bottominch" ? 1550000 : 10000000);
       
-      document.getElementById("result4").value = fabricConsumption.toFixed(3) + " kg per piece";
+      document.getElementById("result4").value = bottomFabricConsumption.toFixed(3) + " kg per piece";
     }
   </script>
   
@@ -533,7 +544,7 @@
     var unit = document.getElementById("unitSelect3").value;
     var adjustment = unit === "ribinch" ? 1.5748031496 : 4;
 
-    var CuffConsumption = ((cuffLength * 2) + adjustment) * (cuffHeight + adjustment) * 2 * cuffRibGsm / (unit === "ribinch" ? 1550000 : 10000000);;
+    var CuffConsumption = ((cuffLength * 2) + adjustment) * (cuffHeight + adjustment) * 2 * cuffRibGsm / (unit === "ribinch" ? 1550000 : 10000000);
 
     document.getElementById("result5").value = CuffConsumption.toFixed(3) + " kg per piece";
   }
