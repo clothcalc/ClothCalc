@@ -411,9 +411,133 @@
 </script>
 
 
+<div class="col-md-6 my-2">
+    <div class="box">
+      <div class="box-content">
+        <div class="text-center">
+          <h4>Bottom Rib Consumption</h4>
+		   <div class="form-group">
+		 
+          <label for="bottomLength">Bottom Length:</label>
+          <input type="number"  class="form-control" id="bottomLength" step="0.01">
+
+          <label for="bottomRibHeight">Bottom Rib Height:</label>
+          <input type="number" class="form-control" id="bottomRibHeight" step="0.01">
+
+          <label for="gsm">GSM (Grams per Square Meter):</label>
+          <input type="number" class="form-control" id="gsm" step="0.01">
+
+          <label for="result4">Fabric Consumption per Piece:</label>
+          <input type="text"  class="form-control" id="result4" readonly>
+		  </div>
+		  <button type="button" class="btn btn-primary" onclick="calculateFabricConsumption()">Calculate</button>
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calculateFabricConsumption() {
+      var bottomLength = parseFloat(document.getElementById("bottomLength").value);
+      var bottomRibHeight = parseFloat(document.getElementById("bottomRibHeight").value);
+      var gsm = parseFloat(document.getElementById("gsm").value);
+
+      var fabricConsumption = ((bottomLength + 4 ) * (bottomRibHeight + 4)) * 2 * gsm / 100000000;
+      
+      document.getElementById("result4").value = fabricConsumption.toFixed(3) + " kg per piece";
+    }
+  </script>
+  
+  
+<!--  
+
+<div class="col-md-6 my-2">
+    <div class="box">
+      <div class="box-content">
+        <div class="text-center">
+          <h4>Cuff Rib Consumption</h4>
+		   <div class="form-group">
+		 
+          <label for="bottomLength">Half Cuff Length/ Half Sleeve open:</label>
+          <input type="number"  class="form-control" id="cuffLength" step="0.01">
+
+          <label for="bottomRibHeight">Cuff Height / Sleeve Rib Height:</label>
+          <input type="number" class="form-control" id="cuffHeight" step="0.01">
+
+          <label for="gsm">GSM (Grams per Square Meter):</label>
+          <input type="number" class="form-control" id="cuffRibGsm" step="0.01">
+
+          <label for="result5">Fabric Consumption per Piece:</label>
+          <input type="text"  class="form-control" id="result5" readonly>
+		  </div>
+		  <button type="button" class="btn btn-primary" onclick="calculateCuffConsumption()">Calculate</button>
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calculateCuffConsumption() {
+      var cuffLength = parseFloat(document.getElementById("cuffLength").value);
+      var cuffHeight = parseFloat(document.getElementById("cuffHeight").value);
+      var cuffRibGsm = parseFloat(document.getElementById("cuffRibGsm").value);
+
+      var CuffConsumption = ((cuffLength * 2) + 4 ) * (cuffHeight + 4) * 2 * cuffRibGsm / 100000000;
+      
+      document.getElementById("result5").value = CuffConsumption.toFixed(3) + " kg per piece";
+    }
+  </script>
+
+-->
 
 
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        <h4>Cuff Rib Consumption</h4>
+        <div class="form-group">
+          <label for="bottomLength">Half Cuff Length/ Half Sleeve open:</label>
+          <input type="number" class="form-control" id="cuffLength" step="0.01">
 
+          <label for="bottomRibHeight">Cuff Height / Sleeve Rib Height:</label>
+          <input type="number" class="form-control" id="cuffHeight" step="0.01">
+
+          <label for="gsm">GSM (Grams per Square Meter):</label>
+          <input type="number" class="form-control" id="cuffRibGsm" step="0.01">
+		  
+		  <label for="unitSelect3">Unit of Measurement:</label>
+          <select class="form-control" id="unitSelect3">
+            <option value="ribcm">Centimeters</option>
+            <option value="ribinch">Inches</option>
+          </select>
+
+
+          <label for="result5">Fabric Consumption per Piece:</label>
+          <input type="text" class="form-control" id="result5" readonly>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="calculateCuffConsumption()">Calculate</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function calculateCuffConsumption() {
+    var cuffLength = parseFloat(document.getElementById("cuffLength").value);
+    var cuffHeight = parseFloat(document.getElementById("cuffHeight").value);
+    var cuffRibGsm = parseFloat(document.getElementById("cuffRibGsm").value);
+
+    var unit = document.getElementById("unitSelect3").value;
+    var adjustment = unit === "ribinch" ? 1.5748031496 : 4;
+
+    var CuffConsumption = ((cuffLength * 2) + adjustment) * (cuffHeight + adjustment) * 2 * cuffRibGsm / (unit === "ribinch" ? 1550000 : 10000000);;
+
+    document.getElementById("result5").value = CuffConsumption.toFixed(3) + " kg per piece";
+  }
+</script>
 
 
 

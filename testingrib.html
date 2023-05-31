@@ -1,0 +1,34 @@
+<div class="col-md-6 my-2">
+    <div class="box">
+      <div class="box-content">
+        <div class="text-center">
+          <h4>Bottom Rib Consumption</h4>
+          <label for="bottomLength">Bottom Length:</label>
+          <input type="number" id="bottomLength" step="0.01"><br>
+
+          <label for="bottomRibHeight">Bottom Rib Height:</label>
+          <input type="number" id="bottomRibHeight" step="0.01"><br>
+
+          <label for="gsm">GSM (Grams per Square Meter):</label>
+          <input type="number" id="gsm" step="0.01"><br>
+
+          <button onclick="calculateFabricConsumption()">Calculate</button><br>
+
+          <label for="result">Fabric Consumption per Piece:</label>
+          <input type="text" id="result" readonly>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calculateFabricConsumption() {
+      var bottomLength = parseFloat(document.getElementById("bottomLength").value);
+      var bottomRibHeight = parseFloat(document.getElementById("bottomRibHeight").value);
+      var gsm = parseFloat(document.getElementById("gsm").value);
+
+      var fabricConsumption = ((bottomLength + 4 ) * (bottomRibHeight + 4)) * 2 * gsm / 100000000;
+      
+      document.getElementById("result").value = fabricConsumption.toFixed(3) + " kg per piece";
+    }
+  </script>
