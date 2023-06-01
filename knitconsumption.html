@@ -253,25 +253,25 @@
     var bodyFabric = (bodyLength + bodyAllowance) * (halfChest + chestAllowance);
 
     // Calculate Body fabric in Kg
-    var bodyFabricYard = bodyFabric * 2 * fabricWeight * 12 / (unit === "in" ? 1550000 : 10000000);
+    var bodyFabricYard = bodyFabric * 2 * fabricWeight / (unit === "in" ? 1550000 : 10000000);
 
     // Calculate Sleeve fabric
     var sleeveFabric = (sleeveLength + sleeveAllowance) * (armhole * 2);
 
     // Calculate Sleeve fabric in Kg
-    var sleeveFabricYard = sleeveFabric * 2 * fabricWeight * 12 / (unit === "in" ? 1550000 : 10000000);
+    var sleeveFabricYard = sleeveFabric * 2 * fabricWeight / (unit === "in" ? 1550000 : 10000000);
 
     // Calculate fabric consumption
-    var fabricConsumption2 = (bodyFabric + sleeveFabric) * 2 * fabricWeight * 12 / (unit === "in" ? 1550000 : 10000000);
+    var fabricConsumption2 = (bodyFabric + sleeveFabric) * 2 * fabricWeight / (unit === "in" ? 1550000 : 10000000);
 
     // Display the result
-    document.getElementById("result2").value = "Total Consumption: " + fabricConsumption2.toFixed(3) + " kg / Doz.";
+    document.getElementById("result2").value = "Total Consumption: " + fabricConsumption2.toFixed(3) + " kg per pc.";
 
     // Display the result
-    document.getElementById("bodyFabricYard").value = "Body Fabric: " + bodyFabricYard.toFixed(3) + " kg / Doz.";
+    document.getElementById("bodyFabricYard").value = "Body Fabric: " + bodyFabricYard.toFixed(3) + " kg per pc.";
 
     // Display the result
-    document.getElementById("sleeveFabricYard").value = "Sleeve Fabric: " + sleeveFabricYard.toFixed(3) + " kg / Doz.";
+    document.getElementById("sleeveFabricYard").value = "Sleeve Fabric: " + sleeveFabricYard.toFixed(3) + " kg per pc.";
   }
 </script>
 
@@ -286,7 +286,7 @@
 		<b>Consumtion Formula in Inch:</b><br> 
 		(Body Length + Allowance X Chest + Allownce) + (Sleeve Length + Allowance X (Half Armhole X 2)) X 2 X Fabric Weight / 1550000
 		
-		<br><br>NB: 10 and 4 is here allownce.
+		<br><br>NB: 6 and 4 is here allownce.
 		<br><br>Comment: Consumption with Armhole Measurement is more Acurate.
 		</p>
       </div>
@@ -550,7 +550,51 @@
   }
 </script>
 
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        <h4>Hood Consumption</h4>
+        <div class="form-group">
+          <label for="hoodLength">Hood Length:</label>
+          <input type="number" class="form-control" id="cuffLength" step="0.01">
 
+          <label for="bottomRibHeight">Hood Height</label>
+          <input type="number" class="form-control" id="cuffHeight" step="0.01">
+
+          <label for="gsm">GSM (Grams per Square Meter):</label>
+          <input type="number" class="form-control" id="cuffRibGsm" step="0.01">
+		  
+		  <label for="unitSelect3">Unit of Measurement:</label>
+          <select class="form-control" id="unitSelect3">
+            <option value="ribcm">Centimeters</option>
+            <option value="ribinch">Inches</option>
+          </select>
+
+
+          <label for="result6">Fabric Consumption per Piece:</label>
+          <input type="text" class="form-control" id="result5" readonly>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="calculateCuffConsumption()">Calculate</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function calculateCuffConsumption() {
+    var cuffLength = parseFloat(document.getElementById("cuffLength").value);
+    var cuffHeight = parseFloat(document.getElementById("cuffHeight").value);
+    var cuffRibGsm = parseFloat(document.getElementById("cuffRibGsm").value);
+
+    var unit = document.getElementById("unitSelect3").value;
+    var adjustment = unit === "ribinch" ? 1.5748031496 : 4;
+
+    var CuffConsumption = ((cuffLength * 2) + adjustment) * (cuffHeight + adjustment) * 2 * cuffRibGsm / (unit === "ribinch" ? 1550000 : 10000000);
+
+    document.getElementById("result6").value = CuffConsumption.toFixed(3) + " kg per piece";
+  }
+</script>
 
 
   </div>
