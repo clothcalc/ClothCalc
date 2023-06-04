@@ -1,86 +1,349 @@
-<script>
-    function calculateFabric() {
-        var conversionType = document.getElementById("conversion-type").value;
-        var measurementType = document.getElementById("measurement-type").value;
-        var weight = parseFloat(document.getElementById("weight").value);
-        var gsm = parseFloat(document.getElementById("gsm").value);
-        var width = parseFloat(document.getElementById("width").value);
-        var length = parseFloat(document.getElementById("length").value);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Merchandising Calculation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="vendors/owl-carousel/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="vendors/owl-carousel/css/owl.theme.default.css">
+  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="vendors/aos/css/aos.css">
+  <link rel="stylesheet" href="css/style.min.css">
+  
+<style>
 
-        var fabricLengthMeters;
-        var fabricLengthYards;
-
-        if (conversionType === "kgToYard") {
-            fabricLengthMeters = (weight * 1000) / (gsm * (measurementType === "cm" ? width / 100 : width * 0.0254));
-            fabricLengthYards = fabricLengthMeters * 1.09361;
-        } else if (conversionType === "yardToKg") {
-            var widthMeters = measurementType === "cm" ? width / 100 : width * 0.0254;
-            var lengthMeters = length * 0.9144;
-            fabricLengthMeters = lengthMeters;
-            fabricLengthYards = length;
-            weight = (fabricLengthMeters * gsm * widthMeters) / 1000;
-        } else if (conversionType === "kgToMeter") {
-            fabricLengthMeters = (weight * 1000) / (gsm * (measurementType === "cm" ? width / 100 : width * 0.0254));
-            fabricLengthYards = fabricLengthMeters * 1;
-        } else if (conversionType === "meterToKg") {
-            var widthMeters = measurementType === "cm" ? width / 100 : width * 0.0254;
-            var lengthMeters = length;
-            fabricLengthMeters = lengthMeters;
-            fabricLengthYards = lengthMeters * 1.09361;
-            weight = (fabricLengthMeters * gsm * widthMeters) / 1000;
-        } else if (conversionType === "meterToYard") {
-            fabricLengthMeters = length;
-            fabricLengthYards = length * 1.09361;
-        } else if (conversionType === "yardToMeter") {
-            fabricLengthMeters = length * 0.9144;
-            fabricLengthYards = length;
-        }
-
-        if (conversionType === "kgToYard") {
-    document.getElementById("fabric-length-yards").innerHTML = "Fabric Length: " + fabricLengthYards.toFixed(2) + " Yards";
-} else if (conversionType === "kgToMeter") {
-    document.getElementById("fabric-length-meters").innerHTML = "Fabric Length: " + fabricLengthMeters.toFixed(2) + " Meters";
+.containerfive {
+  justify-content: space-between;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
 }
-		
-document.getElementById("fabric-weight").innerHTML = "Fabric Weight: " + weight.toFixed(3) + " Kg";
+.box {
+  --c: #000000; /* the border color */
+  --b: 2px;    /* the border thickness*/
+  --g: 1px;     /* the gap on hover */
+  padding: 20px;
+  border-radius: 5px;
+    height: 100%;
+  padding: calc(var(--g) + var(--b));
+  --_g: #0000 25%,var(--c) 0;
+  background: 
+    conic-gradient(from 180deg at top    var(--b) right var(--b),var(--_g))
+     var(--_i,200%) 0  /200% var(--_i,var(--b))  no-repeat,
+    conic-gradient(            at bottom var(--b) left  var(--b),var(--_g))
+     0   var(--_i,200%)/var(--_i,var(--b)) 200%  no-repeat;
+  transition: .3s, background-position .3s .3s;
 
+}
+.box:hover {
+  --_i: 100%;
+  transition: .2s, background-size .2s .2s;
+}
+
+.box {
+    background-color: #e5e5e5; /* Replace with your desired background color */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 100%;
+  }
+  
+  /* Optional: Adjust the height of the box based on the content inside */
+  .box-content {
+    height: calc(100% - 40px);
+    /* Replace 40px with the sum of padding and margin values if you adjust the padding or margin of the box */
+    /* Add any additional styles or customization for the box here */
+  }
+
+
+button {
+  display: block;
+  margin: 0 auto;
+  background-color: darkgreen;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#result {
+    display: block;
+    text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+#fabric-length-yards1 {
+    display: block;
+	text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+#fabric-length-yards2 {
+    display: block;
+    text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+.hidden-result {
+    display: none;
+  }
+  
+
+  .result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+
+</style>	 
+
+</head>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
+  <header id="header-section">
+  <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+    <div class="container">
+      <div class="navbar-brand-wrapper d-flex w-100">
+        <img src="images/Group2.svg" alt="">
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="mdi mdi-menu navbar-toggler-icon"></span>
+        </button> 
+      </div>
+      <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
+        <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
+          <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
+            <div class="navbar-collapse-logo">
+              <img src="images/Group2.svg" alt="">
+            </div>
+            <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#header-section">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#features-section">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="calculatorDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              All Calculators
+            </a>
+            <div class="dropdown-menu" aria-labelledby="calculatorDropdown">
+              <a class="dropdown-item" href="KgYardKg">Fabric Converter</a>
+              <a class="dropdown-item" href="PriceConverter">Fabric Price Converter</a>
+              <a class="dropdown-item" href="gsmcalculate">GSM Converter</a>
+              <a class="dropdown-item" href="unitconverter">Unit Converter</a>
+              <a class="dropdown-item" href="cartoncalc">Carton Calculator</a>
+              <a class="dropdown-item" href="zippercalc">Zipper Calculation</a>
+              <!-- Add more dropdown items as needed -->
+            </div>
+          </li>
+          <li class="nav-item btn-contact-us pl-4 pl-lg-0">
+            <!-- Add a button or link for contact us if desired -->
+          </li>
+        </ul>
+      </div>
+    </div> 
+  </nav>   
+</header>
+
+
+<div class="container">
+	<div class="containerfive">
+	<h1>Fabric Converter</h1>
+</div>
+
+
+<div class="container my-3">
+  <div class="row">
+    <div class="col-md-6 my-2">
+      <div class="box">
+        <div class="box-content">
+          <div class="d-flex flex-column justify-content-between h-100">
+            <div class="text-center">
+              <div class="form-group">
+                <label for="conversion-type">Conversion Type:</label>
+                <select id="conversion-type" class="form-control">
+                  <option value="kgToYard">KG to Yard</option>
+                  <option value="yardToKg">Yard to KG</option>
+                  <option value="kgToMeter">KG to Meter</option>
+                  <option value="meterToKg">Meter to KG</option>
+                  <option value="meterToYard">Meter to Yard</option>
+                  <option value="yardToMeter">Yard to Meter</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="measurement-type">Measurement Type:</label>
+                <select id="measurement-type" class="form-control">
+                  <option value="cm">CM</option>
+                  <option value="inch">Inch</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="weight">Weight:</label>
+                <input type="number" id="weight" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="gsm">GSM:</label>
+                <input type="number" id="gsm" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="width">Width:</label>
+                <input type="number" id="width" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="length">Length:</label>
+                <input type="number" id="length" class="form-control">
+              </div>
+
+
+<div class="result-container">
+              <span id="fabric-length-yards"></span>
+              <span id="fabric-length-meters"></span>
+              <span id="fabric-weight"></span>
+            </div>
+<div class="form-group">
+              <button type="button" onclick="calculateFabric()" class="btn btn-primary">Calculate</button>
+            </div>
+            
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function calculateFabric() {
+    var conversionType = document.getElementById("conversion-type").value;
+    var measurementType = document.getElementById("measurement-type").value;
+    var weight = parseFloat(document.getElementById("weight").value);
+    var gsm = parseFloat(document.getElementById("gsm").value);
+    var width = parseFloat(document.getElementById("width").value);
+    var length = parseFloat(document.getElementById("length").value);
+
+    var fabricLengthMeters;
+    var fabricLengthYards;
+    var fabricWeight;
+
+    if (conversionType === "kgToYard") {
+      fabricLengthMeters = (weight * 1000) / (gsm * (measurementType === "cm" ? width / 100 : width * 0.0254));
+      fabricLengthYards = fabricLengthMeters * 1.09361;
+      document.getElementById("fabric-length-yards").textContent = "Fabric Length: " + fabricLengthYards.toFixed(2) + " Yards";
+      document.getElementById("fabric-length-meters").textContent = "";
+      document.getElementById("fabric-weight").textContent = "";
+    } else if (conversionType === "yardToKg") {
+      var widthMeters = measurementType === "cm" ? width / 100 : width * 0.0254;
+      var lengthMeters = length * 0.9144;
+      fabricLengthMeters = lengthMeters;
+      fabricLengthYards = length;
+      fabricWeight = (fabricLengthMeters * gsm * widthMeters) / 1000;
+      document.getElementById("fabric-length-yards").textContent = "";
+      document.getElementById("fabric-length-meters").textContent = "";
+      document.getElementById("fabric-weight").textContent = "Fabric Weight: " + fabricWeight.toFixed(2) + " kg";
+    } else if (conversionType === "kgToMeter") {
+      fabricLengthMeters = (weight * 1000) / (gsm * (measurementType === "cm" ? width / 100 : width * 0.0254));
+      fabricLengthYards = fabricLengthMeters * 1;
+      document.getElementById("fabric-length-yards").textContent = "";
+      document.getElementById("fabric-length-meters").textContent = "Fabric Length: " + fabricLengthMeters.toFixed(2) + " Meters";
+      document.getElementById("fabric-weight").textContent = "";
+    } else if (conversionType === "meterToKg") {
+      var widthMeters = measurementType === "cm" ? width / 100 : width * 0.0254;
+      var lengthMeters = length;
+      fabricLengthMeters = lengthMeters;
+      fabricLengthYards = lengthMeters * 1.09361;
+      fabricWeight = (fabricLengthMeters * gsm * widthMeters) / 1000;
+      document.getElementById("fabric-length-yards").textContent = "";
+      document.getElementById("fabric-length-meters").textContent = "";
+      document.getElementById("fabric-weight").textContent = "Fabric Weight: " + fabricWeight.toFixed(2) + " kg";
+    } else if (conversionType === "meterToYard") {
+      fabricLengthMeters = length;
+      fabricLengthYards = length * 1.09361;
+      document.getElementById("fabric-length-yards").textContent = "Fabric Length: " + fabricLengthYards.toFixed(2) + " Yards";
+      document.getElementById("fabric-length-meters").textContent = "";
+      document.getElementById("fabric-weight").textContent = "";
+    } else if (conversionType === "yardToMeter") {
+      fabricLengthMeters = length * 0.9144;
+      fabricLengthYards = length;
+      document.getElementById("fabric-length-yards").textContent = "";
+      document.getElementById("fabric-length-meters").textContent = "Fabric Length: " + fabricLengthMeters.toFixed(2) + " Meters";
+      document.getElementById("fabric-weight").textContent = "";
+    } else {
+      // Handle invalid conversion type here
+      alert("Invalid conversion type");
+      document.getElementById("fabric-length-yards").textContent = "";
+      document.getElementById("fabric-length-meters").textContent = "";
+      document.getElementById("fabric-weight").textContent = "";
     }
+  }
 </script>
 
-<!-- HTML Form -->
-<form>
-    <label for="conversion-type">Conversion Type:</label>
-    <select id="conversion-type">
-        <option value="kgToYard">KG to Yard</option>
-        <option value="yardToKg">Yard to KG</option>
-        <option value="kgToMeter">KG to Meter</option>
-        <option value="meterToKg">Meter to KG</option>
-        <option value="meterToYard">Meter to Yard</option>
-        <option value="yardToMeter">Yard to Meter</option>
-    </select>
-    <br>
-    <label for="measurement-type">Measurement Type:</label>
-    <select id="measurement-type">
-        <option value="cm">CM</option>
-        <option value="inch">Inch</option>
-    </select>
-    <br>
-    <label for="weight">Weight:</label>
-    <input type="number" id="weight">
-    <br>
-    <label for="gsm">GSM:</label>
-    <input type="number" id="gsm">
-    <br>
-    <label for="width">Width:</label>
-    <input type="number" id="width">
-    <br>
-    <label for="length">Length:</label>
-    <input type="number" id="length">
-    <br>
-    <button type="button" onclick="calculateFabric()">Calculate</button>
-</form>
 
-<!-- Result Display -->
-<p id="fabric-length-yards"></p>
-<p id="fabric-length-meters"></p>
-<p id="fabric-weight"></p>
+
+
+
+
+	 <section class="contact-details" id="contact-details-section">
+        <div class="row text-center text-md-left">
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <img src="images/Group2.svg" alt="" class="pb-2">
+            <div class="pt-2">
+               <p class="text-muted m-0">ClothCalc@gmail.com</p>
+              <p class="text-muted m-0">+88 01736 899297</p>
+            </div>         
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <h5 class="pb-2">Get in Touch</h5>
+            <p class="text-muted">Don’t miss any updates of our new templates and extensions.!</p>
+            <form>
+              <input type="text" class="form-control" id="Email" placeholder="Email id">
+            </form>
+            <div class="pt-3">
+              <button class="btn btn-dark">Subscribe</button>
+            </div>   
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <h5 class="pb-2">Our Guidelines</h5>
+            <a href="#"><p class="m-0 pb-2">Terms</p></a>   
+            <a href="#"><p class="m-0 pt-1 pb-2">Privacy policy</p></a> 
+            <a href="#"><p class="m-0 pt-1 pb-2">Cookie Policy</p></a> 
+            <a href="#"><p class="m-0 pt-1">Discover</p></a> 
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+              <h5 class="pb-2">Our address</h5>
+              <p class="text-muted">518 Schmeler Neck<br>Bartlett. Illinois</p>
+              <div class="d-flex justify-content-center justify-content-md-start">
+                <a href="#"><span class="mdi mdi-facebook"></span></a>
+                <a href="#"><span class="mdi mdi-twitter"></span></a>
+                <a href="#"><span class="mdi mdi-instagram"></span></a>
+                <a href="#"><span class="mdi mdi-linkedin"></span></a>
+              </div>
+          </div>
+        </div>  
+      </section>
+  </div>
+  <script src="vendors/jquery/jquery.min.js"></script>
+  <script src="vendors/bootstrap/bootstrap.min.js"></script>
+  <script src="vendors/owl-carousel/js/owl.carousel.min.js"></script>
+  <script src="vendors/aos/js/aos.js"></script>
+  <script src="js/landingpage.js"></script>
+</body>
+</html>
