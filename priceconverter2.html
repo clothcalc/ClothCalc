@@ -270,45 +270,62 @@ button {
 
 
 <div class="col-md-6 my-2">
-      <div class="box">
-	   <div class="box-content">
-        <div class="d-flex flex-column justify-content-between h-100">
-          <div class="text-center">
-		   <div class="form-group">
-	<label for="price-per-kg1">Price per Kg:</label>
-	<input type="number" id="price-per-kg1" name="price-per-kg1" class="form-control">
-	<label for="fabrics-yards1">Fabrics Yards converted from kg:</label>
-	<input type="number" id="fabrics-yards1" name="fabrics-yards1" class="form-control">
-			</div>
-	<button id="calculate-price-button1" class="btn btn-primary">Calculate Price</button>
-	<div id="price-per-yards1" class="mt-3"></div>
-			</div>
-
-	</div>
+  <div class="box">
+    <div class="box-content">
+      <div class="d-flex flex-column justify-content-between h-100">
+        <div class="text-center">
+          <div class="form-group">
+            <label for="price-per-kg1">Price per Kg:</label>
+            <input type="number" id="price-per-kg1" name="price-per-kg1" class="form-control">
+            <label for="fabrics-yards1">Fabrics Yards converted from kg:</label>
+            <div class="input-group">
+              <input type="number" id="fabrics-yards1" name="fabrics-yards1" class="form-control">
+              <select id="unit-select1" class="form-select">
+                <option value="yard">Yard</option>
+                <option value="meter">Meter</option>
+              </select>
+            </div>
+          </div>
+          <button id="calculate-price-button1" class="btn btn-primary">Calculate Price</button>
+          <div id="price-per-yards1" class="mt-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
 
+<script>
+  var pricePerKg1Input = document.getElementById("price-per-kg1");
+  var fabricsYards1Input = document.getElementById("fabrics-yards1");
+  var unitSelect1 = document.getElementById("unit-select1");
+  var pricePerYards1Span = document.getElementById("price-per-yards1");
+  var calculatePriceButton1 = document.getElementById("calculate-price-button1");
 
-  <script>
-		var pricePerKg1Input = document.getElementById("price-per-kg1");
-		var fabricsYards1Input = document.getElementById("fabrics-yards1");
-		var pricePerYards1Span = document.getElementById("price-per-yards1");
-		var calculatePriceButton1 = document.getElementById("calculate-price-button1");
+  calculatePriceButton1.addEventListener("click", calculatePrice1);
 
-		calculatePriceButton1.addEventListener("click", calculatePrice1);
+  function calculatePrice1() {
+    var pricePerKg1 = parseFloat(pricePerKg1Input.value);
+    var fabricsYards1 = parseFloat(fabricsYards1Input.value);
+    var unit1 = unitSelect1.value;
+    var pricePerYards1 = pricePerKg1 / fabricsYards1;
+    var pricePerMeters1 = pricePerYards1 * 0.9144; // Conversion from yards to meters
 
-		function calculatePrice1() {
-			var pricePerKg1 = parseFloat(pricePerKg1Input.value);
-			var fabricsYards1 = parseFloat(fabricsYards1Input.value);
-			var pricePerYards1 = pricePerKg1 / fabricsYards1;
-			if (!isNaN(pricePerYards1)) {
-				pricePerYards1Span.textContent = "Price per yard: $" + pricePerYards1.toFixed(2);
-			} else {
-				pricePerYards1Span.textContent = "";
-			}
-		}
-  </script>
+    if (unit1 === "yard") {
+      if (!isNaN(pricePerYards1)) {
+        pricePerYards1Span.textContent = "Price per yard: $" + pricePerYards1.toFixed(2);
+      } else {
+        pricePerYards1Span.textContent = "";
+      }
+    } else if (unit1 === "meter") {
+      if (!isNaN(pricePerMeters1)) {
+        pricePerYards1Span.textContent = "Price per meter: $" + pricePerMeters1.toFixed(2);
+      } else {
+        pricePerYards1Span.textContent = "";
+      }
+    }
+  }
+</script>
+
 
 
 
@@ -319,12 +336,12 @@ button {
           <div class="text-center">
  <h4>Convert Price from KG to Yards</h4>
  <br>
-  <b>Formula: 
-  <br>Price per Yard=(KG price/Converted Fabric Yards)</b>
-  
-  <p>If you convert the fabric from kg to yards via below link then you can input directly kg price & converted fabric yards and get Price Per Yard. </p>
+  <p class="text-left"><b>Formula: </b>
+  <br>Price per Yard/Meter= KG price/Converted Fabric (Yards/Meters)
+  </p>
+  <p class="text-left">If you convert the fabric from kg to yards or meters via below link then you can input directly kg price & converted fabric yards/meters and get Price Per Yard/Meter. </p>
 	
-	<p><a class="btn btn-primary" href="KgYardKg">KG to Yards converter</a></p>
+	<p><a class="btn btn-primary" href="fabricconverter">Fabric Converter</a></p>
 
 </div>
       </div>
