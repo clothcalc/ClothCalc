@@ -1,58 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>Fabric Price Conversion</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zipper Calculation</title>
-
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="vendors/owl-carousel/css/owl.carousel.min.css">
   <link rel="stylesheet" href="vendors/owl-carousel/css/owl.theme.default.css">
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="vendors/aos/css/aos.css">
   <link rel="stylesheet" href="css/style.min.css">
-<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
-  <header id="header-section">
-    <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
-    <div class="container">
-      <div class="navbar-brand-wrapper d-flex w-100">
-        <img src="images/Group2.svg" alt="">
-        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="mdi mdi-menu navbar-toggler-icon"></span>
-        </button> 
-      </div>
-      <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
-        <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
-          <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
-            <div class="navbar-collapse-logo">
-              <img src="images/Group2.svg" alt="">
-            </div>
-            <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
-            </button>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://clothcalc.github.io/ClothCalc#header-section">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://clothcalc.github.io/ClothCalc#features-section">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://clothcalc.github.io/ClothCalc#digital-marketing-section">Blog</a>  
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://clothcalc.github.io/ClothCalc#feedback-section">Testimonials</a>
-          </li>
-          <li class="nav-item btn-contact-us pl-4 pl-lg-0">
-            <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Contact Us</button>
-          </li>
-        </ul>
-      </div>
-    </div> 
-    </nav>
-  <style>
+  
+<style>
 
-		
 .containerfive {
   justify-content: space-between;
   padding: 20px;
@@ -60,8 +20,6 @@
   margin-bottom: 20px;
   border-radius: 10px;
 }
-
-
 .box {
   --c: #000000; /* the border color */
   --b: 2px;    /* the border thickness*/
@@ -84,7 +42,6 @@
   transition: .2s, background-size .2s .2s;
 }
 
-
 .box {
     background-color: #e5e5e5; /* Replace with your desired background color */
     padding: 20px;
@@ -101,8 +58,106 @@
   }
 
 
-</style>	
+button {
+  display: block;
+  margin: 0 auto;
+  background-color: darkgreen;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#result {
+    display: block;
+    text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+#fabric-length-yards1 {
+    display: block;
+	text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+#fabric-length-yards2 {
+    display: block;
+    text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+.hidden-result {
+    display: none;
+  }
+  
+
+  .result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+
+</style>	 
+
 </head>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
+  <header id="header-section">
+  <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+    <div class="container">
+      <div class="navbar-brand-wrapper d-flex w-100">
+        <img src="images/Group2.svg" alt="">
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="mdi mdi-menu navbar-toggler-icon"></span>
+        </button> 
+      </div>
+      <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
+        <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
+          <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
+            <div class="navbar-collapse-logo">
+              <img src="images/Group2.svg" alt="">
+            </div>
+            <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#features-section">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="calculatorDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              All Calculators
+            </a>
+            <div class="dropdown-menu" aria-labelledby="calculatorDropdown">
+              <a class="dropdown-item" href="KgYardKg">Fabric Converter</a>
+              <a class="dropdown-item" href="PriceConverter">Fabric Price Converter</a>
+              <a class="dropdown-item" href="gsmcalculate">GSM Converter</a>
+              <a class="dropdown-item" href="unitconverter">Unit Converter</a>
+              <a class="dropdown-item" href="cartoncalc">Carton Calculator</a>
+              <a class="dropdown-item" href="zippercalc">Zipper Calculation</a>
+              <!-- Add more dropdown items as needed -->
+            </div>
+          </li>
+          <li class="nav-item btn-contact-us pl-4 pl-lg-0">
+            <!-- Add a button or link for contact us if desired -->
+          </li>
+        </ul>
+      </div>
+    </div> 
+  </nav>   
+</header>
 
 <div class="container">
 
