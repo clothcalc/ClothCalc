@@ -113,7 +113,7 @@
 
 <div class="container my-3">
   <div class="row">
-  
+<!--  
     <div class="col-md-6 my-2">
         <div class="box">
           <div class="box-content">
@@ -176,6 +176,108 @@
         </div>
     </div>
 
+-->
+
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        		  <h4>CBM Calculation from CM</h4>
+			  
+			  <p class="text-left"><b>Formula:</b><br>CBM = (length * width * height * Qty) / 1000000
+
+<b>Explanation:</b>
+<br>
+    * The CBM (Cubic Meter) is calculated by multiplying the length, width, height, and carton quantity.
+    <br>* The result is divided by 1000000 to convert from cubic centimeters to cubic meters.</p>
+		  <h4>CBF Calculation from Inch</h4>
+			  <p class="text-left"><b>Formula:</b><br>CBF = (length * width * height * Qty) / 1728
+
+				<br><b>Explanation:</b><br>
+
+    * The CBF (Cubic Foot) is calculated by multiplying the length in inches, width in inches, height in inches, and carton quantity.<br>
+    * The result is divided by 1728 to convert from cubic inches to cubic feet.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="d-flex flex-column justify-content-between h-100">
+        <div class="text-center">
+          <div class="form-group">
+		  <h4>CBM & CBF Calculation</h4>
+
+		  
+            <label for="measurementType">Select Measurement Type:</label>
+            <select id="measurementType" class="form-control">
+              <option value="cm">CM</option>
+              <option value="inch">Inch</option>
+            </select>
+
+
+
+            <label for="length">Length:</label>
+            <input type="number" id="length" step="0.01" class="form-control">
+
+         
+
+            <label for="width">Width:</label>
+            <input type="number" id="width" step="0.01" class="form-control">
+
+          
+
+            <label for="height">Height:</label>
+            <input type="number" id="height" step="0.01" class="form-control">
+
+			<label for="cartonQty">Carton Quantity:</label>
+			<input type="number" id="cartonQty" class="form-control">
+</div>
+            <button class="btn btn-primary" onclick="calculate()">Calculate</button>
+
+
+            <p id="result"></p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function calculate() {
+    const measurementType = document.getElementById("measurementType").value;
+    const length = parseFloat(document.getElementById("length").value);
+    const width = parseFloat(document.getElementById("width").value);
+    const height = parseFloat(document.getElementById("height").value);
+	const cartonQty = parseFloat(document.getElementById("cartonQty").value);
+
+    if (measurementType === "cm") {
+      if (length && width && height) {
+        const cbm = (length * width * height * cartonQty) / 1000000;
+        document.getElementById("result").innerHTML = "CBM: " + cbm.toFixed(3);
+      } else {
+        document.getElementById("result").innerHTML = "Please enter all dimensions.";
+      }
+    } else if (measurementType === "inch") {
+      const lengthInches = parseFloat(document.getElementById("length").value);
+      const widthInches = parseFloat(document.getElementById("width").value);
+      const heightInches = parseFloat(document.getElementById("height").value);
+
+      if (lengthInches && widthInches && heightInches) {
+        const cbf = (lengthInches * widthInches * heightInches * cartonQty) / 1728;
+        document.getElementById("result").innerHTML = "CBF: " + cbf.toFixed(3);
+      } else {
+        document.getElementById("result").innerHTML = "Please enter all dimensions.";
+      }
+    }
+  }
+</script>
+
 
 <div class="col-md-6 my-2">
   <div class="box">
@@ -193,6 +295,7 @@
     </div>
   </div>
 </div>
+
 
 <div class="col-md-6 my-2">
         <div class="box">
