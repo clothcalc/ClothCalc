@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Merchandising Calculation</title>
+  <title>Fabric Conversion</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -162,9 +162,8 @@ button {
 
 <div class="container">
 	<div class="containerfive">
-	<h1>Fabric Converter</h1>
+	<h1>Fabric Conversion</h1>
 </div>
-
 
 <div class="container my-3">
   <div class="row">
@@ -175,10 +174,10 @@ button {
             <div class="text-center">
               <div class="form-group">
                 <label for="conversion-type">Conversion Type:</label>
-                <select id="conversion-type" class="form-control">
+                <select id="conversion-type" class="form-control" onchange="toggleLengthInput()">
                   <option value="kgToYard">KG to Yard</option>
-                  <option value="yardToKg">Yard to KG</option>
                   <option value="kgToMeter">KG to Meter</option>
+				  <option value="yardToKg">Yard to KG</option>
                   <option value="meterToKg">Meter to KG</option>
                   <option value="meterToYard">Meter to Yard</option>
                   <option value="yardToMeter">Yard to Meter</option>
@@ -214,16 +213,15 @@ button {
               </div>
 
 
-<div class="result-container">
-              <span id="fabric-length-yards"></span>
-              <span id="fabric-length-meters"></span>
-              <span id="fabric-weight"></span>
+              <div class="result-container">
+                <span id="fabric-length-yards"></span>
+                <span id="fabric-length-meters"></span>
+                <span id="fabric-weight"></span>
+              </div>
+              <div class="form-group">
+                <button type="button" onclick="calculateFabric()" class="btn btn-primary">Calculate</button>
+              </div>
             </div>
-<div class="form-group">
-              <button type="button" onclick="calculateFabric()" class="btn btn-primary">Calculate</button>
-            </div>
-            
-           
           </div>
         </div>
       </div>
@@ -232,6 +230,47 @@ button {
 </div>
 
 <script>
+  // Add the toggleLengthInput() function call at the end
+toggleLengthInput();
+
+function toggleLengthInput() {
+  var conversionType = document.getElementById("conversion-type").value;
+  var lengthInput = document.getElementById("length");
+  var weightInput = document.getElementById("weight");
+  var gsmInput = document.getElementById("gsm");
+  var widthInput = document.getElementById("width");
+
+  // Enable all input fields initially
+  lengthInput.disabled = false;
+  weightInput.disabled = false;
+  gsmInput.disabled = false;
+  widthInput.disabled = false;
+
+  if (conversionType === "kgToYard" || conversionType === "kgToMeter") {
+    lengthInput.disabled = true;
+    lengthInput.value = ""; // Clear the input field
+  } else if (conversionType === "meterToYard" || conversionType === "yardToMeter") {
+    weightInput.disabled = true;
+    gsmInput.disabled = true;
+    widthInput.disabled = true;
+
+    weightInput.value = ""; // Clear the input field
+    gsmInput.value = ""; // Clear the input field
+    widthInput.value = ""; // Clear the input field
+  } else if (conversionType === "yardToKg" || conversionType === "meterToKg") {
+    
+    weightInput.disabled = true;
+    
+
+    lengthInput.value = ""; // Clear the input field
+    weightInput.value = ""; // Clear the input field
+    gsmInput.value = ""; // Clear the input field
+    widthInput.value = ""; // Clear the input field
+  }
+}
+
+
+
   function calculateFabric() {
     var conversionType = document.getElementById("conversion-type").value;
     var measurementType = document.getElementById("measurement-type").value;
@@ -295,6 +334,7 @@ button {
     }
   }
 </script>
+
 
 
 
