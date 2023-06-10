@@ -239,7 +239,7 @@
   </div>
 </div>
 
-
+<!--
 <div class="col-md-6 my-2">
         <div class="box">
           <div class="box-content">
@@ -310,6 +310,131 @@
 
 
   </script>
+  
+  -->
+
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="d-flex flex-column justify-content-between h-100">
+        <div class="text-center">
+          <h4>Carton Consumption & Cost Calculator</h4>
+          <div class="form-group">
+            <label for="unit">Unit of Measurement:</label>
+            <select id="unit" class="form-select" onchange="updateUnitLabels()">
+              <option value="cm">CM</option>
+              <option value="inch">Inch</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="length">Length:</label>
+            <input type="number" class="form-control" id="crtlength">
+          </div>
+          <div class="form-group">
+            <label for="width">Width:</label>
+            <input type="number" class="form-control" id="crtwidth">
+          </div>
+          <div class="form-group">
+            <label for="height">Height:</label>
+            <input type="number" class="form-control" id="crtheight">
+          </div>
+          <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" class="form-control" id="crtqty">
+          </div>
+          <div class="form-group">
+            <label for="price">Price Per Square Meter:</label>
+            <input type="number" class="form-control" id="price">
+          </div>
+
+          <div class="form-group">
+            <label for="crtmtr">Square Meter Per Carton</label>
+            <input type="text" class="form-control" id="crtmtr" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="crtcost">Carton Cost</label>
+            <input type="text" class="form-control" id="crtcost" readonly>
+          </div>
+
+          <button class="btn btn-primary" onclick="calculateCrtMtr()">Calculate Consumption</button>
+          <button class="btn btn-primary" onclick="calculateCrtCost()">Calculate Carton Price</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+function updateUnitLabels() {
+  var unit = document.getElementById("unit").value;
+  var lengthLabel = document.querySelector("label[for='length']");
+  var widthLabel = document.querySelector("label[for='width']");
+  var heightLabel = document.querySelector("label[for='height']");
+
+  if (unit === "inch") {
+    lengthLabel.innerText = "Length (Inch):";
+    widthLabel.innerText = "Width (Inch):";
+    heightLabel.innerText = "Height (Inch):";
+  } else {
+    lengthLabel.innerText = "Length (CM):";
+    widthLabel.innerText = "Width (CM):";
+    heightLabel.innerText = "Height (CM):";
+  }
+}
+function calculateCrtMtr() {
+  var length = parseFloat(document.getElementById("crtlength").value);
+  var width = parseFloat(document.getElementById("crtwidth").value);
+  var height = parseFloat(document.getElementById("crtheight").value);
+  var unit = document.getElementById("unit").value;
+
+  if (unit === "inch") {
+    length = convertInchToCm(length);
+    width = convertInchToCm(width);
+    height = convertInchToCm(height);
+  }
+
+  var squareMeter = (length + width + 6) * (width + height + 4) * 2 / getConversionFactor(unit);
+
+  document.getElementById("crtmtr").value = " " + squareMeter.toFixed(2) + " Square Meter Per pc Carton";
+}
+
+function calculateCrtCost() {
+  var length = parseFloat(document.getElementById("crtlength").value);
+  var width = parseFloat(document.getElementById("crtwidth").value);
+  var height = parseFloat(document.getElementById("crtheight").value);
+  var qty = parseFloat(document.getElementById("crtqty").value);
+  var price = parseFloat(document.getElementById("price").value);
+  var unit = document.getElementById("unit").value;
+
+  if (unit === "inch") {
+    length = convertInchToCm(length);
+    width = convertInchToCm(width);
+    height = convertInchToCm(height);
+  }
+
+  var totalCost = (length + width + 6) * (width + height + 4) * 2 / getConversionFactor(unit) * price;
+
+  if (qty === 1) {
+    document.getElementById("crtcost").value = " " + totalCost.toFixed(2) + " USD for 1 Carton";
+  } else {
+    var costForQty = totalCost * qty;
+    document.getElementById("crtcost").value = " " + costForQty.toFixed(2) + " USD for " + qty + " Cartons";
+  }
+}
+
+function convertInchToCm(inch) {
+  return inch * 2.54;
+}
+
+function getConversionFactor(unit) {
+  return unit === "inch" ? 3937 : 10000;
+}
+
+
+
+</script>
 
 
 <script>
