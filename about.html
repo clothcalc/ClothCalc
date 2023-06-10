@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Merchandising Calculation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="vendors/owl-carousel/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="vendors/owl-carousel/css/owl.theme.default.css">
+  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="vendors/aos/css/aos.css">
+  <link rel="stylesheet" href="css/style.min.css">
+  
+<style>
+
+
+.box {
+    background-color: #e5e5e5; /* Replace with your desired background color */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 100%;
+  }
+  
+  /* Optional: Adjust the height of the box based on the content inside */
+  .box-content {
+    height: calc(100% - 40px);
+    /* Replace 40px with the sum of padding and margin values if you adjust the padding or margin of the box */
+    /* Add any additional styles or customization for the box here */
+  }
+
+.btn-primary:hover a.text-white {
+    color: black;
+  }
+
+
+</style>
+
+</head>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
+  <header id="header-section">
+  <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+    <div class="container">
+      <div class="navbar-brand-wrapper d-flex w-100">
+        <img src="images/Group2.svg" alt="">
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="mdi mdi-menu navbar-toggler-icon"></span>
+        </button> 
+      </div>
+      <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
+        <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
+          <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
+            <div class="navbar-collapse-logo">
+              <img src="images/Group2.svg" alt="">
+            </div>
+            <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#features-section">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="calculatorDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              All Calculators
+            </a>
+            <div class="dropdown-menu" aria-labelledby="calculatorDropdown">
+              <a class="dropdown-item" href="KgYardKg">Fabric Converter</a>
+              <a class="dropdown-item" href="PriceConverter">Fabric Price Converter</a>
+              <a class="dropdown-item" href="gsmcalculate">GSM Converter</a>
+              <a class="dropdown-item" href="unitconverter">Unit Converter</a>
+              <a class="dropdown-item" href="cartoncalc">Carton Calculator</a>
+              <a class="dropdown-item" href="zippercalc">Zipper Calculation</a>
+              <!-- Add more dropdown items as needed -->
+            </div>
+          </li>
+          <li class="nav-item btn-contact-us pl-4 pl-lg-0">
+            <!-- Add a button or link for contact us if desired -->
+          </li>
+        </ul>
+      </div>
+    </div> 
+  </nav>   
+</header>
+
+
+  <div class="content-wrapper">
+    <div class="container">
+
+
+
+
+
+
+
+
+Merchandisers play a crucial role in performing complex calculations as part of their work. They encounter various types of calculations and need to remember numerous formulas, which can sometimes be challenging. To streamline this process, merchandisers often rely on the use of Excel files. These files serve as a platform where they can create predefined formulas, ensuring that the calculation framework is readily available. By inputting the necessary data, merchandisers can effortlessly obtain the desired results. <br><br>
+
+I personally experienced the benefits of using Excel for calculations, but I realized that not everyone had the means to utilize this tool effectively. This led me to contemplate the idea of developing a website that would enable a broader audience to perform similar calculations with ease. In order to bring this vision to life, extensive research became a necessary step. <br><br>
+
+Through my research journey, I delved into various aspects related to website development, user interface design, and the integration of mathematical formulas into a web-based platform. This process allowed me to acquire valuable knowledge and explore new avenues of learning. I discovered innovative ways to simplify complex calculations and identified efficient methods of presenting the results. <br><br>
+
+The culmination of my efforts resulted in the creation of a user-friendly website that provides an intuitive interface for performing diverse calculations. By leveraging the power of technology, I aimed to empower not only merchandisers but also a wider range of individuals who can benefit from this resource. The website's accessibility and ease of use make it an invaluable tool for anyone seeking efficient and accurate calculations. <br><br>
+
+In conclusion, my journey from recognizing the limitations of traditional methods to envisioning and developing a practical website has been both challenging and rewarding. It has not only expanded my own understanding but also paved the way for others to access an effective solution for their calculation needs.
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="contactModalLabel">Contact Form</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number (optional)">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea class="form-control" id="message" rows="5" placeholder="Enter your message"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+       <section class="contact-details" id="contact-details-section">
+        <div class="row text-center text-md-left">
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <img src="images/Group2.svg" alt="" class="pb-2">
+            <div class="pt-2">
+              <p class="text-muted m-0">ClothCalc@gmail.com</p>
+              <p class="text-muted m-0">+88 01736 899297</p>
+            </div>         
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <h5 class="pb-2">Important Links</h5>
+			  <a href="fabricconverter"><p class="m-0 pt-1 pb-2"> Fabric Converter </p></a>
+              <a href="PriceConverter"><p class="m-0 pt-1 pb-2"> Fabric Price Converter</p></a>
+              <a href="gsmcalculate"><p class="m-0 pt-1 pb-2"> GSM Converter</p></a>
+              <a href="unitconverter"><p class="m-0 pt-1 pb-2">Unit Converter </p></a>
+              <a href="cartoncalc"><p class="m-0 pt-1 pb-2"> Carton Calculator </p></a>
+              <a href="zippercalc"><p class=">m-0 pt-1 pb-2">Zipper Calculation </p></a>
+   
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <h5 class="pb-2">Important Links</h5>
+            <a href="#"><p class="m-0 pb-2">Terms</p></a>   
+            <a href="#"><p class="m-0 pt-1 pb-2">Privacy policy</p></a> 
+            <a href="#"><p class="m-0 pt-1 pb-2">Cookie Policy</p></a> 
+            <a href="#"><p class="m-0 pt-1">Discover</p></a> 
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+              <h5 class="pb-2">Telegram Knowledge Sharing Group</h5>
+              <p class="text-muted">Merchandising Group Study</p>
+          </div>
+        </div>  
+      </section>
+      <footer class="border-top">
+        <p class="text-center text-muted pt-4">Copyright <a href="https://www.fb.com/shaharia63" class="px-1">Shaharia</a>All rights reserved.</p>
+      </footer>
+      
+  </div>
+  </div>
+  <script src="vendors/jquery/jquery.min.js"></script>
+  <script src="vendors/bootstrap/bootstrap.min.js"></script>
+  <script src="vendors/owl-carousel/js/owl.carousel.min.js"></script>
+  <script src="vendors/aos/js/aos.js"></script>
+  <script src="js/landingpage.js"></script>
+  <script id="ratufa_loader" src="https://www.ratufa.io/c/ld.js?f=aa2aqbb1&n=n1.ratufa.io"></script>
+</body>
+</html>
