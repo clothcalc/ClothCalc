@@ -174,10 +174,16 @@
 			<label for="cartonQty">Carton Quantity:</label>
 			<input type="number" id="cartonQty" class="form-control">
 </div>
+
+			  <div class="form-group">
+                <label for="result">CBM</label>
+                <input type="text" class="form-control" id="result" readonly>
+              </div>
+
             <button class="btn btn-primary" onclick="calculate()">Calculate</button>
 
 
-            <p id="result"></p>
+         
           
         </div>
       </div>
@@ -196,9 +202,9 @@
     if (measurementType === "cm") {
       if (length && width && height) {
         const cbm = (length * width * height * cartonQty) / 1000000;
-        document.getElementById("result").innerHTML = "CBM: " + cbm.toFixed(3);
+        document.getElementById("result").value = "CBM: " + cbm.toFixed(3);
       } else {
-        document.getElementById("result").innerHTML = "Please enter all dimensions.";
+        document.getElementById("result").value = "Please enter all dimensions.";
       }
     } else if (measurementType === "inch") {
       const lengthInches = parseFloat(document.getElementById("length").value);
@@ -207,9 +213,9 @@
 
       if (lengthInches && widthInches && heightInches) {
         const cbf = (lengthInches * widthInches * heightInches * cartonQty) / 1728;
-        document.getElementById("result").innerHTML = "CBF: " + cbf.toFixed(3);
+        document.getElementById("result").value = "CBF: " + cbf.toFixed(3);
       } else {
-        document.getElementById("result").innerHTML = "Please enter all dimensions.";
+        document.getElementById("result").value = "Please enter all dimensions.";
       }
     }
   }
@@ -252,11 +258,22 @@
 		  <label for="quantity">Price Per Square Meter:</label>
           <input type="number" class="form-control" id="price">
 		  </div>
+		  
+		  <div class="form-group">
+                <label for="crtmtr">Squre Meter Per Carton</label>
+                <input type="text" class="form-control" id="crtmtr" readonly>
+           </div>
+		   
+		   <div class="form-group">
+                <label for="crtcost">Carton Cost</label>
+                <input type="text" class="form-control" id="crtcost" readonly>
+           </div>
+		  
+		  
         <button class="btn btn-primary" onclick="calculateCrtMtr()">Calculate Consumption</button>
 		<button class="btn btn-primary" onclick="calculateCrtCost()">Calculate Carton Price</button>
       
-    <div id="crtmtr" class="mt-4"></div>
-	<div id="crtcost" class="mt-4"></div>
+  
 	
 		</div>
 </div>
@@ -271,7 +288,7 @@
       var height = parseFloat(document.getElementById("crtheight").value);
       var squremtr = (length + width + 6 ) * (width + height + 4) * 2 / 10000 ;
 
-      document.getElementById("crtmtr").innerHTML = " " + squremtr.toFixed(2) + " Squre Meter Per pc Carton";
+      document.getElementById("crtmtr").value = " " + squremtr.toFixed(2) + " Squre Meter Per pc Carton";
     }
 	
 	function calculateCrtCost() {
@@ -284,10 +301,10 @@
   var totalCost = (length + width + 6) * (width + height + 4) * 2 / 10000 * price;
 
   if (qty === 1) {
-    document.getElementById("crtcost").innerHTML = " " + totalCost.toFixed(2) + " USD for 1 Carton";
+    document.getElementById("crtcost").value = " " + totalCost.toFixed(2) + " USD for 1 Carton";
   } else {
     var costForQty = totalCost * qty;
-    document.getElementById("crtcost").innerHTML = " " + costForQty.toFixed(2) + " USD for " + qty + " Cartons";
+    document.getElementById("crtcost").value = " " + costForQty.toFixed(2) + " USD for " + qty + " Cartons";
   }
 }
 
