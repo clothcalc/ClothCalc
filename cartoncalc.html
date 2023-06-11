@@ -227,91 +227,20 @@
     <div class="box-content">
       <div class="text-center">
         <h4>Carton Consumption</h4>
-        <p class="text-left"><b>Consumtion Formula: </b><br> (length + width + 6) * (width + height + 4) * 2 / 10000<br><br>
+        <p class="text-left"><b>Consumtion Formula from CM: </b><br> (length + width + 6) * (width + height + 4) * 2 / 10000<br><br>
 		
+		<p class="text-left"><b>Consumtion Formula from inch: </b><br> (length + width + 2) * (width + height + 2) * 2 / 1550<br><br>
+
 		<b>Cost Formula:</b><br> 
-		(length + width + 6) * (width + height + 4) * 2 / 10000 * Quantity * Price per Square Meter
+		Total Square meter * Quantity * Price per Square Meter
 		
-		<br><br>NB: Mesurement in CM, 6 and 4 is here allownce.
+		<br><br>NB: Mesurement in CM, 6/2 and 4/2 is here allownce.
 		</p>
       </div>
     </div>
   </div>
 </div>
 
-<!--
-<div class="col-md-6 my-2">
-        <div class="box">
-          <div class="box-content">
-            <div class="d-flex flex-column justify-content-between h-100">
-              <div class="text-center">
-    <h4>Carton Consumption & Cost Calculator</h4>
-	 <div class="form-group">
-          <label for="length">Length in CM:</label>
-          <input type="number" class="form-control" id="crtlength" >
-          <label for="width">Width in CM:</label>
-          <input type="number" class="form-control" id="crtwidth">
-          <label for="height">Height in CM:</label>
-          <input type="number" class="form-control" id="crtheight">
-          <label for="quantity">Quantity:</label>
-          <input type="number" class="form-control" id="crtqty">
-		  <label for="quantity">Price Per Square Meter:</label>
-          <input type="number" class="form-control" id="price">
-		  </div>
-		  
-		  <div class="form-group">
-                <label for="crtmtr">Squre Meter Per Carton</label>
-                <input type="text" class="form-control" id="crtmtr" readonly>
-           </div>
-		   
-		   <div class="form-group">
-                <label for="crtcost">Carton Cost</label>
-                <input type="text" class="form-control" id="crtcost" readonly>
-           </div>
-		  
-		  
-        <button class="btn btn-primary" onclick="calculateCrtMtr()">Calculate Consumption</button>
-		<button class="btn btn-primary" onclick="calculateCrtCost()">Calculate Carton Price</button>
-      
-  
-	
-		</div>
-</div>
-</div>
-</div>
-</div>
-
-  <script>
-    function calculateCrtMtr() {
-      var length = parseFloat(document.getElementById("crtlength").value);
-      var width = parseFloat(document.getElementById("crtwidth").value);
-      var height = parseFloat(document.getElementById("crtheight").value);
-      var squremtr = (length + width + 6 ) * (width + height + 4) * 2 / 10000 ;
-
-      document.getElementById("crtmtr").value = " " + squremtr.toFixed(2) + " Squre Meter Per pc Carton";
-    }
-	
-	function calculateCrtCost() {
-  var length = parseFloat(document.getElementById("crtlength").value);
-  var width = parseFloat(document.getElementById("crtwidth").value);
-  var height = parseFloat(document.getElementById("crtheight").value);
-  var qty = parseFloat(document.getElementById("crtqty").value);
-  var price = parseFloat(document.getElementById("price").value);
-
-  var totalCost = (length + width + 6) * (width + height + 4) * 2 / 10000 * price;
-
-  if (qty === 1) {
-    document.getElementById("crtcost").value = " " + totalCost.toFixed(2) + " USD for 1 Carton";
-  } else {
-    var costForQty = totalCost * qty;
-    document.getElementById("crtcost").value = " " + costForQty.toFixed(2) + " USD for " + qty + " Cartons";
-  }
-}
-
-
-  </script>
-  
-  -->
 
 <div class="col-md-6 my-2">
   <div class="box">
