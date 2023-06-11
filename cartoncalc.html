@@ -367,37 +367,21 @@
 
 
 <script>
-function updateUnitLabels() {
-  var unit = document.getElementById("unit").value;
-  var lengthLabel = document.querySelector("label[for='length']");
-  var widthLabel = document.querySelector("label[for='width']");
-  var heightLabel = document.querySelector("label[for='height']");
 
-  if (unit === "inch") {
-    lengthLabel.innerText = "Length (Inch):";
-    widthLabel.innerText = "Width (Inch):";
-    heightLabel.innerText = "Height (Inch):";
-  } else {
-    lengthLabel.innerText = "Length (CM):";
-    widthLabel.innerText = "Width (CM):";
-    heightLabel.innerText = "Height (CM):";
-  }
-}
+
 function calculateCrtMtr() {
   var length = parseFloat(document.getElementById("crtlength").value);
   var width = parseFloat(document.getElementById("crtwidth").value);
   var height = parseFloat(document.getElementById("crtheight").value);
   var unit = document.getElementById("unit").value;
 
-  if (unit === "inch") {
-    length = convertInchToCm(length);
-    width = convertInchToCm(width);
-    height = convertInchToCm(height);
+  if (unit === "cm") {
+    var squareMeter = (length + width + 6) * (width + height + 4) * 2 / 10000;
+    document.getElementById("crtmtr").value = " " + squareMeter.toFixed(2) + " Square Meter Per pc Carton";
+  } else if (unit === "inch") {
+    var squareMeter = ((length + width + 6) * (width + height + 4) * 2 / 10000) / 0.00064516;
+    document.getElementById("crtmtr").value = " " + squareMeter.toFixed(2) + " Square Meter Per pc Carton";
   }
-
-  var squareMeter = (length + width + 6) * (width + height + 4) * 2 / getConversionFactor(unit);
-
-  document.getElementById("crtmtr").value = " " + squareMeter.toFixed(2) + " Square Meter Per pc Carton";
 }
 
 function calculateCrtCost() {
@@ -408,29 +392,38 @@ function calculateCrtCost() {
   var price = parseFloat(document.getElementById("price").value);
   var unit = document.getElementById("unit").value;
 
-  if (unit === "inch") {
-    length = convertInchToCm(length);
-    width = convertInchToCm(width);
-    height = convertInchToCm(height);
+  if (unit === "cm") {
+    var totalCost = (length + width + 6) * (width + height + 4) * 2 / 10000 * price;
+    if (qty === 1) {
+      document.getElementById("crtcost").value = " " + totalCost.toFixed(2) + " USD for 1 Carton";
+    } else {
+      var costForQty = totalCost * qty;
+      document.getElementById("crtcost").value = " " + costForQty.toFixed(2) + " USD for " + qty + " Cartons";
+    }
+  } else if (unit === "inch") {
+    var totalCost = ((length + width + 6) * (width + height + 4) * 2 / 3937) / 0.00064516 * price;
+    if (qty === 1) {
+      document.getElementById("crtcost").value = " " + totalCost.toFixed(2) + " USD for 1 Carton";
+    } else {
+      var costForQty = totalCost * qty;
+      document.getElementById("crtcost").value = " " + costForQty.toFixed(2) + " USD for " + qty + " Cartons";
+    }
   }
+}
 
-  var totalCost = (length + width + 6) * (width + height + 4) * 2 / getConversionFactor(unit) * price;
-
-  if (qty === 1) {
-    document.getElementById("crtcost").value = " " + totalCost.toFixed(2) + " USD for 1 Carton";
-  } else {
-    var costForQty = totalCost * qty;
-    document.getElementById("crtcost").value = " " + costForQty.toFixed(2) + " USD for " + qty + " Cartons";
+function updateUnitLabels() {
+  var unit = document.getElementById("unit").value;
+  if (unit === "cm") {
+    document.getElementById("lengthLabel").textContent = "Length (CM):";
+    document.getElementById("widthLabel").textContent = "Width (CM):";
+    document.getElementById("heightLabel").textContent = "Height (CM):";
+  } else if (unit === "inch") {
+    document.getElementById("lengthLabel").textContent = "Length (Inch):";
+    document.getElementById("widthLabel").textContent = "Width (Inch):";
+    document.getElementById("heightLabel").textContent = "Height (Inch):";
   }
 }
 
-function convertInchToCm(inch) {
-  return inch * 2.54;
-}
-
-function getConversionFactor(unit) {
-  return unit === "inch" ? 3937 : 10000;
-}
 
 
 
