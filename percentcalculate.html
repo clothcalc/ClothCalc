@@ -1,20 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>Fabric Price Conversion</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Percentage Difference Calculator</title>
-
+  <meta name="Merchandising Calculation" content="T-shirt Consumption, polo shirt Consumption, Hoodie  Fabric Convert, Fabric Price Convert, Zipper Length Convert, GSM Converter, Unit Converter, Percentage difference, Carton Calculation" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="Merchandising Calculation" content="T-shirt Consumtion, polo shirt Consumtion, Hoodie  Fabric Convert, Fabric Price Convert, Zipper Length Convert, GSM Converter, Unit Converter, Percentage difference, Carton Calculation" />
   <link rel="stylesheet" href="vendors/owl-carousel/css/owl.carousel.min.css">
   <link rel="stylesheet" href="vendors/owl-carousel/css/owl.theme.default.css">
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="vendors/aos/css/aos.css">
   <link rel="stylesheet" href="css/style.min.css">
+  
+<style>
+
+.containerfive {
+  justify-content: space-between;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+.box {
+  --c: #000000; /* the border color */
+  --b: 2px;    /* the border thickness*/
+  --g: 1px;     /* the gap on hover */
+  padding: 20px;
+  border-radius: 5px;
+    height: 100%;
+  padding: calc(var(--g) + var(--b));
+  --_g: #0000 25%,var(--c) 0;
+  background: 
+    conic-gradient(from 180deg at top    var(--b) right var(--b),var(--_g))
+     var(--_i,200%) 0  /200% var(--_i,var(--b))  no-repeat,
+    conic-gradient(            at bottom var(--b) left  var(--b),var(--_g))
+     0   var(--_i,200%)/var(--_i,var(--b)) 200%  no-repeat;
+  transition: .3s, background-position .3s .3s;
+
+}
+.box:hover {
+  --_i: 100%;
+  transition: .2s, background-size .2s .2s;
+}
+
+.box {
+    background-color: #e5e5e5; /* Replace with your desired background color */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 100%;
+  }
+  
+  /* Optional: Adjust the height of the box based on the content inside */
+  .box-content {
+    height: calc(100% - 40px);
+    /* Replace 40px with the sum of padding and margin values if you adjust the padding or margin of the box */
+    /* Add any additional styles or customization for the box here */
+  }
+
+
+button {
+  display: block;
+  margin: 0 auto;
+  background-color: darkgreen;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#result {
+    display: block;
+    text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+#fabric-length-yards1 {
+    display: block;
+	text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+#fabric-length-yards2 {
+    display: block;
+    text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+.hidden-result {
+    display: none;
+  }
+  
+
+  .result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+
+</style>	 
+
+</head>
 <body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
   <header id="header-section">
-    <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+  <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
     <div class="container">
       <div class="navbar-brand-wrapper d-flex w-100">
         <img src="images/Group2.svg" alt="">
@@ -33,94 +132,33 @@
             </button>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://clothcalc.github.io/ClothCalc#header-section">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://clothcalc.github.io/ClothCalc/about">About</a>
+            <a class="nav-link" href="#features-section">About</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://clothcalc.github.io/ClothCalc#digital-marketing-section">Blog</a>  
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://clothcalc.github.io/ClothCalc#feedback-section">Testimonials</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="calculatorDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              All Calculators
+            </a>
+            <div class="dropdown-menu" aria-labelledby="calculatorDropdown">
+              <a class="dropdown-item" href="KgYardKg">Fabric Converter</a>
+              <a class="dropdown-item" href="PriceConverter">Fabric Price Converter</a>
+              <a class="dropdown-item" href="gsmcalculate">GSM Converter</a>
+              <a class="dropdown-item" href="unitconverter">Unit Converter</a>
+              <a class="dropdown-item" href="cartoncalc">Carton Calculator</a>
+              <a class="dropdown-item" href="zippercalc">Zipper Calculation</a>
+              <!-- Add more dropdown items as needed -->
+            </div>
           </li>
           <li class="nav-item btn-contact-us pl-4 pl-lg-0">
-            <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Contact Us</button>
+            <!-- Add a button or link for contact us if desired -->
           </li>
         </ul>
       </div>
     </div> 
-    </nav>
-  <style>
-
-		
-.containerfive {
-  justify-content: space-between;
-  padding: 20px;
-  text-align: center;
-  margin-bottom: 20px;
-  border-radius: 10px;
-}
-
-.box {
-  --c: #000000; /* the border color */
-  --b: 1px;    /* the border thickness*/
-  --g: 1px;     /* the gap on hover */
-  padding: 20px;
-  border-radius: 5px;
-    height: 100%;
-  padding: calc(var(--g) + var(--b));
-  --_g: #0000 25%,var(--c) 0;
-  background: 
-    conic-gradient(from 180deg at top    var(--b) right var(--b),var(--_g))
-     var(--_i,200%) 0  /200% var(--_i,var(--b))  no-repeat,
-    conic-gradient(            at bottom var(--b) left  var(--b),var(--_g))
-     0   var(--_i,200%)/var(--_i,var(--b)) 200%  no-repeat;
-  transition: .3s, background-position .3s .3s;
-
-}
-.box:hover {
-  --_i: 100%;
-  transition: .1s, background-size .1s .1s;
-}
-
-/* Custom CSS for form controls */
-.form-control {
-  background-color: #fff; /* Set the background color to white */
-  color: #000; /* Set the text color to black */
-}
-
-/* Additional CSS styles for dark mode */
-@media (prefers-color-scheme: dark) {
-  /* Dark mode styles */
-  .form-control {
-    background-color: #333; /* Set the background color to a dark color */
-    color: #fff; /* Set the text color to white */
-  }
-}
-
-
-<!--
-.box {
-    background-color: #e5e5e5; /* Replace with your desired background color */
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 100%;
-  }
-  
-  /* Optional: Adjust the height of the box based on the content inside */
-  .box-content {
-    height: calc(100% - 40px);
-    /* Replace 40px with the sum of padding and margin values if you adjust the padding or margin of the box */
-    /* Add any additional styles or customization for the box here */
-  }
--->
-
-</style>	
-
-
-<!-- Google tag (gtag.js) -->
+  </nav>   
+  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-457CJLGKGQ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -129,8 +167,8 @@
 
   gtag('config', 'G-457CJLGKGQ');
 </script>
+</header>
 
-</head>
 <div class ="container">
 
 <div class="containerfive">
