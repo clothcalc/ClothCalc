@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CM Calculation</title>
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="Merchandising Calculation" content="T-shirt Consumtion, polo shirt Consumtion, Hoodie  Fabric Convert, Fabric Price Convert, Zipper Length Convert, GSM Converter, Unit Converter, Percentage difference, Carton Calculation" />
+  <link rel="stylesheet" href="vendors/owl-carousel/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="vendors/owl-carousel/css/owl.theme.default.css">
+  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="vendors/aos/css/aos.css">
+  <link rel="stylesheet" href="css/style.min.css">
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
+  <header id="header-section">
+    <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+    <div class="container">
+      <div class="navbar-brand-wrapper d-flex w-100">
+        <img src="images/Group2.svg" alt="">
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="mdi mdi-menu navbar-toggler-icon"></span>
+        </button> 
+      </div>
+      <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
+        <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
+          <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
+            <div class="navbar-collapse-logo">
+              <img src="images/Group2.svg" alt="">
+            </div>
+            <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://clothcalc.github.io/ClothCalc#header-section">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://clothcalc.github.io/ClothCalc/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://clothcalc.github.io/ClothCalc#digital-marketing-section">Blog</a>  
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://clothcalc.github.io/ClothCalc#feedback-section">Testimonials</a>
+          </li>
+          <li class="nav-item btn-contact-us pl-4 pl-lg-0">
+            <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Contact Us</button>
+          </li>
+        </ul>
+      </div>
+    </div> 
+    </nav>
+  <style>
+
+		
+.containerfive {
+  justify-content: space-between;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.box {
+  --c: #000000; /* the border color */
+  --b: 1px;    /* the border thickness*/
+  --g: 1px;     /* the gap on hover */
+  padding: 20px;
+  border-radius: 5px;
+    height: 100%;
+  padding: calc(var(--g) + var(--b));
+  --_g: #0000 25%,var(--c) 0;
+  background: 
+    conic-gradient(from 180deg at top    var(--b) right var(--b),var(--_g))
+     var(--_i,200%) 0  /200% var(--_i,var(--b))  no-repeat,
+    conic-gradient(            at bottom var(--b) left  var(--b),var(--_g))
+     0   var(--_i,200%)/var(--_i,var(--b)) 200%  no-repeat;
+  transition: .3s, background-position .3s .3s;
+
+}
+.box:hover {
+  --_i: 100%;
+  transition: .1s, background-size .1s .1s;
+}
+
+/* Custom CSS for form controls */
+.form-control {
+  background-color: #fff; /* Set the background color to white */
+  color: #000; /* Set the text color to black */
+}
+
+/* Additional CSS styles for dark mode */
+@media (prefers-color-scheme: dark) {
+  /* Dark mode styles */
+  .form-control {
+    background-color: #333; /* Set the background color to a dark color */
+    color: #fff; /* Set the text color to white */
+  }
+}
+
+
+<!--
+.box {
+    background-color: #e5e5e5; /* Replace with your desired background color */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 100%;
+  }
+  
+  /* Optional: Adjust the height of the box based on the content inside */
+  .box-content {
+    height: calc(100% - 40px);
+    /* Replace 40px with the sum of padding and margin values if you adjust the padding or margin of the box */
+    /* Add any additional styles or customization for the box here */
+  }
+-->
+
+</style>	
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-457CJLGKGQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-457CJLGKGQ');
+</script>
+
+</head>
+<div class ="container">
+
+<div class="containerfive">
+	<h1>CM Calculation</h1>
+	</div>
+
+<div class="container my-3">
+  <div class="row">
+
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        <h4>CM Calculation</h4>
+        <div class="box-content">
+          <div>
+            <label for="monthlyCost">Monthly Cost ($):</label>
+            <input type="number" class="form-control" id="monthlyCost" step="0.01" required>
+          </div>
+          <div>
+            <label for="runningMachine">Running Machine:</label>
+            <input type="number" class="form-control" id="runningMachine" required>
+          </div>
+          <div>
+            <label for="layoutMachine">Layout Machine:</label>
+            <input type="number" class="form-control" id="layoutMachine" required>
+          </div>
+          <div>
+            <label for="totalProduction">Total Production Per Day:</label>
+            <input type="number" class="form-control" id="totalProduction" required>
+          </div>
+          <div class="form-group">
+            <label for="cmResult">CM Calculation:</label>
+            <input type="text" class="form-control" id="cmResult" readonly>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="calculateCM()">Calculate CM</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        <h4>CM Calculation</h4>
+        <div class="box-content">
+          <div>
+            <label for="machineCostPerDay">Machine Cost per Day ($):</label>
+            <input type="number" class="form-control" id="machineCostPerDay" step="0.01" required>
+          </div>
+          <div>
+            <label for="layoutMachine2">Layout Machine:</label>
+            <input type="number" class="form-control" id="layoutMachine2" required>
+          </div>
+          <div>
+            <label for="productionPerDay">Production per Day:</label>
+            <input type="number" class="form-control" id="productionPerDay" required>
+          </div>
+          <div class="form-group">
+            <label for="cmResult2">CM Calculation:</label>
+            <input type="text" class="form-control" id="cmResult2" readonly>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="calculateCM2()">Calculate CM</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function calculateCM() {
+    // Get input values
+    var monthlyCost = parseFloat(document.getElementById("monthlyCost").value);
+    var runningMachine = parseFloat(document.getElementById("runningMachine").value);
+    var layoutMachine = parseFloat(document.getElementById("layoutMachine").value);
+    var totalProduction = parseFloat(document.getElementById("totalProduction").value);
+
+    // Calculate Machine Cost
+    var machineCost = monthlyCost / 26 / runningMachine;
+
+    // Calculate CM Calculation
+    var cmCalculation = machineCost * layoutMachine / totalProduction ;
+
+    // Display the result
+    document.getElementById("cmResult").value = "CM : " + cmCalculation.toFixed(2) + " Per Pc";
+  }
+
+  function calculateCM2() {
+    // Get input values
+    var machineCostPerDay = parseFloat(document.getElementById("machineCostPerDay").value);
+    var layoutMachine = parseFloat(document.getElementById("layoutMachine2").value);
+    var productionPerDay = parseFloat(document.getElementById("productionPerDay").value);
+
+    // Calculate CM Calculation
+    var cmCalculation = machineCostPerDay * layoutMachine / productionPerDay ;
+
+    // Display the result
+    document.getElementById("cmResult2").value = "CM : " + cmCalculation.toFixed(2) + " Per Pc";
+  }
+</script>
+
+
+
+ <section class="contact-details" id="contact-details-section">
+        <div class="row text-center text-md-left">
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <img src="images/Group2.svg" alt="" class="pb-2">
+            <div class="pt-2">
+              <p class="text-muted m-0">ClothCalc@gmail.com</p>
+              <p class="text-muted m-0"></p>
+            </div>         
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <h5 class="pb-2">Important Links</h5>
+			  <a href="KgYardKg"><p class="m-0 pt-1 pb-2"> Fabric Converter </p></a>
+              <a href="PriceConverter"><p class="m-0 pt-1 pb-2"> Fabric Price Converter</p></a>
+              <a href="gsmcalculate"><p class="m-0 pt-1 pb-2"> GSM Converter</p></a>
+              <a href="unitconverter"><p class="m-0 pt-1 pb-2">Unit Converter </p></a>
+              <a href="cartoncalc"><p class="m-0 pt-1 pb-2"> Carton Calculator </p></a>
+              <a href="zippercalc"><p class=">m-0 pt-1 pb-2">Zipper Calculation </p></a>
+   
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <h5 class="pb-2">Important Links</h5>
+            <a href="#"><p class="m-0 pb-2">Terms</p></a>   
+            <a href="#"><p class="m-0 pt-1 pb-2">Privacy policy</p></a> 
+            <a href="#"><p class="m-0 pt-1 pb-2">Cookie Policy</p></a> 
+            <a href="#"><p class="m-0 pt-1">Discover</p></a> 
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+              <h5 class="pb-2">Telegram Knowledge Sharing Group</h5>
+              <p class="text-muted">Merchandising Group Study</p>
+          </div>
+        </div>  
+      </section>
+      <footer class="border-top">
+        <p class="text-center text-muted pt-4">Copyright © 2023<a href="https://www.bootstrapdash.com/" class="px-1">Bootstrapdash.</a>All rights reserved.</p>
+      </footer>  
+ </div>
+   </div>
+  <script src="vendors/jquery/jquery.min.js"></script>
+  <script src="vendors/bootstrap/bootstrap.min.js"></script>
+  <script src="vendors/owl-carousel/js/owl.carousel.min.js"></script>
+  <script src="vendors/aos/js/aos.js"></script>
+  <script src="js/landingpage.js"></script>
+
+</body>
+</html>
