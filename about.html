@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Merchandising Calculation</title>
+  <title>Fabric Price Conversion</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Merchandising Calculation" content="T-shirt Consumption, polo shirt Consumption, Hoodie  Fabric Convert, Fabric Price Convert, Zipper Length Convert, GSM Converter, Unit Converter, Percentage difference, Carton Calculation" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="vendors/owl-carousel/css/owl.carousel.min.css">
   <link rel="stylesheet" href="vendors/owl-carousel/css/owl.theme.default.css">
@@ -12,79 +13,107 @@
   <link rel="stylesheet" href="css/style.min.css">
   
 <style>
-
-
 .box {
-    background-color: #e5e5e5; /* Replace with your desired background color */
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 100%;
+  background-color: #e5e5e5; /* Replace with your desired background color */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 100%;
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
+.box:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Optional: Adjust the height of the box based on the content inside */
+.box-content {
+  height: 100%; /* Adjust the height based on your needs */
+  /* Add any additional styles or customization for the box here */
+}
+
+.form-control {
+  background-color: #e5ffff;
+}
+
+@media (max-width: 768px) {
+  .box {
+    width: 100%; /* Adjust the width to your desired value */
+  }
+}
+
+@media (max-width: 991.98px) {
+  .navbar-brand img {
+    max-height: 40px; /* Adjust the height as needed */
   }
   
-  /* Optional: Adjust the height of the box based on the content inside */
-  .box-content {
-    height: calc(100% - 40px);
-    /* Replace 40px with the sum of padding and margin values if you adjust the padding or margin of the box */
-    /* Add any additional styles or customization for the box here */
+  .navbar-toggler {
+    padding: 0.25rem; /* Adjust the padding as needed */
   }
-
-.btn-primary:hover a.text-white {
-    color: black;
+  
+  .navbar-toggler-icon {
+    font-size: 1.25rem; /* Adjust the font size as needed */
   }
+}
 
 
-</style>
+</style>	 
 
 </head>
 <body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
   <header id="header-section">
-  <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
-    <div class="container">
-      <div class="navbar-brand-wrapper d-flex w-100">
-        <img src="images/Group2.svg" alt="">
-        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="mdi mdi-menu navbar-toggler-icon"></span>
-        </button> 
-      </div>
-      <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
-        <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
-          <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
-            <div class="navbar-collapse-logo">
-              <img src="images/Group2.svg" alt="">
-            </div>
-            <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
-            </button>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#features-section">About</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="calculatorDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              All Calculators
+<nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+  <div class="container">
+    <div class="navbar-brand-wrapper d-flex w-100">
+      <a class="navbar-brand" href="index">
+        <img src="images/Group2.svg" alt="Logo">
+      </a>
+      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="mdi mdi-menu navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
+      <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
+        <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
+          <div class="navbar-collapse-logo">
+            <a class="navbar-brand" href="index">
+              <img src="images/Group2.svg" alt="Logo">
             </a>
-            <div class="dropdown-menu" aria-labelledby="calculatorDropdown">
-              <a class="dropdown-item" href="KgYardKg">Fabric Converter</a>
-              <a class="dropdown-item" href="PriceConverter">Fabric Price Converter</a>
-              <a class="dropdown-item" href="gsmcalculate">GSM Converter</a>
-              <a class="dropdown-item" href="unitconverter">Unit Converter</a>
-              <a class="dropdown-item" href="cartoncalc">Carton Calculator</a>
-              <a class="dropdown-item" href="zippercalc">Zipper Calculation</a>
-              <!-- Add more dropdown items as needed -->
-            </div>
-          </li>
-          <li class="nav-item btn-contact-us pl-4 pl-lg-0">
-            <!-- Add a button or link for contact us if desired -->
-          </li>
-        </ul>
-      </div>
-    </div> 
-  </nav>  
-
+          </div>
+          <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#features-section">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="calculatorDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            All Calculators
+          </a>
+          <div class="dropdown-menu" aria-labelledby="calculatorDropdown">
+            <a class="dropdown-item" href="fabricconverter">Fabric Converter</a>
+            <a class="dropdown-item" href="PriceConverter">Fabric Price Converter</a>
+            <a class="dropdown-item" href="gsmcalculate">GSM Converter</a>
+            <a class="dropdown-item" href="unitconverter">Unit Converter</a>
+            <a class="dropdown-item" href="cartoncalc">Carton Calculator</a>
+            <a class="dropdown-item" href="zippercalc">Zipper Calculation</a>
+			<a class="dropdown-item" href="knittopconsumption">Consumption Calculation</a>
+			<a class="dropdown-item" href="cmcalculation">CM Calculation</a>
+			<a class="dropdown-item" href="percentcalculate">Percentage Difference</a>
+            <!-- Add more dropdown items as needed -->
+          </div>
+        </li>
+        <li class="nav-item btn-contact-us pl-4 pl-lg-0">
+          <!-- Add a button or link for contact us if desired -->
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-457CJLGKGQ"></script>
 <script>
