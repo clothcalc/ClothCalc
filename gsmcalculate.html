@@ -13,102 +13,107 @@
   <link rel="stylesheet" href="css/style.min.css">
   
 <style>
-
-.containerfive {
-  justify-content: space-between;
-  padding: 20px;
-  text-align: center;
-  margin-bottom: 20px;
-  border-radius: 10px;
-}
 .box {
-  --c: #000000; /* the border color */
-  --b: 2px;    /* the border thickness*/
-  --g: 1px;     /* the gap on hover */
+  background-color: #e5e5e5; /* Replace with your desired background color */
   padding: 20px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-    height: 100%;
-  padding: calc(var(--g) + var(--b));
-  --_g: #0000 25%,var(--c) 0;
-  background: 
-    conic-gradient(from 180deg at top    var(--b) right var(--b),var(--_g))
-     var(--_i,200%) 0  /200% var(--_i,var(--b))  no-repeat,
-    conic-gradient(            at bottom var(--b) left  var(--b),var(--_g))
-     0   var(--_i,200%)/var(--_i,var(--b)) 200%  no-repeat;
-  transition: .3s, background-position .3s .3s;
-
+  height: 100%;
+  box-sizing: border-box; /* Include padding and border in the width calculation */
 }
+
 .box:hover {
-  --_i: 100%;
-  transition: .2s, background-size .2s .2s;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-.box {
-    background-color: #e5e5e5; /* Replace with your desired background color */
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 100%;
+/* Optional: Adjust the height of the box based on the content inside */
+.box-content {
+  height: 100%; /* Adjust the height based on your needs */
+  /* Add any additional styles or customization for the box here */
+}
+
+.form-control {
+  background-color: #e5ffff;
+}
+
+@media (max-width: 768px) {
+  .box {
+    width: 100%; /* Adjust the width to your desired value */
+  }
+}
+
+@media (max-width: 991.98px) {
+  .navbar-brand img {
+    max-height: 40px; /* Adjust the height as needed */
   }
   
-  /* Optional: Adjust the height of the box based on the content inside */
-  .box-content {
-    height: calc(100% - 40px);
-    /* Replace 40px with the sum of padding and margin values if you adjust the padding or margin of the box */
-    /* Add any additional styles or customization for the box here */
-  }
-
-
-button {
-  display: block;
-  margin: 0 auto;
-  background-color: darkgreen;
-  color: white;
-  font-size: 16px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-#result {
-    display: block;
-    text-align: center;
-	font-weight: bold;
-	color: #ff0000;
-	margin-top: 5px;
-	margin-bottom: 20px;
-}
-#fabric-length-yards1 {
-    display: block;
-	text-align: center;
-	font-weight: bold;
-	color: #ff0000;
-	margin-top: 5px;
-	margin-bottom: 20px;
-}
-#fabric-length-yards2 {
-    display: block;
-    text-align: center;
-	font-weight: bold;
-	color: #ff0000;
-	margin-top: 5px;
-	margin-bottom: 20px;
-}
-.hidden-result {
-    display: none;
+  .navbar-toggler {
+    padding: 0.25rem; /* Adjust the padding as needed */
   }
   
-
-  .result-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
+  .navbar-toggler-icon {
+    font-size: 1.25rem; /* Adjust the font size as needed */
   }
+}
 
 
 </style>	 
+
+</head>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
+  <header id="header-section">
+<nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+  <div class="container">
+    <div class="navbar-brand-wrapper d-flex w-100">
+      <a class="navbar-brand" href="index">
+        <img src="images/Group2.svg" alt="Logo">
+      </a>
+      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="mdi mdi-menu navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
+      <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
+        <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
+          <div class="navbar-collapse-logo">
+            <a class="navbar-brand" href="index">
+              <img src="images/Group2.svg" alt="Logo">
+            </a>
+          </div>
+          <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#features-section">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="calculatorDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            All Calculators
+          </a>
+          <div class="dropdown-menu" aria-labelledby="calculatorDropdown">
+            <a class="dropdown-item" href="fabricconverter">Fabric Converter</a>
+            <a class="dropdown-item" href="PriceConverter">Fabric Price Converter</a>
+            <a class="dropdown-item" href="gsmcalculate">GSM Converter</a>
+            <a class="dropdown-item" href="unitconverter">Unit Converter</a>
+            <a class="dropdown-item" href="cartoncalc">Carton Calculator</a>
+            <a class="dropdown-item" href="zippercalc">Zipper Calculation</a>
+			<a class="dropdown-item" href="knittopconsumption">Consumption Calculation</a>
+			<a class="dropdown-item" href="cmcalculation">CM Calculation</a>
+			<a class="dropdown-item" href="percentcalculate">Percentage Difference</a>
+            <!-- Add more dropdown items as needed -->
+          </div>
+        </li>
+        <li class="nav-item btn-contact-us pl-4 pl-lg-0">
+          <!-- Add a button or link for contact us if desired -->
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> 
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-457CJLGKGQ"></script>
