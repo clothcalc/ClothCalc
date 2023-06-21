@@ -323,13 +323,13 @@
       var pricePerMeter = (pricePerKg * width * 0.0254 * gsm) / 1000;
 
       if (!isNaN(pricePerYards)) {
-        pricePerYardsSpan.textContent = "Price per yard (Formula 2): $" + pricePerYards.toFixed(2);
+        pricePerYardsSpan.textContent = "Fabric Price per yard : $" + pricePerYards.toFixed(2);
       } else {
         pricePerYardsSpan.textContent = "";
       }
 
       if (!isNaN(pricePerMeter)) {
-        pricePerMeterSpan.textContent = "Price per meter (Formula 2): $" + pricePerMeter.toFixed(2);
+        pricePerMeterSpan.textContent = "Fabric Price per meter : $" + pricePerMeter.toFixed(2);
       } else {
         pricePerMeterSpan.textContent = "";
       }
@@ -339,13 +339,13 @@
       var pricePerMeter = (pricePerKg * cmMeter * gsm) / 1000;
 
       if (!isNaN(pricePerYards)) {
-        pricePerYardsSpan.textContent = "Price per yard (Formula 3): $" + pricePerYards.toFixed(2);
+        pricePerYardsSpan.textContent = "Fabric Price per yard: $" + pricePerYards.toFixed(2);
       } else {
         pricePerYardsSpan.textContent = "";
       }
 
       if (!isNaN(pricePerMeter)) {
-        pricePerMeterSpan.textContent = "Price per meter (Formula 3): $" + pricePerMeter.toFixed(2);
+        pricePerMeterSpan.textContent = "Fabric Price per meter: $" + pricePerMeter.toFixed(2);
       } else {
         pricePerMeterSpan.textContent = "";
       }
