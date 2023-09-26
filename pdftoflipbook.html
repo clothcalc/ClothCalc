@@ -81,7 +81,61 @@
     <script src="js/pdf.min.js"></script>
     <script src="js/pdf.worker.min.js"></script>
     <script>
-        // Your JavaScript code that uses PDF.js here
+        const pdfjsLib = window['pdfjs-dist/build/pdf'];
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.337/pdf.worker.min.js';
+
+        const container = document.getElementById('book');
+        const fileInput = document.getElementById('fileInput');
+        const uploadButton = document.getElementById('uploadButton');
+        const downloadButton = document.getElementById('downloadButton');
+
+        let pdfDoc = null;
+
+        async function renderPdfAsFlipbook() {
+            const pdfFile = fileInput.files[0];
+            if (!pdfFile) return;
+
+            pdfDoc = await pdfjsLib.getDocument(pdfFile).promise;
+
+            for (let i = 1; i <= pdfDoc.numPages; i++) {
+                const page = await pdfDoc.getPage(i);
+                const canvas = document.createElement('canvas');
+                canvas.style.width = '100%';
+                canvas.style.height = '100%';
+                const context = canvas.getContext('2d');
+                const viewport = page.getViewport({ scale: 1.0 });
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport,
+                };
+                await page.render(renderContext).promise;
+                const pageDiv = document.createElement('div');
+                pageDiv.className = 'page';
+                pageDiv.appendChild(canvas);
+                container.appendChild(pageDiv);
+            }
+
+            uploadButton.style.display = 'none';
+            downloadButton.style.display = 'inline-block';
+        }
+
+        downloadButton.addEventListener('click', () => {
+            if (pdfDoc) {
+                const pdfData = pdfDoc.data;
+                const blob = new Blob([pdfData], { type: 'application/pdf' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'flipbook.pdf';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            }
+        });
+
+        fileInput.addEventListener('change', renderPdfAsFlipbook);
     </script>
 </body>
 </html>
