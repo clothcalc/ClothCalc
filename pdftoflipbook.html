@@ -82,7 +82,7 @@
     <script src="js/pdf.worker.min.js"></script>
     <script>
         const pdfjsLib = window['pdfjs-dist/build/pdf'];
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.js';
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
 
         const container = document.getElementById('book');
         const fileInput = document.getElementById('fileInput');
