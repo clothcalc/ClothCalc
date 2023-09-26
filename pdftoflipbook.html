@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Flipbook Generator</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #container {
+            perspective: 1000px;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #book {
+            width: 300px;
+            height: 400px;
+            transform-style: preserve-3d;
+            animation: flip 5s infinite linear;
+        }
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            border: 1px solid #ccc;
+        }
+        .page:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        @keyframes flip {
+            0%, 100% {
+                transform: rotateY(0deg);
+            }
+            50% {
+                transform: rotateY(180deg);
+            }
+        #fileInput {
+            display: none;
+        }
+        #uploadButton {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="book">
+            <!-- Pages will be dynamically added here -->
+        </div>
+    </div>
+    <input type="file" id="fileInput" accept=".pdf">
+    <label for="fileInput" id="uploadButton">Upload PDF</label>
+    <a href="#" id="downloadButton" style="display: none;">Download Flipbook</a>
+    <script>
+        const pdfjsLib = window['pdfjs-dist/build/pdf'];
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.337/pdf.worker.min.js';
+
+        const container = document.getElementById('book');
+        const fileInput = document.getElementById('fileInput');
+        const uploadButton = document.getElementById('uploadButton');
+        const downloadButton = document.getElementById('downloadButton');
+
+        let pdfDoc = null;
+
+        async function renderPdfAsFlipbook() {
+            const pdfFile = fileInput.files[0];
+            if (!pdfFile) return;
+
+            pdfDoc = await pdfjsLib.getDocument(pdfFile).promise;
+
+            for (let i = 1; i <= pdfDoc.numPages; i++) {
+                const page = await pdfDoc.getPage(i);
+                const canvas = document.createElement('canvas');
+                canvas.style.width = '100%';
+                canvas.style.height = '100%';
+                const context = canvas.getContext('2d');
+                const viewport = page.getViewport({ scale: 1.0 });
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport,
+                };
+                await page.render(renderContext).promise;
+                const pageDiv = document.createElement('div');
+                pageDiv.className = 'page';
+                pageDiv.appendChild(canvas);
+                container.appendChild(pageDiv);
+            }
+
+            uploadButton.style.display = 'none';
+            downloadButton.style.display = 'inline-block';
+        }
+
+        downloadButton.addEventListener('click', () => {
+            if (pdfDoc) {
+                const pdfData = pdfDoc.data;
+                const blob = new Blob([pdfData], { type: 'application/pdf' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'flipbook.pdf';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            }
+        });
+
+        fileInput.addEventListener('change', renderPdfAsFlipbook);
+    </script>
+</body>
+</html>
