@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Flipbook Generator</title>
     <style>
+        /* Styles for the flipbook container and pages */
         body {
             margin: 0;
             overflow: hidden;
@@ -44,6 +45,9 @@
             50% {
                 transform: rotateY(180deg);
             }
+        }
+
+        /* Styles for file input and download button */
         #fileInput {
             display: none;
         }
@@ -54,6 +58,14 @@
             cursor: pointer;
             margin-top: 20px;
             display: inline-block;
+        }
+        #downloadButton {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: none;
         }
     </style>
 </head>
