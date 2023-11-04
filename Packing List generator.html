@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Apparel Packing List Generator</title>
+  <style>
+    /* Add your CSS styles here */
+  </style>
+</head>
+<body>
+  <h1>Apparel Packing List Generator</h1>
+
+  <div id="inputForm">
+    <h2>Input the quantity by size:</h2>
+    <label for="sizeS">Size S:</label>
+    <input type="number" id="sizeS" min="0"><br>
+
+    <label for="sizeM">Size M:</label>
+    <input type="number" id="sizeM" min="0"><br>
+
+    <label for="sizeL">Size L:</label>
+    <input type="number" id="sizeL" min="0"><br>
+
+    <label for="sizeXL">Size XL:</label>
+    <input type="number" id="sizeXL" min="0"><br>
+
+    <label for="size2XL">Size 2XL:</label>
+    <input type="number" id="size2XL" min="0"><br>
+
+    <label for="size3XL">Size 3XL:</label>
+    <input type="number" id="size3XL" min="0"><br>
+
+    <button onclick="generatePackingList()">Generate Packing List</button>
+  </div>
+
+  <div id="outputList">
+    <!-- The generated packing list will appear here -->
+  </div>
+
+  <script>
+    // Add your JavaScript logic here
+    function generatePackingList() {
+      // Get input values for each size
+      const sizeS = parseInt(document.getElementById("sizeS").value);
+      const sizeM = parseInt(document.getElementById("sizeM").value);
+      const sizeL = parseInt(document.getElementById("sizeL").value);
+      const sizeXL = parseInt(document.getElementById("sizeXL").value);
+      const size2XL = parseInt(document.getElementById("size2XL").value);
+      const size3XL = parseInt(document.getElementById("size3XL").value);
+
+      // Perform the packing list calculations here
+      // You can use the previous logic provided to calculate solid and mix cartons
+
+      // Display the packing list on the page
+      const outputList = document.getElementById("outputList");
+      outputList.innerHTML = `
+        <!-- Display the packing list here -->
+      `;
+    }
+  </script>
+</body>
+</html>
