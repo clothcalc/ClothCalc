@@ -10,24 +10,20 @@
   <h1>Apparel Packing List Generator</h1>
 
   <div id="inputForm">
-    <h2>Input the quantity by size:</h2>
+    <h2>Input size-wise quantities:</h2>
     <label for="sizeS">Size S:</label>
-    <input type="number" id="sizeS" min="0"><br>
+    <input type="number" id="sizeS" min="0" value="0"><br>
 
     <label for="sizeM">Size M:</label>
-    <input type="number" id="sizeM" min="0"><br>
+    <input type="number" id="sizeM" min="0" value="0"><br>
 
-    <label for="sizeL">Size L:</label>
-    <input type="number" id="sizeL" min="0"><br>
+    <h2>Input per carton quantity:</h2>
+    <label for="perCartonQty">Quantity per Carton:</label>
+    <input type="number" id="perCartonQty" min="1" value="10"><br>
 
-    <label for="sizeXL">Size XL:</label>
-    <input type="number" id="sizeXL" min="0"><br>
-
-    <label for="size2XL">Size 2XL:</label>
-    <input type="number" id="size2XL" min="0"><br>
-
-    <label for="size3XL">Size 3XL:</label>
-    <input type="number" id="size3XL" min="0"><br>
+    <h2>Total Quantity:</h2>
+    <label for="totalQty">Total Quantity:</label>
+    <input type="number" id="totalQty" min="0"><br>
 
     <button onclick="generatePackingList()">Generate Packing List</button>
   </div>
@@ -37,24 +33,79 @@
   </div>
 
   <script>
-    // Add your JavaScript logic here
     function generatePackingList() {
-      // Get input values for each size
-      const sizeS = parseInt(document.getElementById("sizeS").value);
-      const sizeM = parseInt(document.getElementById("sizeM").value);
-      const sizeL = parseInt(document.getElementById("sizeL").value);
-      const sizeXL = parseInt(document.getElementById("sizeXL").value);
-      const size2XL = parseInt(document.getElementById("size2XL").value);
-      const size3XL = parseInt(document.getElementById("size3XL").value);
+      const sizes = {
+        S: parseInt(document.getElementById("sizeS").value) || 0,
+        M: parseInt(document.getElementById("sizeM").value) || 0,
+      };
 
-      // Perform the packing list calculations here
-      // You can use the previous logic provided to calculate solid and mix cartons
+      const perCartonQty = parseInt(document.getElementById("perCartonQty").value) || 10;
+      let totalQty = parseInt(document.getElementById("totalQty").value) || 0;
 
-      // Display the packing list on the page
+      const packingList = [];
+
+      // Create solid cartons for each size
+      for (const size in sizes) {
+        let quantity = sizes[size];
+        while (quantity >= perCartonQty) {
+          packingList.push({ size, quantity: perCartonQty });
+          quantity -= perCartonQty;
+        }
+        if (quantity > 0) {
+          packingList.push({ size, quantity });
+        }
+      }
+
+      // Create mixed cartons if there's any remaining quantity
+      if (totalQty > 0) {
+        for (const size1 in sizes) {
+          for (const size2 in sizes) {
+            if (size1 !== size2) {
+              let combinedQty = sizes[size1] + sizes[size2];
+              while (combinedQty >= perCartonQty) {
+                if (totalQty - perCartonQty >= 0) {
+                  packingList.push({ size1, size2, quantity: perCartonQty });
+                  totalQty -= perCartonQty;
+                }
+                combinedQty -= perCartonQty;
+              }
+              if (combinedQty > 0 && totalQty - combinedQty >= 0) {
+                packingList.push({ size1, size2, quantity: combinedQty });
+                totalQty -= combinedQty;
+              }
+            }
+          }
+        }
+      }
+
+      // Create mixed cartons with one size if there's still any remaining quantity
+      if (totalQty > 0) {
+        for (const size in sizes) {
+          let quantity = sizes[size];
+          while (quantity >= perCartonQty) {
+            if (totalQty - perCartonQty >= 0) {
+              packingList.push({ size, quantity: perCartonQty });
+              totalQty -= perCartonQty;
+            }
+            quantity -= perCartonQty;
+          }
+          if (quantity > 0 && totalQty - quantity >= 0) {
+            packingList.push({ size, quantity });
+            totalQty -= quantity;
+          }
+        }
+      }
+
       const outputList = document.getElementById("outputList");
-      outputList.innerHTML = `
-        <!-- Display the packing list here -->
-      `;
+      outputList.innerHTML = "<h2>Packing List:</h2>";
+
+      packingList.forEach((carton, index) => {
+        if (carton.size2) {
+          outputList.innerHTML += `<p>Carton ${index + 1}: Size ${carton.size1} - ${carton.size2} - ${carton.quantity} pcs</p>`;
+        } else {
+          outputList.innerHTML += `<p>Carton ${index + 1}: Size ${carton.size} - ${carton.quantity} pcs</p>`;
+        }
+      });
     }
   </script>
 </body>
