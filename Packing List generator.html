@@ -1,112 +1,191 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Apparel Packing List Generator</title>
-  <style>
-    /* Add your CSS styles here */
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carton Generator</title>
+    <!-- Add a link to the Bootstrap CSS file -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Your custom CSS */
+        .box {
+            background-color: #e5e5e5; /* Replace with your desired background color */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            height: 100%;
+            box-sizing: border-box; /* Include padding and border in the width calculation */
+        }
+
+        .box:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Optional: Adjust the height of the box based on the content inside */
+        .box-content {
+            height: 100%; /* Adjust the height based on your needs */
+            /* Add any additional styles or customization for the box here */
+        }
+
+        .form-control {
+            background-color: #e5ffff;
+        }
+
+        @media (max-width: 768px) {
+            .box {
+                width: 100%; /* Adjust the width to your desired value */
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-brand img {
+                max-height: 40px; /* Adjust the height as needed */
+            }
+
+            .navbar-toggler {
+                padding: 0.25rem; /* Adjust the padding as needed */
+            }
+
+            .navbar-toggler-icon {
+                font-size: 1.25rem; /* Adjust the font size as needed */
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Apparel Packing List Generator</h1>
+    <div class="container">
+	
+<div class="text-center">
+	<h1>Carton Generator</h1>
+	</div>
 
-  <div id="inputForm">
-    <h2>Input size-wise quantities:</h2>
-    <label for="sizeS">Size S:</label>
-    <input type="number" id="sizeS" min="0" value="0"><br>
+<div class="container my-3">
+  <div class="row">
+  
 
-    <label for="sizeM">Size M:</label>
-    <input type="number" id="sizeM" min="0" value="0"><br>
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        
+        <div class="box-content">
 
-    <h2>Input per carton quantity:</h2>
-    <label for="perCartonQty">Quantity per Carton:</label>
-    <input type="number" id="perCartonQty" min="1" value="10"><br>
+        <label for="sizeXS">XS Size Qty:</label>
+<input type="number" class="form-control" id="sizeXS" min="0"><br>
+<label for="sizeS">S Size Qty:</label>
+<input type="number" class="form-control" id="sizeS" min="0"><br>
+<label for="sizeM">M Size Qty:</label>
+<input type="number" class="form-control" id="sizeM" min="0"><br>
+<label for="sizeL">L Size Qty:</label>
+<input type="number" class="form-control" id="sizeL" min="0"><br>
+<label for="sizeXL">XL Size Qty:</label>
+<input type="number" class="form-control" id="sizeXL" min="0"><br>
+<label for="size2XL">2XL Size Qty:</label>
+<input type="number" class="form-control" id="size2XL" min="0"><br>
+<label for="size3XL">3XL Size Qty:</label>
+<input type="number" class="form-control" id="size3XL" min="0"><br>
+<label for="size4XL">4XL Size Qty:</label>
+<input type="number" class="form-control" id="size4XL" min="0"><br>
 
-    <h2>Total Quantity:</h2>
-    <label for="totalQty">Total Quantity:</label>
-    <input type="number" id="totalQty" min="0"><br>
+        <label for="cartonSize">Carton Size:</label>
+        <input type="number" class="form-control" id="cartonSize" min="1"><br>
+        <button onclick="generateCartons()">Generate Cartons</button>
+		</div>
+		</div>
+		
+		</div>
+        
+	
+</div>
 
-    <button onclick="generatePackingList()">Generate Packing List</button>
-  </div>
+</div>
 
-  <div id="outputList">
-    <!-- The generated packing list will appear here -->
-  </div>
+<div class="col-md-6 my-2">
+  <div class="box">
+    <div class="box-content">
+      <div class="text-center">
+        <div id="cartonList"></div>	
+		</div>
+		</div>
+		
+		</div>
+        
+	
 
-  <script>
-    function generatePackingList() {
-      const sizes = {
-        S: parseInt(document.getElementById("sizeS").value) || 0,
-        M: parseInt(document.getElementById("sizeM").value) || 0,
-      };
 
-      const perCartonQty = parseInt(document.getElementById("perCartonQty").value) || 10;
-      let totalQty = parseInt(document.getElementById("totalQty").value) || 0;
+</div>
 
-      const packingList = [];
+	<script>
 
-      // Create solid cartons for each size
-      for (const size in sizes) {
-        let quantity = sizes[size];
-        while (quantity >= perCartonQty) {
-          packingList.push({ size, quantity: perCartonQty });
-          quantity -= perCartonQty;
+function generateCartons() {
+    let sizeXSQty = parseInt(document.getElementById("sizeXS").value);
+    let sizeSQty = parseInt(document.getElementById("sizeS").value);
+    let sizeMQty = parseInt(document.getElementById("sizeM").value);
+    let sizeLQty = parseInt(document.getElementById("sizeL").value);
+    let sizeXLQty = parseInt(document.getElementById("sizeXL").value);
+    let size2XLQty = parseInt(document.getElementById("size2XL").value);
+    let size3XLQty = parseInt(document.getElementById("size3XL").value);
+    let size4XLQty = parseInt(document.getElementById("size4XL").value);
+
+    const cartonSize = parseInt(document.getElementById("cartonSize").value);
+
+    let solidCartonNumber = 1;
+    let cartonList = [];
+
+    // Create solid cartons for each size
+    const sizes = [
+        { label: "XS", qty: sizeXSQty },
+        { label: "S", qty: sizeSQty },
+        { label: "M", qty: sizeMQty },
+        { label: "L", qty: sizeLQty },
+        { label: "XL", qty: sizeXLQty },
+        { label: "2XL", qty: size2XLQty },
+        { label: "3XL", qty: size3XLQty },
+        { label: "4XL", qty: size4XLQty },
+    ];
+
+    sizes.forEach((size) => {
+        while (size.qty >= cartonSize) {
+            cartonList.push(`Carton ${solidCartonNumber} = ${size.label} ${cartonSize} pcs`);
+            size.qty -= cartonSize;
+            solidCartonNumber++;
         }
-        if (quantity > 0) {
-          packingList.push({ size, quantity });
-        }
-      }
+    });
 
-      // Create mixed cartons if there's any remaining quantity
-      if (totalQty > 0) {
-        for (const size1 in sizes) {
-          for (const size2 in sizes) {
-            if (size1 !== size2) {
-              let combinedQty = sizes[size1] + sizes[size2];
-              while (combinedQty >= perCartonQty) {
-                if (totalQty - perCartonQty >= 0) {
-                  packingList.push({ size1, size2, quantity: perCartonQty });
-                  totalQty -= perCartonQty;
-                }
-                combinedQty -= perCartonQty;
-              }
-              if (combinedQty > 0 && totalQty - combinedQty >= 0) {
-                packingList.push({ size1, size2, quantity: combinedQty });
-                totalQty -= combinedQty;
-              }
+    let mixedCartonNumber = solidCartonNumber; // Start mixed carton numbering after solid cartons
+
+    // Create mixed cartons if there are remaining items
+    let mixedCartonContent = [];
+    while (sizes.some((size) => size.qty > 0)) {
+        let remainingSpace = cartonSize;
+        mixedCartonContent = [];
+
+        sizes.forEach((size) => {
+            if (size.qty > 0 && remainingSpace > 0) {
+                const quantity = Math.min(size.qty, remainingSpace);
+                mixedCartonContent.push(`${size.label} ${quantity} pcs`);
+                size.qty -= quantity;
+                remainingSpace -= quantity;
             }
-          }
-        }
-      }
+        });
 
-      // Create mixed cartons with one size if there's still any remaining quantity
-      if (totalQty > 0) {
-        for (const size in sizes) {
-          let quantity = sizes[size];
-          while (quantity >= perCartonQty) {
-            if (totalQty - perCartonQty >= 0) {
-              packingList.push({ size, quantity: perCartonQty });
-              totalQty -= perCartonQty;
-            }
-            quantity -= perCartonQty;
-          }
-          if (quantity > 0 && totalQty - quantity >= 0) {
-            packingList.push({ size, quantity });
-            totalQty -= quantity;
-          }
-        }
-      }
-
-      const outputList = document.getElementById("outputList");
-      outputList.innerHTML = "<h2>Packing List:</h2>";
-
-      packingList.forEach((carton, index) => {
-        if (carton.size2) {
-          outputList.innerHTML += `<p>Carton ${index + 1}: Size ${carton.size1} - ${carton.size2} - ${carton.quantity} pcs</p>`;
-        } else {
-          outputList.innerHTML += `<p>Carton ${index + 1}: Size ${carton.size} - ${carton.quantity} pcs</p>`;
-        }
-      });
+        cartonList.push(`Carton ${mixedCartonNumber} = ${mixedCartonContent.join(" + ")}`);
+        mixedCartonNumber++;
     }
-  </script>
+
+    const cartonListElement = document.getElementById("cartonList");
+    cartonListElement.innerHTML = cartonList.join("<br>");
+}
+
+
+
+</script>
+</div>
+</div>
+</div>
+
 </body>
 </html>
+
+
+
