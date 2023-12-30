@@ -149,11 +149,11 @@
 		</div>
 
           <div>
-            <label for="bodyLength">Body Length (cm):</label>
+            <label for="bodyLength">Body Length (cm/inch):</label>
             <input type="number" class="form-control" id="bodyLength" step="0.1" required>
           </div>
           <div>
-            <label for="bodyWidth">Body Width (cm):</label>
+            <label for="bodyWidth">Body Width (cm/inch):</label>
             <input type="number" class="form-control" id="bodyWidth" step="0.1" required>
           </div>
           <div>
@@ -161,7 +161,7 @@
             <input type="number" class="form-control" id="fabricPart" step="0.1" required>
           </div>
           <div>
-            <label for="fabricWidth">Fabric Width:</label>
+            <label for="fabricWidth">Fabric Width (cm/inch):</label>
             <input type="number" class="form-control" id="fabricWidth" step="0.1" required>
           </div>
           <div class="form-group">
@@ -182,7 +182,7 @@
   <h2 class="text-center">Woven Garments Consumption Documentation</h2>
 
   <h4>Formula:</h4>
-  <p>\[ \text{Fabric Consumption (yards/pcs)} = \frac{\text{Body Length} \times \text{Body Width} \times \text{Fabric Part}}{\text{Fabric Width} \times \text{Unit Factor}} \]</p>
+  <p>\[ \text{Fabric Consumption (yards/pcs)} = \frac{\text{Body Length} \times \text{Body Width} \times \text{Fabric Part} \times \text{Unit Factor}}{\text{Fabric Width} \times \text{Unit Factor} \times \text{Unit Factor}} \]</p>
 
   <h4>Parameters:</h4>
   <ul>
@@ -192,8 +192,8 @@
     <li><strong>Fabric Width:</strong> Width of the fabric in CM or Inch.</li>
     <li><strong>Unit Factor:</strong>
       <ul>
-        <li>If the unit is <strong>CM:</strong> \(36 \times 2.54 \times 2.54\)</li>
-        <li>If the unit is <strong>Inch:</strong> \(36\)</li>
+        <li>If the unit is <strong>CM:</strong> Unit factor \(91.4\) is use for convert cm to yard. </li>
+        <li>If the unit is <strong>Inch:</strong> Unit factor \(36\) is use for convert inch to yard.</li>
       </ul>
     </li>
   </ul>
@@ -209,12 +209,15 @@
     <li>Result: Fabric Consumption in yards per piece.</li>
   </ol>
 
-  <h4>Example:</h4>
+  <h4>Example in CM:</h4>
   <p><strong>Body Length:</strong> 100 CM<br><strong>Body Width:</strong> 50 CM<br><strong>Fabric Part:</strong> 2<br><strong>Fabric Width:</strong> 150 CM</p>
-  <p>\[ \text{Fabric Consumption (yards/pcs)} = \frac{100 \times 50 \times 2}{150 \times (36 \times 2.54 \times 2.54)} \]</p>
-  <p>Result: Fabric Consumption:  0.287 yards/pcs</p>
+  <p>\[ \text{Fabric Consumption in CM (yards/pcs)} = \frac{100 \times 50 \times 2 \times 91.4}{150 \times 91.4 \times 91.4} \]</p>
+  <p><strong>Result: Fabric Consumption:  0.729 yards/pcs</strong></p>
 
-
+  <h4>Example in Inch:</h4>
+  <p><strong>Body Length:</strong> 50 Inch<br><strong>Body Width:</strong> 20 Inch<br><strong>Fabric Part:</strong> 2<br><strong>Fabric Width:</strong> 60 Inch</p>
+  <p>\[ \text{Fabric Consumption in Inch (yards/pcs)} = \frac{40 \times 20 \times 2 }{60 \times 36 } \]</p>
+  <p><strong>Result: Fabric Consumption:  0.741 yards/pcs</strong></p>
 
 <script>
   function calculateConsumption() {
@@ -228,7 +231,7 @@
     // Calculate fabric consumption based on the selected unit
     var fabricConsumption;
     if (selectedUnit === "cm") {
-      fabricConsumption = (bodyLength * bodyWidth * fabricPart) / (fabricWidth * 36 * 2.54 * 2.54);
+      fabricConsumption = (bodyLength * bodyWidth * fabricPart * 91.4) / (fabricWidth * 91.4 * 91.4);
     } else if (selectedUnit === "inch") {
       fabricConsumption = (bodyLength * bodyWidth * fabricPart) / (fabricWidth * 36);
     } else {
