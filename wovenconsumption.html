@@ -14,7 +14,10 @@
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="vendors/aos/css/aos.css">
   <link rel="stylesheet" href="css/style.min.css">
-  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
 <style>
 .box {
   background-color: #e5e5e5; /* Replace with your desired background color */
@@ -131,7 +134,7 @@
   <div class="row">
   
 
-<div class="col-md-6 my-2">
+<div class="col-md-12 my-2">
   <div class="box">
     <div class="box-content">
       <div class="text-center">
@@ -171,6 +174,41 @@
     </div>
   </div>
 </div>
+  </div>
+
+
+
+ <div class="box-content">
+  <h2 class="text-center">Woven Garments Consumption Documentation</h2>
+
+  <h4>Formula:</h4>
+  <p>\[ \text{Fabric Consumption (yards/pcs)} = \frac{\text{Body Length} \times \text{Body Width} \times \text{Fabric Part}}{\text{Fabric Width} \times \text{Unit Factor}} \]</p>
+
+  <h4>Parameters:</h4>
+  <ul>
+    <li><strong>Body Length:</strong> Length of the garment body in CM or Inch.</li>
+    <li><strong>Body Width:</strong> Width of the garment body in CM or Inch.</li>
+    <li><strong>Fabric Part:</strong> Fabric part of the garment.</li>
+    <li><strong>Fabric Width:</strong> Width of the fabric in CM or Inch.</li>
+    <li><strong>Unit Factor:</strong> \(36 \times 2.54 \times 2.54\) for CM, and 36 for Inch.</li>
+  </ul>
+
+  <h4>Unit Selection:</h4>
+  <p>User can choose CM or Inch for input values.</p>
+
+  <h4>Usage:</h4>
+  <ol>
+    <li>Input values for Body Length, Body Width, Fabric Part, and Fabric Width.</li>
+    <li>Select the unit (CM or Inch).</li>
+    <li>Click "Calculate Consumption."</li>
+    <li>Result: Fabric Consumption in yards per piece.</li>
+  </ol>
+
+  <h4>Example:</h4>
+  <p><strong>Body Length:</strong> 100 CM<br><strong>Body Width:</strong> 50 CM<br><strong>Fabric Part:</strong> 2<br><strong>Fabric Width:</strong> 150 CM</p>
+  <p>\[ \text{Fabric Consumption (yards/pcs)} = \frac{100 \times 50 \times 2}{150 \times (36 \times 2.54 \times 2.54)} \]</p>
+  <p>Result: Fabric Consumption: X.XXX yards/pcs</p>
+
 
 
 <script>
@@ -201,9 +239,9 @@
 
 
  
-</div>
 
-  </div>
+
+
  
  
       <section class="contact-details" id="contact-details-section">
