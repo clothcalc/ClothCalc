@@ -228,7 +228,7 @@
     // Calculate fabric consumption based on the selected unit
     var fabricConsumption;
     if (selectedUnit === "cm") {
-      fabricConsumption = (bodyLength * bodyWidth * fabricPart) / (fabricWidth * 36 * 2.54 * 2.54);
+      fabricConsumption = (bodyLength * bodyWidth * fabricPart) / (fabricWidth * 2.54 * 2.54);
     } else if (selectedUnit === "inch") {
       fabricConsumption = (bodyLength * bodyWidth * fabricPart) / (fabricWidth * 36);
     } else {
