@@ -149,11 +149,11 @@
 		</div>
 
           <div>
-            <label for="bodyLength">Body Length (cm/inch):</label>
+            <label for="bodyLength">Length (cm/inch):</label>
             <input type="number" class="form-control" id="bodyLength" step="0.1" required>
           </div>
           <div>
-            <label for="bodyWidth">Body Width (cm/inch):</label>
+            <label for="bodyWidth">Width (cm/inch):</label>
             <input type="number" class="form-control" id="bodyWidth" step="0.1" required>
           </div>
           <div>
@@ -199,96 +199,57 @@
     </li>
   </ul>
 
-  <h4>Unit Selection:</h4>
-  <p>User can choose CM or Inch for input values.</p>
-
-  <h4>Usage:</h4>
-  <ol>
-    <li>Input values for Body Length, Body Width, Fabric Part, and Fabric Width.</li>
-    <li>Select the unit (CM or Inch).</li>
-    <li>Click "Calculate Consumption."</li>
-    <li>Result: Fabric Consumption in yards per piece.</li>
-  </ol>
-
-  <h4>Example in CM:</h4>
-  <p><strong>Body Length:</strong> 100 CM<br><strong>Body Width:</strong> 50 CM<br><strong>Fabric Part:</strong> 2<br><strong>Fabric Width:</strong> 150 CM</p>
-  <p>\[ \text{Fabric Consumption in CM (yards/pcs)} = \frac{100 \times 50 \times 2 \times 91.4}{150 \times 91.4 \times 91.4} \]</p>
-  <p><strong>Result: Fabric Consumption:  0.729 yards/pcs</strong></p>
-
-  <h4>Example in Inch:</h4>
-  <p><strong>Body Length:</strong> 40 Inch<br><strong>Body Width:</strong> 20 Inch<br><strong>Fabric Part:</strong> 2<br><strong>Fabric Width:</strong> 60 Inch</p>
-  <p>\[ \text{Fabric Consumption in Inch (yards/pcs)} = \frac{40 \times 20 \times 2 }{60 \times 36 } \]</p>
-  <p><strong>Result: Fabric Consumption:  0.741 yards/pcs</strong></p>
 
 
-Certainly! Let's break down the woven garment consumption calculation step by step for a jacket, considering different parts such as body, sleeve, hood, and placket. I'll provide examples for each part with the given details:
 
-### Jacket Woven Garments Consumption Calculation:
+<h2 class="text-center">Basic Jacket Consumption Calculation:</h2>
 
 1. **Body:**
-   - Half Chest: 50 CM
-   - Length: 70 CM
+   - Half Chest: 62 CM
+   - Length: 78 CM
    - Fabric Part: 2 (front and back parts)
-   - Fabric Width: 150 CM
+   - Fabric Width: 140 CM
    - Unit: CM
 
-   \[ \text{Fabric Consumption (yards/pcs)} = \frac{50 \times 70 \times 2}{150 \times (36 \times 2.54 \times 2.54)} \]
+   \[ \text{Body Fabric Consumption (yards/pcs)} = \frac{62 \times 78 \times 2 \times 91.4}{140 \times 91.4 \times 91.4} =0.756 yards/pcs\]
 
 2. **Sleeve:**
-   - Armhole Straight: 25 CM
-   - Sleeve Length: 60 CM
+   - Armhole Straight: 31 CM
+   - Sleeve Length: 72 CM
    - Fabric Part: 4 (front part, back part, and two sleeves)
-   - Fabric Width: 150 CM
+   - Fabric Width: 140 CM
    - Unit: CM
 
-   \[ \text{Fabric Consumption (yards/pcs)} = \frac{25 \times 60 \times 4}{150 \times (36 \times 2.54 \times 2.54)} \]
+   \[ \text{Sleeve Fabric Consumption (yards/pcs)} = \frac{31 \times 72 \times 4 \times 91.4}{140 \times 91.4 \times 91.4} =0.698 yards/pcs \]
 
 3. **Hood:**
-   - Hood Width: 30 CM
-   - Hood Length: 40 CM
+   - Hood Width: 31 CM
+   - Hood Length: 36 CM
    - Fabric Part: 2 (front and back parts)
-   - Fabric Width: 150 CM
+   - Fabric Width: 140 CM
    - Unit: CM
 
-   \[ \text{Fabric Consumption (yards/pcs)} = \frac{30 \times 40 \times 2}{150 \times (36 \times 2.54 \times 2.54)} \]
+   \[ \text{Hood Fabric Consumption (yards/pcs)} = \frac{31 \times 36 \times 2 \times 91.4}{140 \times 91.4 \times 91.4} =0.174 yards/pcs \]
 
 4. **Placket:**
-   - Placket Width: 10 CM
-   - Placket Length: 30 CM
+   - Placket Width: 4 CM
+   - Placket Length: 77 CM
    - Fabric Part: 2 (front and back parts)
-   - Fabric Width: 150 CM
+   - Fabric Width: 140 CM
    - Unit: CM
 
-   \[ \text{Fabric Consumption (yards/pcs)} = \frac{10 \times 30 \times 2}{150 \times (36 \times 2.54 \times 2.54)} \]
+   \[ \text{Placket Fabric Consumption (yards/pcs)} = \frac{4 \times 77 \times 2 \times 91.4}{140 \times 91.4 \times 91.4} =0.048 yards/pcs \]
 
 
 
-
-Certainly! Let's calculate the total fabric consumption by adding up the individual fabric consumptions for the body, sleeve, hood, and placket. The values are based on the provided examples:
-
-### Total Fabric Consumption Calculation:
-
-1. **Body Consumption:**
-   - Body Fabric Consumption: \( \frac{50 \times 70 \times 2}{150 \times (36 \times 2.54 \times 2.54)} \) yards/pcs
-
-2. **Sleeve Consumption:**
-   - Sleeve Fabric Consumption: \( \frac{25 \times 60 \times 4}{150 \times (36 \times 2.54 \times 2.54)} \) yards/pcs
-
-3. **Hood Consumption:**
-   - Hood Fabric Consumption: \( \frac{30 \times 40 \times 2}{150 \times (36 \times 2.54 \times 2.54)} \) yards/pcs
-
-4. **Placket Consumption:**
-   - Placket Fabric Consumption: \( \frac{10 \times 30 \times 2}{150 \times (36 \times 2.54 \times 2.54)} \) yards/pcs
 
 ### Total Consumption Calculation:
 \[ \text{Total Fabric Consumption} = \text{Body Consumption} + \text{Sleeve Consumption} + \text{Hood Consumption} + \text{Placket Consumption} \]
 
-### Example Calculation (Assuming all parts are in CM):
-\[ \text{Total Fabric Consumption} = \text{Body} + \text{Sleeve} + \text{Hood} + \text{Placket} \]
-\[ = \frac{50 \times 70 \times 2}{150 \times (36 \times 2.54 \times 2.54)} + \frac{25 \times 60 \times 4}{150 \times (36 \times 2.54 \times 2.54)} + \frac{30 \times 40 \times 2}{150 \times (36 \times 2.54 \times 2.54)} + \frac{10 \times 30 \times 2}{150 \times (36 \times 2.54 \times 2.54)} \]
+\[ \text{Total Fabric Consumption} = \text{0.756} + \text{0.698} + \text{0.174} + \text{0.048} = 1.675 \]
 
 ### Total Fabric Consumption Result:
-\[ \text{Total Fabric Consumption} \approx X \text{ yards/pcs} \]
+\[ \text{Total Fabric Consumption} \approx \text{ 1.675 yards/pcs} \]
 
 The result will be the total fabric consumption for the jacket, taking into account the body, sleeve, hood, and placket parts.
 
