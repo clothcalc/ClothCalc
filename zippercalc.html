@@ -183,7 +183,7 @@
               </div>
               <div class="form-group">
                 <label for="zipperResult2">Zipper Length:</label>
-                <input type="text" class="form-control" id="zipperResult2" readonly>
+                <input type="text" class="form-control" id="zipperResult2" readonly style="font-size: 16px;">
 				<p id="zipperInfo2" class="text-muted"></p>
               </div>
               
@@ -215,7 +215,7 @@
               </div>
               <div class="form-group">
                 <label for="zipperResult3">Zipper Length:</label>
-                <input type="text" class="form-control" id="zipperResult3" readonly>
+                <input type="text" class="form-control" id="zipperResult3" readonly style="font-size: 16px;">
 				<p id="zipperInfo3" class="text-muted"></p>
               </div>
              
@@ -256,7 +256,7 @@ drop from HPS) – Front neck drop from HPS + Front collar height – Hem drop f
               </div>
               <div class="form-group">
                 <label for="zipperResult4">Zipper Length:</label>
-                <input type="text" class="form-control" id="zipperResult4" readonly>
+                <input type="text" class="form-control" id="zipperResult4" readonly style="font-size: 16px;">
 				<p id="zipperInfo4" class="text-muted"></p>
               </div>
              
@@ -350,6 +350,12 @@ drop from HPS) – Front neck drop from HPS + Front collar height – Hem drop f
 
     document.getElementById("zipperResult4").value = zipperLength.toFixed(2) + " cm";
     document.getElementById("zipperInfo4").textContent = "You can calculate zipper length " + roundedZipperLength.toFixed(2) + " cm.";
+	
+		// Add style to the zipperInfo1 element
+    var zipperInfo1Element = document.getElementById("zipperInfo4");
+    zipperInfo1Element.style.fontSize = "18px";
+    zipperInfo1Element.style.fontWeight = "bold";
+    zipperInfo1Element.style.color = "black";
   }
 
   var formInputs = document.querySelectorAll("#zipperForm4 input");
