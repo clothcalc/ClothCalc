@@ -141,10 +141,23 @@
 			  
 			  <p class="text-left"><b>Formula:</b><br>CBM = (length * width * height * Qty) / 1000000
 
-<b>Explanation:</b>
+<br><b>Explanation:</b>
 <br>
     * The CBM (Cubic Meter) is calculated by multiplying the length, width, height, and carton quantity.
     <br>* The result is divided by 1000000 to convert from cubic centimeters to cubic meters.</p>
+	
+	<h4>CBM Calculation from INCH</h4>
+	
+	<p class="text-left"><b>Formula:</b><br>CBM = (length * width * height * Qty) / 61,023.8
+
+<br><b>Explanation:</b>
+<br>
+    * The CBM (Cubic Meter) is calculated by multiplying the length, width, height, and carton quantity.
+    <br>* The result is divided by 61,023.8 to convert from cubic centimeters to cubic meters.</p>
+	
+	
+	
+	
 		  <h4>CBF Calculation from Inch</h4>
 			  <p class="text-left"><b>Formula:</b><br>CBF = (length * width * height * Qty) / 1728
 
@@ -165,7 +178,7 @@
       <div class="d-flex flex-column justify-content-between h-100">
         <div class="text-center">
           <div class="form-group">
-		  <h4>CBM & CBF Calculation</h4>
+		  <h4>CBM Calculation</h4>
 
 		  
             <label for="measurementType">Select Measurement Type:</label>
@@ -230,8 +243,8 @@
       const heightInches = parseFloat(document.getElementById("height").value);
 
       if (lengthInches && widthInches && heightInches) {
-        const cbf = (lengthInches * widthInches * heightInches * cartonQty) / 1728;
-        document.getElementById("result").value = "CBF: " + cbf.toFixed(3);
+        const cbm = (lengthInches * widthInches * heightInches * cartonQty) / 61023.8;
+        document.getElementById("result").value = "CBM: " + cbm.toFixed(3);
       } else {
         document.getElementById("result").value = "Please enter all dimensions.";
       }
